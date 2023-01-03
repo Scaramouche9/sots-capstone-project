@@ -1,0 +1,7 @@
+### Anonymously available get all panels
+GET /character-creator HTTP/1.1
+Host: localhost:8080
+
+### Anonymously available get all panels
+GET /character-creator HTTP/1.1
+Host: localhost:8080
