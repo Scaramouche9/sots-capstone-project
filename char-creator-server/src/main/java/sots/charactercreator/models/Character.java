@@ -10,9 +10,12 @@ public class Character {
     private int alignmentId;
     private int strength;
     private int dexterity;
+    private int constitution;
     private int intelligence;
     private int wisdom;
     private int charisma;
+    private int armorClass;
+    private int proficiencyBonus;
     private int speed;
     private int level;
     private int hitpoints;
@@ -25,6 +28,10 @@ public class Character {
         this.classId = classId;
         this.backgroundId = backgroundId;
         this.alignmentId = alignmentId;
+    }
+
+    public Character() {
+
     }
 
     public int getCharacterId() {
@@ -91,6 +98,14 @@ public class Character {
         this.dexterity = dexterity;
     }
 
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
     public int getIntelligence() {
         return intelligence;
     }
@@ -113,6 +128,22 @@ public class Character {
 
     public void setCharisma(int charisma) {
         this.charisma = charisma;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(int armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    public int getProficiencyBonus() {
+        return proficiencyBonus;
+    }
+
+    public void setProficiencyBonus(int proficiencyBonus) {
+        this.proficiencyBonus = proficiencyBonus;
     }
 
     public int getSpeed() {
