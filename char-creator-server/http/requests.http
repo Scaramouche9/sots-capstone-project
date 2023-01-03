@@ -35,3 +35,8 @@ Content-Type: application/json
     "username": "mtaylor@gmail.com",
     "password": "P@ssw0rd!"
 }
+
+### Delete endpoint test (needs jwt of admin, should give 204)
+DELETE /charactercreator/5 HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer <jwt here>
