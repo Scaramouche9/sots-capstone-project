@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/character-creator")
+@RequestMapping("/charactercreator")
 public class CharacterController {
 
 
     //Anyone can access
     @GetMapping
     public ResponseEntity<?> findAll() throws DataAccessException {
+
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

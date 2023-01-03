@@ -32,13 +32,13 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET,
                         "/order").permitAll()
                 .antMatchers(HttpMethod.GET,
-                        "/character-creator", "/character-creator/*", "/character-creator/*/*/*").permitAll()
+                        "/charactercreator", "/charactercreator/*", "/charactercreator/*/*/*").permitAll()
                 .antMatchers(HttpMethod.POST,
-                        "/character-creator").hasAnyAuthority("USER", "ADMIN")
+                        "/charactercreator").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/character-creator/*").hasAnyAuthority("ADMIN")
+                        "/charactercreator/*").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE,
-                        "/character-creator/*", "/character-creator/*/*/*").hasAnyAuthority("ADMIN")
+                        "/charactercreator/*", "/charactercreator/*/*/*").hasAnyAuthority("ADMIN")
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))
