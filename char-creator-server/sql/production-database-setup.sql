@@ -31,6 +31,7 @@ create table `character` (
     alignment_id int not null,
     strength int,
     dexterity int,
+    constitution int,
     intelligence int,
     wisdom int,
     charisma int,
