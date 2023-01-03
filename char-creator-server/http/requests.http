@@ -1,0 +1,42 @@
+### Anonymously available get all panels (should 202 for now)
+GET /charactercreator HTTP/1.1
+Host: localhost:8080
+
+### Anonymously available get all panels (should 409 for now)
+GET /charactercreator/5 HTTP/1.1
+Host: localhost:8080
+
+### Check login to generate JWT (admin)
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "john@smith.com",
+    "password": "P@ssw0rd!"
+}
+
+### Check creating a user account
+
+POST http://localhost:8080/create_account HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "meemoo@maw.com",
+    "password": "P@ssw0rd!"
+}
+
+###Test new user account (JWT)
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "mtaylor@gmail.com",
+    "password": "P@ssw0rd!"
+}
+
+### Delete endpoint test (needs jwt of admin, should give 204)
+DELETE /charactercreator/5 HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer <jwt here>
