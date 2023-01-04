@@ -1,4 +1,4 @@
-package sots.charactercreator.temporaryfolder;
+package sots.charactercreator.data;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
