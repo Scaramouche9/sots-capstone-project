@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import AuthContext from '../Context/AuthContext';
 
-export default function LoginPage(props) {
+export default function CreateAccountPage(props) {
 	const [loginData, setLoginData] = useState({ username: '', password: '' });
 
 	const auth = useContext(AuthContext);
@@ -62,7 +62,7 @@ export default function LoginPage(props) {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<h1>Login:</h1>
+				<h1>Create a New Account</h1>
 				<label htmlFor="username">Username: </label>
 				<input id="username" />
 				<label htmlFor="password">Password: </label>
