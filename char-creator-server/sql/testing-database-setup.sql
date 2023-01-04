@@ -73,17 +73,16 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+	SET SQL_SAFE_UPDATES = 0;
+	delete from `character`;
+    alter table `character` auto_increment = 1;
 	delete from species;
     alter table species auto_increment = 1;
 	delete from player_class;
     alter table player_class auto_increment = 1;
 	delete from background;
 	alter table background auto_increment = 1;
-    delete from `character`;
-    alter table `character` auto_increment = 1;
-    
-    
-    insert into alignment values (1, 'LG'), (2, 'NG'), (3, 'CG'), (4, 'LN'), (5, 'N'), (6, 'CN'), (7, 'LE'), (8, 'NE'), (9, 'CE');
+    SET SQL_SAFE_UPDATES = 1;
 
 	insert into species values (1, 'Dwarf'), (2, 'Elf'), (3, 'Halfling'), (4, 'Human');
 
