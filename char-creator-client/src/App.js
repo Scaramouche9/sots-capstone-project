@@ -8,28 +8,66 @@ import LoginPage from './Components/Pages/LoginPage';
 import AuthContext from './Components/Context/AuthContext'
 import jwtDecode from "jwt-decode";
 
-const LOCAL_STORAGE_TOKEN_KEY = "solarFarmToken";
+const LOCAL_STORAGE_TOKEN_KEY = "";
 
-function App() {
+export default function App() {
 
-  let currentUserData = localStorage.getItem("userData");
+  const [user, setUser] = useState(null);
+  const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
-  if( currentUserData ){
-    currentUserData = JSON.parse( currentUserData );
-  }
+  useEffect(() => {
+    const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+    if (token) {
+      login(token);
+    }
+    setRestoreLoginAttemptCompleted(true);
+  }, []);
 
-  const [loggedInUserData, setLoggedInUserData] = useState(currentUserData);
+    const login = (token) => {
 
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+
+      
+      const { sub: username, authorities: authoritiesString } = jwtDecode(token);
+    
+      const roles = authoritiesString.split(',');
+      const user = {
+        username,
+        roles,
+        token,
+        hasRole(role) {
+          return this.roles.includes(role);
+        }
+      };
+    
+      console.log(user);
+      setUser(user);
+    
+      return user;
+
+    }
+
+    const logout = () => {
+      setUser(null);
+      localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+    };
+  
+    const auth = {
+      user: user ? { ...user } : null,
+      login,
+      logout
+    };
+  
+    if (!restoreLoginAttemptCompleted) { //this makes sure that the login is restored BEFORE the app actually renders
+      return null;
+    } 
   
 
- 
 
-
-
-  return (
+  return(
     <div className="App">
       
-      <AuthContext.Provider value={loggedInUserData}>
+      <AuthContext.Provider value={auth}>
         <BrowserRouter>
           <Navigation/>
           <Switch>
@@ -49,5 +87,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
