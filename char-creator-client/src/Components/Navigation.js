@@ -13,17 +13,22 @@ export default function Navigation(){
         <ul>
             <li><Link to="/home">Home</Link></li>
             {!auth.user && (<li><Link to="/login">Login</Link></li>)}
+            
+            {auth.user && (
 
+                <>
+                <li>
+                    <div>
+                    Logged in as: <strong>{auth.user.username}</strong>
+                    <button onClick={() => auth.logout()}>Logout</button>
+                    </div>
+                </li>
+                <li><Link to="/characters">Characters List</Link></li>
+                </>
                 
+            )}
+            
         </ul>
-
-        {auth.user && (
-            <div>
-            {auth.user.username} is currently logged in.
-            <button onClick={() => auth.logout()}>Logout</button>
-            </div>
-        )}
-
         </nav>
 
     );

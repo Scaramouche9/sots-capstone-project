@@ -1,5 +1,5 @@
 import './App.css';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navigation from './Components/Navigation';
 import HomePage from './Components/Pages/HomePage';
@@ -7,6 +7,7 @@ import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import AuthContext from './Components/Context/AuthContext'
 import jwtDecode from "jwt-decode";
+import UserCharactersPage from './Components/Pages/UserCharactersPage';
 
 const LOCAL_STORAGE_TOKEN_KEY = "";
 
@@ -14,6 +15,8 @@ export default function App() {
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
@@ -27,7 +30,6 @@ export default function App() {
 
       localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
-      
       const { sub: username, authorities: authoritiesString } = jwtDecode(token);
     
       const roles = authoritiesString.split(',');
@@ -50,6 +52,7 @@ export default function App() {
     const logout = () => {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+      
     };
   
     const auth = {
@@ -79,6 +82,9 @@ export default function App() {
             </Route>
             <Route path="/login">
               <LoginPage></LoginPage>
+            </Route>
+            <Route path="/characters">
+              <UserCharactersPage/>
             </Route>
           </Switch>
         </BrowserRouter>
