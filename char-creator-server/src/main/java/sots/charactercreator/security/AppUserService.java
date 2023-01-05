@@ -1,5 +1,6 @@
 package sots.charactercreator.security;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,7 @@ import sots.charactercreator.domain.Result;
 import sots.charactercreator.domain.ResultType;
 import sots.charactercreator.models.AppUser;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 @Service
@@ -31,6 +33,16 @@ public class AppUserService implements UserDetailsService {
 
         if (appUser == null || !appUser.isEnabled()) {
             throw new UsernameNotFoundException(username + " not found");
+        }
+
+        return appUser;
+    }
+
+    public UserDetails loadUserById(int id) throws UsernameNotFoundException {
+        AppUser appUser = repository.findByUserId(id);
+
+        if (appUser == null || !appUser.isEnabled()) {
+            throw new UsernameNotFoundException(id + " not found");
         }
 
         return appUser;

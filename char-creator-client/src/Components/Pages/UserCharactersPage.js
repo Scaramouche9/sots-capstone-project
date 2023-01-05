@@ -3,9 +3,7 @@ import {Link, useHistory} from "react-router-dom";
 import Character from "../Character";
 import AuthContext from "../Context/AuthContext";
 
-export default function UserCharactersPage(){
-
-    const url = "http://localhost:8080/charactercreator";
+export default function UserCharactersPage(props){
 
     const userInfo = useContext(AuthContext)
 
@@ -19,10 +17,10 @@ export default function UserCharactersPage(){
             history.push("/");
         } else {
 
-            fetch(`${url}`, {//change this to use the AppUserId once its implemented in the controller
+            fetch(`http://localhost:8080/charactercreator/user/1`, {
                 method: "GET",
                 headers: {
-                    //Authorization: "Bearer " + userInfo.token
+                    Authorization: "Bearer " + userInfo.user.token
                 }
             })
                 .then(response => {

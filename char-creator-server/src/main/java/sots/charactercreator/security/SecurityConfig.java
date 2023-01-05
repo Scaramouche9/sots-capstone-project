@@ -32,11 +32,13 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET,
                         "/order").permitAll()
                 .antMatchers(HttpMethod.GET,
-                        "/charactercreator", "/charactercreator/*", "/charactercreator/*/*/*").permitAll()
+                        "/charactercreator", "/charactercreator/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/charactercreator/user/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,
-                        "/charactercreator").hasAnyAuthority("USER", "ADMIN")
+                        "/charactercreator/*/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/charactercreator/*").hasAnyAuthority("ADMIN")
+                        "/charactercreator/*/*/*").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/charactercreator/*", "/charactercreator/*/*/*").hasAnyAuthority("ADMIN")
                 .antMatchers("/**").denyAll()

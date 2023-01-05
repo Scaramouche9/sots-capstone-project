@@ -84,7 +84,7 @@ export default function App() {
               <LoginPage></LoginPage>
             </Route>
             <Route path="/characters">
-              <UserCharactersPage/>
+              <UserCharactersPage user={user}/>
             </Route>
           </Switch>
         </BrowserRouter>
