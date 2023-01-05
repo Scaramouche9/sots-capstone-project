@@ -19,7 +19,7 @@ export default function UserCharactersPage(){
             history.push("/");
         } else {
 
-            fetch("http://localhost:8080/charactercreator", {//change this to use the AppUserId once its implemented in the controller
+            fetch(`${url}`, {//change this to use the AppUserId once its implemented in the controller
                 method: "GET",
                 headers: {
                     //Authorization: "Bearer " + userInfo.token
@@ -42,7 +42,7 @@ export default function UserCharactersPage(){
 
          <table className="table table-dark">
             <thead className="thead-light">
-                
+
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
