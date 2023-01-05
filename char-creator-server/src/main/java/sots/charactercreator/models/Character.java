@@ -20,14 +20,17 @@ public class Character {
     private int level;
     private int hitpoints;
     private String description;
+    private int appUserId;
 
-    public Character(int characterId, String characterName, int speciesId, int classId, int backgroundId, int alignmentId) {
+    public Character(int characterId, String characterName, int speciesId, int classId,
+                     int backgroundId, int alignmentId, int appUserId) {
         this.characterId = characterId;
         this.characterName = characterName;
         this.speciesId = speciesId;
         this.classId = classId;
         this.backgroundId = backgroundId;
         this.alignmentId = alignmentId;
+        this.appUserId = appUserId;
     }
 
     public Character() {
@@ -177,4 +180,13 @@ public class Character {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public int getAppUserId() {
+        return appUserId;
+    }
+
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
+    }
 }
+

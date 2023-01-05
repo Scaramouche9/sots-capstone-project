@@ -10,9 +10,9 @@ public class CharacterJdbcTemplateRepositoryDouble implements CharacterRepositor
     private List<Character> characterList = new ArrayList<>();
 
     public CharacterJdbcTemplateRepositoryDouble() {
-        characterList.add(new Character(1, "Bobby", 1, 1, 1, 1));
-        characterList.add(new Character(2, "Jobby", 2, 2, 2, 2));
-        characterList.add(new Character(3, "Hobby", 3, 3, 3, 3));
+        characterList.add(new Character(1, "Bobby", 1, 1, 1, 1,2));
+        characterList.add(new Character(2, "Jobby", 2, 2, 2, 2,2));
+        characterList.add(new Character(3, "Hobby", 3, 3, 3, 3,2));
     }
     @Override
     public List<Character> findAllCharacters() {
@@ -22,6 +22,11 @@ public class CharacterJdbcTemplateRepositoryDouble implements CharacterRepositor
     @Override
     public Character findCharacterById(int characterId) {
         return characterList.get(characterId - 1);
+    }
+
+    @Override
+    public List<Character> findCharactersByUser(int AppUserId) {
+        return characterList;
     }
 
     @Override
