@@ -9,6 +9,7 @@ public interface CharacterRepository {
 
     List<Character> findAllCharacters();
     Character findCharacterById(int characterId);
+    List<Character> findCharactersByUser(int appUserId);
     Character addCharacter(Character character);
     boolean updateCharacter(Character character);
     @Transactional

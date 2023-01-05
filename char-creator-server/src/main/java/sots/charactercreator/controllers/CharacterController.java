@@ -33,6 +33,11 @@ public class CharacterController {
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Character> findByUser(@PathVariable Integer id) throws DataAccessException {
+        return service.findCharactersByUser(id);
+    }
+
 
     //Users and admins
     @PostMapping
