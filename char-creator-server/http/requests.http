@@ -22,8 +22,8 @@ POST http://localhost:8080/create_account HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "meemoo@maw.com",
-    "password": "P@ssw0rd!"
+    "username": "test@test.com",
+    "password": "Blahbloo1!"
 }
 
 ###Test new user account (JWT)
@@ -32,8 +32,8 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "mtaylor@gmail.com",
-    "password": "P@ssw0rd!"
+    "username": "test@test.com",
+    "password": "Blahbloo1!"
 }
 
 ### Delete endpoint test (needs jwt of admin, should give 204)

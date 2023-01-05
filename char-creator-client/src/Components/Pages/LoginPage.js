@@ -32,7 +32,7 @@ export default function LoginPage(props){
       const { jwt_token } = await response.json();
       console.log(jwt_token);// DELETE LATER
       auth.login(jwt_token);
-      history.push("/");
+      history.push("/home");
 
     } else if (response.status === 403) {
 
