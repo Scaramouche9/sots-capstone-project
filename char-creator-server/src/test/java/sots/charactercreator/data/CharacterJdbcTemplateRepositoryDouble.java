@@ -21,7 +21,12 @@ public class CharacterJdbcTemplateRepositoryDouble implements CharacterRepositor
 
     @Override
     public Character findCharacterById(int characterId) {
-        return characterList.get(characterId - 1);
+        for (int i = 0; i < characterList.size(); i++) {
+            if (characterId == characterList.get(i).getCharacterId()) {
+                return characterList.get(i);
+            }
+        }
+        return null;
     }
 
     @Override
@@ -31,6 +36,7 @@ public class CharacterJdbcTemplateRepositoryDouble implements CharacterRepositor
 
     @Override
     public Character addCharacter(Character character) {
+        character.setCharacterId(characterList.size() + 1);
         characterList.add(character);
         return character;
     }
