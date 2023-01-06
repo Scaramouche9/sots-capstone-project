@@ -45,8 +45,6 @@ export default function LoginPage(props){
     }
   };
 
-
-
     return (
         <form onSubmit={handleSubmit}>
             <div>
