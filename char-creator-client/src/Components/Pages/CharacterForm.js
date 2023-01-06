@@ -1,8 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 export default function CharacterForm(props){
     
     const url = "http://localhost:8080/charactercreator";
+
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,6 +34,14 @@ export default function CharacterForm(props){
 
         
 
+      }
+
+      const cancel = () => {
+
+        history.push("/characters");
+        props.resetForm();
+        props.setErrors([]);
+        //when params are implemented, add something here to set params to undefined for back-to-back edits
       }
 
     return(
@@ -136,11 +147,12 @@ export default function CharacterForm(props){
                     onChange={(event) => {props.setCharacterDescription(event.target.value)}}
                      type="text" id="character-description-form" name="character-description-form"></input>
                 </div>
-
-
+                <div><button className="submit-btn" type="submit">Submit</button></div>
+                
             </form>
-            
 
+            <button className="cancel-btn" onClick={() => { cancel();}}>Cancel</button>
+            
         </section>
         
 

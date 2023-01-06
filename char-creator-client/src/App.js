@@ -27,19 +27,19 @@ export default function App() {
   const history = useHistory();
 
   //the following are states for character model
-  const [characterName, setCharacterName] = useState();
-  const [strength, setStrength] = useState();
-  const [dexterity, setDexterity] = useState();
-  const [constitution, setConstitution] = useState();
-  const [intelligence, setIntelligence] = useState();
-  const [wisdom, setWisdom] = useState();
-  const [charisma, setCharisma] = useState();
-  const [armorClass, setArmorClass] = useState();
-  const [proficiencyBonus, setProficiencyBonus] = useState();
-  const [speed, setSpeed] = useState();
-  const [level, setLevel] = useState();
-  const [hitpoints, setHitpoints] = useState();
-  const [characterDescription, setCharacterDescription] = useState();
+  const [characterName, setCharacterName] = useState("");
+  const [strength, setStrength] = useState("");
+  const [dexterity, setDexterity] = useState("");
+  const [constitution, setConstitution] = useState("");
+  const [intelligence, setIntelligence] = useState("");
+  const [wisdom, setWisdom] = useState("");
+  const [charisma, setCharisma] = useState("");
+  const [armorClass, setArmorClass] = useState("");
+  const [proficiencyBonus, setProficiencyBonus] = useState("");
+  const [speed, setSpeed] = useState("");
+  const [level, setLevel] = useState("");
+  const [hitpoints, setHitpoints] = useState("");
+  const [characterDescription, setCharacterDescription] = useState("");
   //still need states for species, class, background, alignment
 
   useEffect(() => {
@@ -94,6 +94,22 @@ export default function App() {
     if (!restoreLoginAttemptCompleted) { //this makes sure that the login is restored BEFORE the app actually renders
       return null;
     } 
+
+    const resetForm = () => {
+      setCharacterName("");
+      setStrength("");
+      setDexterity("");
+      setConstitution("");
+      setIntelligence("");
+      setWisdom("");
+      setCharisma("");
+      setArmorClass("");
+      setProficiencyBonus("");
+      setSpeed("");
+      setLevel("");
+      setHitpoints("");
+      setCharacterDescription("");
+    }
 
 	return (
 		<div className="App">
@@ -157,6 +173,7 @@ export default function App() {
               setCharacterDescription={setCharacterDescription}
               errors={errors}
               setErrors={setErrors}
+              resetForm={resetForm}
               />
               
             </Route>
