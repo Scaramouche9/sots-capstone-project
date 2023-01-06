@@ -44,6 +44,7 @@ export default function UserCharactersPage(props){
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Description</th>
                     <th scope="col">View</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>

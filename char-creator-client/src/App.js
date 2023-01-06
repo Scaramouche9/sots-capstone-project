@@ -8,9 +8,9 @@ import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
-import CharacterFormPage from './Components/Pages/CharacterFormPage';
 import AuthContext from './Components/Context/AuthContext';
 import jwtDecode from 'jwt-decode';
+import CharacterForm from './Components/Pages/CharacterForm';
 
 
 
@@ -25,6 +25,22 @@ export default function App() {
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
+
+  //the following are states for character model
+  const [characterName, setCharacterName] = useState();
+  const [strength, setStrength] = useState();
+  const [dexterity, setDexterity] = useState();
+  const [constitution, setConstitution] = useState();
+  const [intelligence, setIntelligence] = useState();
+  const [wisdom, setWisdom] = useState();
+  const [charisma, setCharisma] = useState();
+  const [armorClass, setArmorClass] = useState();
+  const [proficiencyBonus, setProficiencyBonus] = useState();
+  const [speed, setSpeed] = useState();
+  const [level, setLevel] = useState();
+  const [hitpoints, setHitpoints] = useState();
+  const [characterDescription, setCharacterDescription] = useState();
+  //still need states for species, class, background, alignment
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
@@ -107,14 +123,41 @@ export default function App() {
 						<Route path="/update-character">
 							<CreateCharacter></CreateCharacter>
 						</Route> */}
-						<Route path="/create-account">
-							
-						</Route>
-            <Route path="/characters">
+						<Route path="/characters">
               <UserCharactersPage user={user}/>
-            </Route>
+						</Route>
 
-            <Route path="/characters/create">
+            <Route path="/create-character">
+            <CharacterForm
+              characterName={characterName}
+              setCharacterName={setCharacterName}
+              strength={strength}
+              setStrength={setStrength}
+              dexterity={dexterity}
+              setDexterity={setDexterity}
+              constitution={constitution}
+              setConstitution={setConstitution}
+              intelligence={intelligence}
+              setIntelligence={setIntelligence}
+              wisdom={wisdom}
+              setWisdom={setWisdom}
+              charisma={charisma}
+              setCharisma={setCharisma}
+              armorClass={armorClass}
+              setArmorClass={setArmorClass}
+              proficiencyBonus={proficiencyBonus}
+              setProficiencyBonus={setProficiencyBonus}
+              speed={speed}
+              setSpeed={setSpeed}
+              level={level}
+              setLevel={setLevel}
+              hitpoints={hitpoints}
+              setHitpoints={setHitpoints}
+              characterDescription={characterDescription}
+              setCharacterDescription={setCharacterDescription}
+              errors={errors}
+              setErrors={setErrors}
+              />
               
             </Route>
           </Switch>
