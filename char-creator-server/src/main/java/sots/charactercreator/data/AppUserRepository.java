@@ -9,6 +9,9 @@ public interface AppUserRepository {
     AppUser findByUsername(String username);
 
     @Transactional
+    AppUser findByUserId(int id);
+
+    @Transactional
     AppUser create(AppUser user);
 
     @Transactional

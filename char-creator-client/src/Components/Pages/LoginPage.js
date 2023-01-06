@@ -1,74 +1,62 @@
-import React from 'react';
-import { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
-import AuthContext from '../Context/AuthContext';
+import React from "react";
+import { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import AuthContext from "../Context/AuthContext";
 
-export default function LoginPage(props) {
-	const [loginData, setLoginData] = useState({ username: '', password: '' });
+export default function LoginPage(props){
 
-	const auth = useContext(AuthContext);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-	const history = useHistory();
+    const auth = useContext(AuthContext);
 
-	function handleSubmit(evt) {
-		evt.preventDefault();
+    const history = useHistory();
 
-		console.log(loginData);
+    const handleSubmit = async (event) => {
+    event.preventDefault();
 
-		fetch('http://localhost:8080/api/authenticate', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(loginData),
-		})
-			.then((response) => {
-				if (response.status === 200) {
-					return response.json();
-				} else if (response.status === 403) {
-					alert('Input username/password combination is invalid.');
-				} else {
-					console.log(response);
-				}
-			})
-			.then((jwtContainer) => {
-				const jwt = jwtContainer.jwt;
-				console.log(jwt);
-				const decodedJwt = jwtDecode(jwt);
-				console.log(decodedJwt);
+    const response = await fetch("http://localhost:8080/authenticate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+  
+    if (response.status === 200) {
 
-				const fullLoginData = {
-					token: jwt,
-					userData: decodedJwt,
-				};
+      const { jwt_token } = await response.json();
+      console.log(jwt_token);// DELETE LATER
+      auth.login(jwt_token);
+      history.push("/home");
 
-				localStorage.setItem('userData', JSON.stringify(fullLoginData));
+    } else if (response.status === 403) {
 
-				props.setLoggedInUserData(fullLoginData);
-				history.push('/personal');
-			});
-	}
+      alert("Invalid username/password combination.");
 
-	function handleInputChange(evt) {
-		const changedInput = evt.target;
-		const loginDataCopy = { ...loginData };
+    } else {
 
-		loginDataCopy[changedInput.id] = changedInput.value;
+        alert("Invalid username/password combination.");
 
-		setLoginData(loginDataCopy);
-	}
+    }
+  };
 
-	return (
-		<form onSubmit={handleSubmit}>
-			<div>
-				<h1>Login:</h1>
-				<label htmlFor="username">Username: </label>
-				<input id="username" />
-				<label htmlFor="password">Password: </label>
-				<input type="password" id="password" />
-				<button>Log-in</button>
-			</div>
-		</form>
-	);
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+
+            <label htmlFor="username">User Name: </label>
+            <input id="username"  onChange={(event) => setUsername(event.target.value)}/>
+            <label htmlFor="password">Password: </label>
+            <input type="password" id="password"  onChange={(event) => setPassword(event.target.value)}/>
+            <button>Log In</button>
+
+            </div>
+
+        </form>
+    )
 }

@@ -18,4 +18,12 @@ public class CharacterService {
     public List<Character> findAllCharacters() {
         return repository.findAllCharacters();
     }
+
+    public Character findCharacterById(int characterId) {
+        return repository.findCharacterById(characterId);
+    }
+
+    public List<Character> findCharactersByUser(int userId) {
+        return repository.findCharactersByUser(userId);
+    }
 }
