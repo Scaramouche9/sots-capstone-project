@@ -30,54 +30,6 @@ export default function CreateAccountPage(props) {
 		}
 	};
 
-	// function handleSubmit(evt) {
-	// 	evt.preventDefault();
-
-	// 	console.log(accountData);
-
-	// 	fetch('http://localhost:8080/api/authenticate', {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 		body: JSON.stringify(accountData),
-	// 	})
-	// 		.then((response) => {
-	// 			if (response.status === 200) {
-	// 				return response.json();
-	// 			} else if (response.status === 403) {
-	// 				alert('Input username/password combination is invalid.');
-	// 			} else {
-	// 				console.log(response);
-	// 			}
-	// 		})
-	// 		.then((jwtContainer) => {
-	// 			const jwt = jwtContainer.jwt;
-	// 			console.log(jwt);
-	// 			const decodedJwt = jwtDecode(jwt);
-	// 			console.log(decodedJwt);
-
-	// 			const fullAccountData = {
-	// 				token: jwt,
-	// 				userData: decodedJwt,
-	// 			};
-
-	// 			localStorage.setItem('userData', JSON.stringify(fullAccountData));
-
-	// 			props.setLoggedInUserData(fullAccountData);
-	// 			history.push('/personal');
-	// 		});
-	// }
-
-	// function handleInputChange(evt) {
-	// 	const changedInput = evt.target;
-	// 	const accountDataCopy = { ...accountData };
-
-	// 	accountDataCopy[changedInput.id] = changedInput.value;
-
-	// 	setAccountData(accountDataCopy);
-	// }
-
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
@@ -102,7 +54,6 @@ export default function CreateAccountPage(props) {
 					<label htmlFor="confirm">Confirm Password: </label>
 					<input type="password" id="confirm" />
 				</div>
-				<input type="file" name="upload" accept="image/*" />
 				<button>Create My Account</button>
 			</div>
 		</form>
