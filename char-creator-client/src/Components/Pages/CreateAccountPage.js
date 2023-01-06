@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
@@ -13,7 +13,7 @@ export default function CreateAccountPage(props) {
 	const [message, setMessage] = useState('');
 	const history = useHistory();
 
-	const handleSubmit = async (evt) => {
+	/*const handleSubmit = async (evt) => {
 		evt.preventDefault();
 		try {
 			await axios.post('http://localhost:8080/api/authenticate', {
@@ -58,4 +58,6 @@ export default function CreateAccountPage(props) {
 			</div>
 		</form>
 	);
+
+	*/
 }

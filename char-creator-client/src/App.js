@@ -8,11 +8,10 @@ import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
-
 import CharacterFormPage from './Components/Pages/CharacterFormPage';
-
 import AuthContext from './Components/Context/AuthContext';
 import jwtDecode from 'jwt-decode';
+
 
 
 const LOCAL_STORAGE_TOKEN_KEY = "";
@@ -109,14 +108,14 @@ export default function App() {
 							<CreateCharacter></CreateCharacter>
 						</Route> */}
 						<Route path="/create-account">
-							<CreateAccountPage></CreateAccountPage>
+							
 						</Route>
             <Route path="/characters">
               <UserCharactersPage user={user}/>
             </Route>
 
             <Route path="/characters/create">
-              <CharacterFormPage errors={errors} setErrors={setErrors}/>
+              
             </Route>
           </Switch>
         </BrowserRouter>
@@ -126,13 +125,5 @@ export default function App() {
   );
 }
 
-						{/* <Route path="/character-view">
-							<ViewCharacterPage></ViewCharacterPage>
-						</Route> */}
-					</Switch>
-				</BrowserRouter>
-			</AuthContext.Provider>
-		</div>
-	);
-}
+
 
