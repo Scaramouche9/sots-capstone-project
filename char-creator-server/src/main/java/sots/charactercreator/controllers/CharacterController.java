@@ -35,6 +35,11 @@ public class CharacterController {
         return service.findCharactersByUser(id);
     }
 
+    @GetMapping("/characters/{id}")
+    public Character findCharacterById(@PathVariable Integer id) throws DataAccessException {
+        return service.findCharacterById(id);
+    }
+
 
     //Users and admins
     @PostMapping

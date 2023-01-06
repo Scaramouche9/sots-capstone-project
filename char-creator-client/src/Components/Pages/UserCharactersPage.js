@@ -57,6 +57,8 @@ export default function UserCharactersPage(props){
                 )}
 
                 </tbody>
+
+                
         </table>
         </div>
     )

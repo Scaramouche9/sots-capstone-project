@@ -10,6 +10,7 @@ import jwtDecode from "jwt-decode";
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
 
 const LOCAL_STORAGE_TOKEN_KEY = "";
+const LOCAL_STORAGE_USER_ID = "userId";
 
 export default function App() {
 
@@ -20,8 +21,9 @@ export default function App() {
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-    if (token) {
-      login(token);
+    const userId = localStorage.getItem(LOCAL_STORAGE_USER_ID);
+    if (token && userId) {
+      login(token, userId);
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
@@ -29,13 +31,14 @@ export default function App() {
     const login = (token, userId) => {
 
       localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+      localStorage.setItem(LOCAL_STORAGE_USER_ID, userId);
 
       const { sub: username, authorities: authoritiesString } = jwtDecode(token);
     
       const roles = authoritiesString.split(',');
       
       const user = {
-        
+
         userId,
         username,
         roles,
@@ -55,6 +58,7 @@ export default function App() {
     const logout = () => {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+      localStorage.removeItem(LOCAL_STORAGE_USER_ID);
       
     };
   
