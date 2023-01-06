@@ -17,7 +17,7 @@ export default function UserCharactersPage(props){
             history.push("/");
         } else {
 
-            fetch(`http://localhost:8080/charactercreator/user/1`, {
+            fetch(`http://localhost:8080/charactercreator/user/${props.user.userId}`, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + userInfo.user.token
@@ -27,7 +27,7 @@ export default function UserCharactersPage(props){
                     if (response.status === 200) {
                         return response.json();
                     } else {
-                        console.log(response); //need to implement a message to the user if they have no characters !!
+                        console.log(response); //stretch: implement a message or component when no characters are found
                     }
                 })
                 .then(userCharactersList => setUserCharacters(userCharactersList));
@@ -57,6 +57,8 @@ export default function UserCharactersPage(props){
                 )}
 
                 </tbody>
+
+                
         </table>
         </div>
     )

@@ -8,34 +8,46 @@ import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
+
+import CharacterFormPage from './Components/Pages/CharacterFormPage';
+
 import AuthContext from './Components/Context/AuthContext';
 import jwtDecode from 'jwt-decode';
 
+
 const LOCAL_STORAGE_TOKEN_KEY = "";
+const LOCAL_STORAGE_USER_ID = "userId";
 
 export default function App() {
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
+  const [errors, setErrors] = useState([]);
+
   const history = useHistory();
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-    if (token) {
-      login(token);
+    const userId = localStorage.getItem(LOCAL_STORAGE_USER_ID);
+    if (token && userId) {
+      login(token, userId);
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-    const login = (token) => {
+    const login = (token, userId) => {
 
       localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+      localStorage.setItem(LOCAL_STORAGE_USER_ID, userId);
 
       const { sub: username, authorities: authoritiesString } = jwtDecode(token);
     
       const roles = authoritiesString.split(',');
+      
       const user = {
+
+        userId,
         username,
         roles,
         token,
@@ -54,6 +66,7 @@ export default function App() {
     const logout = () => {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+      localStorage.removeItem(LOCAL_STORAGE_USER_ID);
       
     };
   
@@ -101,6 +114,18 @@ export default function App() {
             <Route path="/characters">
               <UserCharactersPage user={user}/>
             </Route>
+
+            <Route path="/characters/create">
+              <CharacterFormPage errors={errors} setErrors={setErrors}/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </AuthContext.Provider>
+
+    </div>
+  );
+}
+
 						{/* <Route path="/character-view">
 							<ViewCharacterPage></ViewCharacterPage>
 						</Route> */}
@@ -110,3 +135,4 @@ export default function App() {
 		</div>
 	);
 }
+

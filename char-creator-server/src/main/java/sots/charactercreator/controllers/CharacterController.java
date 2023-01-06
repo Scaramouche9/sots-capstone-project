@@ -4,8 +4,11 @@ import org.apache.coyote.Response;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import sots.charactercreator.domain.CharacterService;
+import sots.charactercreator.domain.Result;
+import sots.charactercreator.models.AppUser;
 import sots.charactercreator.models.Character;
 
 import java.util.List;
@@ -26,16 +29,15 @@ public class CharacterController {
         return service.findAllCharacters();
     }
 
-    //Anyone can access
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findBySection(@PathVariable Integer id) throws DataAccessException {
-
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
-    }
 
     @GetMapping("/user/{id}")
     public List<Character> findByUser(@PathVariable Integer id) throws DataAccessException {
         return service.findCharactersByUser(id);
+    }
+
+    @GetMapping("/characters/{id}")
+    public Character findCharacterById(@PathVariable Integer id) throws DataAccessException {
+        return service.findCharacterById(id);
     }
 
 
