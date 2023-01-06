@@ -7,8 +7,6 @@ export default function UserCharactersPage(props){
 
     const userInfo = useContext(AuthContext)
 
-    const [userCharacters, setUserCharacters] = useState([]);
-
     const history = useHistory();
 
     useEffect(() => {
@@ -30,7 +28,7 @@ export default function UserCharactersPage(props){
                         console.log(response); //stretch: implement a message or component when no characters are found
                     }
                 })
-                .then(userCharactersList => setUserCharacters(userCharactersList));
+                .then(userCharactersList => props.setUserCharacters(userCharactersList));
         }
     }, [userInfo]);
 
@@ -53,7 +51,7 @@ export default function UserCharactersPage(props){
 
                 <tbody id="list-contents">
 
-                {userCharacters.map (character =>
+                {props.userCharacters.map (character =>
                 <Character key={character.characterId} character={character}/>
                 )}
 

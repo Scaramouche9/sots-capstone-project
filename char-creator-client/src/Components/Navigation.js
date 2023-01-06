@@ -51,9 +51,6 @@ export default function Navigation() {
 				<li>
 					<Link to="/create-account">Create a New Account</Link>
 				</li>
-				<li>
-					<Link to="/character-view">View My Character</Link>
-				</li>
 			</ul>
 		</nav>
 	);

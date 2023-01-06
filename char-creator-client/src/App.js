@@ -11,6 +11,7 @@ import UserCharactersPage from './Components/Pages/UserCharactersPage';
 import AuthContext from './Components/Context/AuthContext';
 import jwtDecode from 'jwt-decode';
 import CharacterForm from './Components/Pages/CharacterForm';
+import ViewCharacterPage from './Components/Pages/ViewCharacterPage';
 
 
 
@@ -25,6 +26,11 @@ export default function App() {
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
+
+  const [characterIdToView, setCharacterIdToView] = useState();
+  const [characterIdToEdit, setCharacterIdToEdit] = useState();//these might change with params
+
+  const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
   //the following are states for character model
   const [characterName, setCharacterName] = useState("");
@@ -127,6 +133,12 @@ export default function App() {
 						<Route path="/login">
 							<LoginPage></LoginPage>
 						</Route>
+
+            <Route exact path="/characters/:id">
+							<ViewCharacterPage characterIdToView={characterIdToView} setCharacterIdToView={setCharacterIdToView}
+              userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
+						</Route>
+
 						{/* <Route path="/account-edit">
 							<AccountEditPage></AccountEditPage>
 						</Route>
@@ -140,7 +152,7 @@ export default function App() {
 							<CreateCharacter></CreateCharacter>
 						</Route> */}
 						<Route path="/characters">
-              <UserCharactersPage user={user}/>
+              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
 						</Route>
 
             <Route path="/create-character">
@@ -175,8 +187,8 @@ export default function App() {
               setErrors={setErrors}
               resetForm={resetForm}
               />
-              
             </Route>
+            
           </Switch>
         </BrowserRouter>
       </AuthContext.Provider>

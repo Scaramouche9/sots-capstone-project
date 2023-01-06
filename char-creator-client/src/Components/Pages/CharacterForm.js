@@ -10,7 +10,7 @@ export default function CharacterForm(props){
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        addCharacter();
+        //addCharacter();
             
     }
 

@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Character(props){
+
+    const history = useHistory();
 
     return(
 
@@ -10,7 +12,9 @@ export default function Character(props){
             <td>{props.character.characterName}</td>
             <td>{props.character.description}</td>
 
-            <td><button >View</button></td>  
+            <td><Link to={`/characters/${props.character.characterId}`} 
+            onClick={() => {history.push(`/${props.character.characterId}`)}}>View</Link></td>  
+            
             <td><button >Edit</button></td>  
             <td><button >Delete</button></td>         
         </tr>
