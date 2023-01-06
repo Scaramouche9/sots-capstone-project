@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import { useContext } from "react";
 
-export default function Navigation(){
+export default function Navigation() {
 
     const auth = useContext(AuthContext);
     const history = useHistory();
@@ -15,11 +15,12 @@ export default function Navigation(){
 
     }
     
-    return(
-
-        <nav className="nav">
-        <ul>
-            <li><Link to="/home">Home</Link></li>
+	return (
+		<nav className="nav">
+			<ul>
+				<li>
+					<Link to="/home">Home</Link>
+				</li>
             {!auth.user && (<li><Link to="/login">Login</Link></li>)}
             
             {auth.user && (
@@ -35,10 +36,25 @@ export default function Navigation(){
                 </>
                 
             )}
-            
-        </ul>
-        </nav>
-
-    );
-
+				<li>
+					<Link to="/account-edit">Edit My Account</Link>
+				</li>
+				<li>
+					<Link to="/account-view">View My Account</Link>
+				</li>
+				<li>
+					<Link to="/create-character">Create a New Character</Link>
+				</li>
+				<li>
+					<Link to="/update-character">Update my Character</Link>
+				</li>
+				<li>
+					<Link to="/create-account">Create a New Account</Link>
+				</li>
+				<li>
+					<Link to="/character-view">View My Character</Link>
+				</li>
+			</ul>
+		</nav>
+	);
 }
