@@ -10,6 +10,9 @@ public class PlayerClass {
         this.className = className;
     }
 
+    public PlayerClass() {
+    }
+
     public int getClassId() {
         return classId;
     }
