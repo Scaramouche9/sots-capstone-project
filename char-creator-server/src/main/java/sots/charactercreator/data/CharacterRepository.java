@@ -1,4 +1,4 @@
-package sots.charactercreator.temporaryfolder;
+package sots.charactercreator.data;
 
 import sots.charactercreator.models.Character;
 import org.springframework.transaction.annotation.Transactional;
