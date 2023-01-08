@@ -13,10 +13,13 @@ export default function Character(props){
             <td className="character-list-description">{props.character.description}</td>
 
             <td className="character-list-view-link" >
-                <Link to={`/characters/${props.character.characterId}`} 
-            onClick={() => {history.push(`/${props.character.characterId}`)}}>View</Link></td>  
+                <Link to={`/characters/view/${props.character.characterId}`} > View </Link>
+            </td>  
             
-            <td className="character-list-edit-link"><button >Edit</button></td>  
+            <td className="character-list-edit-link">
+            <Link to={`/characters/edit/${props.character.characterId}`}> Edit </Link>
+            </td> 
+
             <td className="character-list-delete-btn"><button >Delete</button></td>         
         </tr>
     )

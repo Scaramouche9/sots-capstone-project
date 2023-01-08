@@ -34,7 +34,7 @@ export default function Navigation() {
                 </li>
                 <li><Link to="/characters">Characters List</Link></li>
 				<li>
-					<Link to="/create-character">Create a New Character</Link>
+					<Link to="/characters/add">Create a New Character</Link>
 				</li>
                 </>
                 

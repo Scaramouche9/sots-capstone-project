@@ -127,7 +127,7 @@ export default function App() {
 					<Navigation />
 					<Switch>
 
-            <Route path="/characters/:id">
+            <Route exact path="/characters/view/:id">
 							<ViewCharacterPage 
               characterToView={characterToView} 
               setCharacterToView={setCharacterToView}
@@ -138,11 +138,7 @@ export default function App() {
              />
 						</Route>
 
-            <Route path="/characters">
-              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
-						</Route>
-
-            <Route path="/create-character">
+            <Route exact path={["/characters/add", "/characters/edit/:id"]}>
             <CharacterForm
               characterName={characterName}
               setCharacterName={setCharacterName}
@@ -175,8 +171,14 @@ export default function App() {
               resetForm={resetForm}
               paramsId={paramsId}
               setParamsId={setParamsId}
+              
               />
             </Route>
+
+            <Route exact path="/characters">
+              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
+						</Route>
+
 
             <Route path="/home">
 							<HomePage></HomePage>

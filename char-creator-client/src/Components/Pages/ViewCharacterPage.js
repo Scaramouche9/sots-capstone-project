@@ -4,7 +4,6 @@ import { useHistory, useParams } from 'react-router';
 export default function ViewCharacterPage(props) {
 
 	const params = useParams();
-	const history = useHistory();
 
 	const checkParams = () => {
 
