@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import { useContext } from "react";
 
-export default function Navigation() {
+export default function Navigation(props) {
 
     const auth = useContext(AuthContext);
     const history = useHistory();
@@ -14,6 +14,13 @@ export default function Navigation() {
         history.push("/");
 
     }
+
+	const resetEditingAndForm = () => { //this is to make sure the isEditing state is resetting properly for when the user moves between the edit and create pages
+
+		props.setIsEditing(false);
+
+		props.resetForm();
+	}
     
 	return (
 		<nav className="nav">
@@ -34,7 +41,7 @@ export default function Navigation() {
                 </li>
                 <li><Link to="/characters">Characters List</Link></li>
 				<li>
-					<Link to="/characters/add">Create a New Character</Link>
+					<Link to="/characters/add" onClick={() => resetEditingAndForm()}>Create a New Character</Link>
 				</li>
                 </>
                 

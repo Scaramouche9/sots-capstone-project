@@ -57,7 +57,7 @@ export default function UserCharactersPage(props){
                     <tbody id="list-contents">
 
                     {props.userCharacters.map (character =>
-                    <Character key={character.characterId} character={character}/>
+                    <Character key={character.characterId} character={character} isEditing={props.isEditing} setIsEditing={props.setIsEditing}/>
                     )}
 
                     </tbody>

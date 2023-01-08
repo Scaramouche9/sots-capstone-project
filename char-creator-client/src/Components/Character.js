@@ -17,7 +17,7 @@ export default function Character(props){
             </td>  
             
             <td className="character-list-edit-link">
-            <Link to={`/characters/edit/${props.character.characterId}`}> Edit </Link>
+            <Link to={`/characters/edit/${props.character.characterId}`} onClick={() => props.setIsEditing(true)}> Edit </Link>
             </td> 
 
             <td className="character-list-delete-btn"><button >Delete</button></td>         

@@ -32,6 +32,10 @@ export default function App() {
 
   const [paramsId, setParamsId] = useState();
 
+  const [isEditing, setIsEditing] = useState(false);
+
+  
+
   const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
   //the following are states for character model
@@ -79,7 +83,6 @@ export default function App() {
         }
       };
     
-      console.log(user);
       setUser(user);
     
       return user;
@@ -117,14 +120,36 @@ export default function App() {
       setLevel("");
       setHitpoints("");
       setCharacterDescription("");
+
+      setIsEditing(false);
+
     }
+
+    const populateForm = (character) => {
+      
+      setCharacterName(character.characterName);
+      setStrength(character.strength);
+      setDexterity(character.dexterity);
+      setConstitution(character.constitution);
+      setIntelligence(character.intelligence);
+      setWisdom(character.wisdom);
+      setCharisma(character.charisma);
+      setArmorClass(character.armorClass);
+      setProficiencyBonus(character.proficiencyBonus);
+      setSpeed(character.speed);
+      setLevel(character.level);
+      setHitpoints(character.hitpoints);
+      setCharacterDescription(character.description);
+      
+    }
+    
 
 	return (
 		<div className="App">
 			<AuthContext.Provider value={auth}>
 				<BrowserRouter>
 					<Header />
-					<Navigation />
+					<Navigation isEditing={isEditing} setIsEditing={setIsEditing} resetForm={resetForm}/>
 					<Switch>
 
             <Route exact path="/characters/view/:id">
@@ -166,17 +191,24 @@ export default function App() {
               setHitpoints={setHitpoints}
               characterDescription={characterDescription}
               setCharacterDescription={setCharacterDescription}
+
               errors={errors}
               setErrors={setErrors}
+
               resetForm={resetForm}
               paramsId={paramsId}
               setParamsId={setParamsId}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
+
+              populateForm={populateForm}
+              userCharacters={userCharacters}
               
               />
             </Route>
 
             <Route exact path="/characters">
-              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
+              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters} isEditing={isEditing} setIsEditing={setIsEditing}/>
 						</Route>
 
 
