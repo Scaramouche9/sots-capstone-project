@@ -9,6 +9,8 @@ export default function UserCharactersPage(props){
 
     const history = useHistory();
 
+    const charactersFound = true;
+
     useEffect(() => {
 
         if (!userInfo) {
@@ -24,8 +26,9 @@ export default function UserCharactersPage(props){
                 .then(response => {
                     if (response.status === 200) {
                         return response.json();
+                        charactersFound = true;
                     } else {
-                        console.log(response); //stretch: implement a message or component when no characters are found
+                        charactersFound = false;
                     }
                 })
                 .then(userCharactersList => props.setUserCharacters(userCharactersList));
@@ -34,32 +37,42 @@ export default function UserCharactersPage(props){
 
     return(
 
+            
         <div>
+            {charactersFound && (
 
-         <table className="table table-dark">
-            <thead className="thead-light">
+            <table className="table table-dark">
+                <thead className="thead-light">
 
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-                </thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">View</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
 
-                <tbody id="list-contents">
+                    <tbody id="list-contents">
 
-                {props.userCharacters.map (character =>
-                <Character key={character.characterId} character={character}/>
-                )}
+                    {props.userCharacters.map (character =>
+                    <Character key={character.characterId} character={character}/>
+                    )}
 
-                </tbody>
+                    </tbody>
 
-                
-        </table>
+                    
+            </table> )}
+            {!charactersFound && (
+                <div>
+                    <p>You have no existing characters.</p>
+                </div>
+            )}
         </div>
+        
+
+
     )
     
 }
