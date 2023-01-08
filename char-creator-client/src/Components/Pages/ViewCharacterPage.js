@@ -11,8 +11,9 @@ export default function ViewCharacterPage(props) {
         if(params.id && props.userCharacters.length > 0){
             
             const characterToView = props.userCharacters.find((character) => {return character.characterId.toString() === params.id.toString()});
-            
-			displaySelectedCharacter(characterToView);
+			
+			//displaySelectedCharacter(characterToView);
+			
             props.setCharacterIdToView(params.id);
 
 			
@@ -20,21 +21,20 @@ export default function ViewCharacterPage(props) {
 
     }
 
-	useEffect(checkParams,[]);
-
-
 	const displaySelectedCharacter = (character) => {
 
+		console.log(character);
+		console.log(params.id)
+
 		return (
-			<>
-			<div>Name</div>
-			</>
+			
+			<h1> Name: </h1>
+			
 		)
 
-
-
-
 	}
+
+	useEffect(checkParams,[]);
 
 	
 }

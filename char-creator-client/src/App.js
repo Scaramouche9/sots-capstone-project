@@ -124,34 +124,14 @@ export default function App() {
 					<Header />
 					<Navigation />
 					<Switch>
-						<Route exact path="/">
-							<LandingPage></LandingPage>
-						</Route>
-						<Route path="/home">
-							<HomePage></HomePage>
-						</Route>
-						<Route path="/login">
-							<LoginPage></LoginPage>
-						</Route>
 
-            <Route exact path="/characters/:id">
+            <Route path="/characters/:id">
 							<ViewCharacterPage characterIdToView={characterIdToView} setCharacterIdToView={setCharacterIdToView}
               userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
+              <div>Hello u got there</div>
 						</Route>
 
-						{/* <Route path="/account-edit">
-							<AccountEditPage></AccountEditPage>
-						</Route>
-						<Route path="/account-view">
-							<AccountViewPage></AccountViewPage>
-						</Route>
-						<Route path="/create-character">
-							<CreateCharacter></CreateCharacter>
-						</Route>
-						<Route path="/update-character">
-							<CreateCharacter></CreateCharacter>
-						</Route> */}
-						<Route path="/characters">
+            <Route path="/characters">
               <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
 						</Route>
 
@@ -188,7 +168,35 @@ export default function App() {
               resetForm={resetForm}
               />
             </Route>
-            
+
+            <Route path="/home">
+							<HomePage></HomePage>
+						</Route>
+
+            <Route path="/login">
+							<LoginPage></LoginPage>
+						</Route>
+
+						<Route exact path="/">
+							<LandingPage></LandingPage>
+						</Route>
+						
+
+
+
+						{/* <Route path="/account-edit">
+							<AccountEditPage></AccountEditPage>
+						</Route>
+						<Route path="/account-view">
+							<AccountViewPage></AccountViewPage>
+						</Route>
+						<Route path="/create-character">
+							<CreateCharacter></CreateCharacter>
+						</Route>
+						<Route path="/update-character">
+							<CreateCharacter></CreateCharacter>
+						</Route> */}
+
           </Switch>
         </BrowserRouter>
       </AuthContext.Provider>

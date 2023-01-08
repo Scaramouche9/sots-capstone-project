@@ -33,24 +33,31 @@ export default function Navigation() {
                     </div>
                 </li>
                 <li><Link to="/characters">Characters List</Link></li>
-                </>
-                
-            )}
-				<li>
-					<Link to="/account-edit">Edit My Account</Link>
-				</li>
-				<li>
-					<Link to="/account-view">View My Account</Link>
-				</li>
 				<li>
 					<Link to="/create-character">Create a New Character</Link>
 				</li>
+                </>
+                
+            )}
+				{/* I think account editing/viewing are stretch goals for now */}
+				{/*
 				<li>
+					<Link to="/account-edit">Edit My Account</Link>
+				</li>
+				*/}
+				{/*<li>
+					<Link to="/account-view">View My Account</Link>
+				</li>*/}
+
+
+				{/* Viewing and editing/updating specific characters will be done through links in the character list page*/}
+				{/*<li>
 					<Link to="/update-character">Update my Character</Link>
 				</li>
-				<li>
-					<Link to="/create-account">Create a New Account</Link>
-				</li>
+				*/}
+
+				{!auth.user && (<li><Link to="/create-account">Create a New Account</Link></li>)}
+
 			</ul>
 		</nav>
 	);
