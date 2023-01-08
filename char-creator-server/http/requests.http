@@ -22,8 +22,8 @@ POST http://localhost:8080/create_account HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "test@test.com",
-    "password": "Blahbloo1!"
+    "username": "test234@test.com",
+    "password": "P@ssw0rd!"
 }
 
 ###Test new user account (JWT)

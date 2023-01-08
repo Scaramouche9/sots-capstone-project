@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import { useContext } from "react";
 
-export default function Navigation() {
+export default function Navigation(props) {
 
     const auth = useContext(AuthContext);
     const history = useHistory();
@@ -14,6 +14,13 @@ export default function Navigation() {
         history.push("/");
 
     }
+
+	const resetEditingAndForm = () => { //this is to make sure the isEditing state is resetting properly for when the user moves between the edit and create pages
+
+		props.setIsEditing(false);
+
+		props.resetForm();
+	}
     
 	return (
 		<nav className="nav">
@@ -33,24 +40,31 @@ export default function Navigation() {
                     </div>
                 </li>
                 <li><Link to="/characters">Characters List</Link></li>
+				<li>
+					<Link to="/characters/add" onClick={() => resetEditingAndForm()}>Create a New Character</Link>
+				</li>
                 </>
                 
             )}
+				{/* I think account editing/viewing are stretch goals for now */}
+				{/*
 				<li>
 					<Link to="/account-edit">Edit My Account</Link>
 				</li>
-				<li>
+				*/}
+				{/*<li>
 					<Link to="/account-view">View My Account</Link>
-				</li>
-				<li>
-					<Link to="/create-character">Create a New Character</Link>
-				</li>
-				<li>
+				</li>*/}
+
+
+				{/* Viewing and editing/updating specific characters will be done through links in the character list page*/}
+				{/*<li>
 					<Link to="/update-character">Update my Character</Link>
 				</li>
-				<li>
-					<Link to="/create-account">Create a New Account</Link>
-				</li>
+				*/}
+
+				{!auth.user && (<li><Link to="/create-account">Create a New Account</Link></li>)}
+
 			</ul>
 		</nav>
 	);

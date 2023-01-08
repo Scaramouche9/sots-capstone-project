@@ -27,8 +27,14 @@ export default function App() {
 
   const history = useHistory();
 
-  const [characterIdToView, setCharacterIdToView] = useState();
+  const [characterToView, setCharacterToView] = useState([]);
   const [characterIdToEdit, setCharacterIdToEdit] = useState();//these might change with params
+
+  const [paramsId, setParamsId] = useState();
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  
 
   const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
@@ -77,7 +83,6 @@ export default function App() {
         }
       };
     
-      console.log(user);
       setUser(user);
     
       return user;
@@ -88,6 +93,7 @@ export default function App() {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       localStorage.removeItem(LOCAL_STORAGE_USER_ID);
+      setUserCharacters(null);
       
     };
   
@@ -115,47 +121,50 @@ export default function App() {
       setLevel("");
       setHitpoints("");
       setCharacterDescription("");
+
+      setIsEditing(false);
+
     }
+
+    const populateForm = (character) => {
+      
+      setCharacterName(character.characterName);
+      setStrength(character.strength);
+      setDexterity(character.dexterity);
+      setConstitution(character.constitution);
+      setIntelligence(character.intelligence);
+      setWisdom(character.wisdom);
+      setCharisma(character.charisma);
+      setArmorClass(character.armorClass);
+      setProficiencyBonus(character.proficiencyBonus);
+      setSpeed(character.speed);
+      setLevel(character.level);
+      setHitpoints(character.hitpoints);
+      setCharacterDescription(character.description);
+      
+    }
+    
 
 	return (
 		<div className="App">
 			<AuthContext.Provider value={auth}>
 				<BrowserRouter>
 					<Header />
-					<Navigation />
+					<Navigation isEditing={isEditing} setIsEditing={setIsEditing} resetForm={resetForm}/>
 					<Switch>
-						<Route exact path="/">
-							<LandingPage></LandingPage>
-						</Route>
-						<Route path="/home">
-							<HomePage></HomePage>
-						</Route>
-						<Route path="/login">
-							<LoginPage></LoginPage>
+
+            <Route exact path="/characters/view/:id">
+							<ViewCharacterPage 
+              characterToView={characterToView} 
+              setCharacterToView={setCharacterToView}
+              userCharacters={userCharacters} 
+              setUserCharacters={setUserCharacters} 
+              paramsId={paramsId} 
+              setParamsId={setParamsId}
+             />
 						</Route>
 
-            <Route exact path="/characters/:id">
-							<ViewCharacterPage characterIdToView={characterIdToView} setCharacterIdToView={setCharacterIdToView}
-              userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
-						</Route>
-
-						{/* <Route path="/account-edit">
-							<AccountEditPage></AccountEditPage>
-						</Route>
-						<Route path="/account-view">
-							<AccountViewPage></AccountViewPage>
-						</Route>
-						<Route path="/create-character">
-							<CreateCharacter></CreateCharacter>
-						</Route>
-						<Route path="/update-character">
-							<CreateCharacter></CreateCharacter>
-						</Route> */}
-						<Route path="/characters">
-              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
-						</Route>
-
-            <Route path="/create-character">
+            <Route exact path={["/characters/add", "/characters/edit/:id"]}>
             <CharacterForm
               characterName={characterName}
               setCharacterName={setCharacterName}
@@ -183,12 +192,59 @@ export default function App() {
               setHitpoints={setHitpoints}
               characterDescription={characterDescription}
               setCharacterDescription={setCharacterDescription}
+
               errors={errors}
               setErrors={setErrors}
+
               resetForm={resetForm}
+              paramsId={paramsId}
+              setParamsId={setParamsId}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
+
+              populateForm={populateForm}
+              userCharacters={userCharacters}
+              
               />
             </Route>
-            
+
+            <Route exact path="/characters">
+              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters} isEditing={isEditing} setIsEditing={setIsEditing}/>
+						</Route>
+
+
+            <Route path="/home">
+							<HomePage></HomePage>
+						</Route>
+
+            <Route path="/login">
+							<LoginPage></LoginPage>
+						</Route>
+
+            <Route path="/create-account">
+							<CreateAccountPage/>
+						</Route>
+
+						<Route exact path="/">
+							<LandingPage></LandingPage>
+						</Route>
+						
+
+
+
+						{/* <Route path="/account-edit">
+							<AccountEditPage></AccountEditPage>
+						</Route>
+						<Route path="/account-view">
+							<AccountViewPage></AccountViewPage>
+						</Route>
+						<Route path="/create-character">
+							<CreateCharacter></CreateCharacter>
+						</Route>
+						<Route path="/update-character">
+							<CreateCharacter></CreateCharacter>
+						</Route> */}
+
           </Switch>
         </BrowserRouter>
       </AuthContext.Provider>

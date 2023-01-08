@@ -1,5 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
+import { useEffect } from "react";
 
 export default function CharacterForm(props){
     
@@ -7,10 +8,34 @@ export default function CharacterForm(props){
 
     const history = useHistory();
 
+    const params = useParams();
+
+    const checkParamsToPopulateForm = () => {
+
+        if(params.id && props.userCharacters.length > 0 && props.isEditing){
+            
+            const targetCharacter = props.userCharacters.find((character) => {return character.characterId.toString() === params.id.toString()});
+            
+            props.populateForm(targetCharacter);
+            props.setParamsId(params.id)
+        }
+
+    }
+
+    useEffect(checkParamsToPopulateForm,[])
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        //addCharacter();
+        if(props.isEditing === true){
+
+            editCharacter();
+            
+        }else{
+
+            addCharacter();
+        }
+
             
     }
 
@@ -32,9 +57,17 @@ export default function CharacterForm(props){
             description: props.characterDescription
         }
 
+        console.log("added character")
+        props.resetForm();
+
         
 
       }
+
+    const editCharacter = () => {
+
+        console.log("edited character")
+    }
 
       const cancel = () => {
 
@@ -42,6 +75,7 @@ export default function CharacterForm(props){
         props.resetForm();
         props.setErrors([]);
         //when params are implemented, add something here to set params to undefined for back-to-back edits
+        props.setParamsId(undefined);
       }
 
     return(
@@ -141,11 +175,11 @@ export default function CharacterForm(props){
                      type="number" id="hitpoints-form" name="hitpoints-form"></input>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" id="description-text-area-container">
                     <label htmlFor="character-description-form">Description: </label>
-                    <input className="form-control" value={props.characterDescription} 
+                    <textarea className="form-control" value={props.characterDescription} 
                     onChange={(event) => {props.setCharacterDescription(event.target.value)}}
-                     type="text" id="character-description-form" name="character-description-form"></input>
+                     type="text" id="character-description-form" name="character-description-form"></textarea>
                 </div>
                 <div><button className="submit-btn" type="submit">Submit</button></div>
                 

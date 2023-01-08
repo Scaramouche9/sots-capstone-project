@@ -4,6 +4,14 @@ export default function HomePage(){
 
     return(
 
-        <h1>Nice! You're at the Home Page</h1>
+        <div>
+
+        <h2>A DnD Character Creator</h2>
+
+        <section>
+            <p>Please login to create or manage your characters.</p>
+        </section>
+
+        </div>
     )
 }
