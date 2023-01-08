@@ -9,14 +9,15 @@ export default function Character(props){
 
         <tr>
             <th scope="row">{props.character.characterId}</th>
-            <td>{props.character.characterName}</td>
-            <td>{props.character.description}</td>
+            <td className="character-list-name">{props.character.characterName}</td>
+            <td className="character-list-description">{props.character.description}</td>
 
-            <td><Link to={`/characters/${props.character.characterId}`} 
+            <td className="character-list-view-link" >
+                <Link to={`/characters/${props.character.characterId}`} 
             onClick={() => {history.push(`/${props.character.characterId}`)}}>View</Link></td>  
             
-            <td><button >Edit</button></td>  
-            <td><button >Delete</button></td>         
+            <td className="character-list-edit-link"><button >Edit</button></td>  
+            <td className="character-list-delete-btn"><button >Delete</button></td>         
         </tr>
     )
 

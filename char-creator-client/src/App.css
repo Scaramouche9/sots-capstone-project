@@ -4,3 +4,22 @@ h2, h3{display:inline; vertical-align:middle;}
 h3, p{ display:inline; vertical-align:middle;} 
 h4, p{ display:inline; vertical-align:middle;} 
 
+/*this is to format the UserCharactersPage to be a little more clean for now */
+.character-list-description{
+    text-align: center;
+    vertical-align: middle;
+    padding: 1%;
+}
+.character-list-name{
+    text-align: center;
+    font-weight: bolder;
+    vertical-align: middle;
+    padding: 1%;
+}
+.character-list-view-link{
+    text-decoration: underline;
+}
+
+.character-list-edit-link{
+    text-decoration: underline;
+}
