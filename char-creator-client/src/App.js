@@ -27,8 +27,10 @@ export default function App() {
 
   const history = useHistory();
 
-  const [characterIdToView, setCharacterIdToView] = useState();
+  const [characterToView, setCharacterToView] = useState([]);
   const [characterIdToEdit, setCharacterIdToEdit] = useState();//these might change with params
+
+  const [paramsId, setParamsId] = useState();
 
   const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
@@ -126,9 +128,8 @@ export default function App() {
 					<Switch>
 
             <Route path="/characters/:id">
-							<ViewCharacterPage characterIdToView={characterIdToView} setCharacterIdToView={setCharacterIdToView}
-              userCharacters={userCharacters} setUserCharacters={setUserCharacters}/>
-              <div>Hello u got there</div>
+							<ViewCharacterPage characterToView={characterToView} setCharacterToView={setCharacterToView}
+              userCharacters={userCharacters} setUserCharacters={setUserCharacters} paramsId={paramsId} setParamsId={setParamsId}/>
 						</Route>
 
             <Route path="/characters">
@@ -166,6 +167,8 @@ export default function App() {
               errors={errors}
               setErrors={setErrors}
               resetForm={resetForm}
+              paramsId={paramsId}
+              setParamsId={setParamsId}
               />
             </Route>
 

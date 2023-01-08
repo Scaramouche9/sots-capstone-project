@@ -12,29 +12,38 @@ export default function ViewCharacterPage(props) {
             
             const characterToView = props.userCharacters.find((character) => {return character.characterId.toString() === params.id.toString()});
 			
-			//displaySelectedCharacter(characterToView);
 			
-            props.setCharacterIdToView(params.id);
+            props.setCharacterToView(characterToView);
+			props.setParamsId(params.id);
+
+			console.log(params.id)
 
 			
         }
 
     }
 
-	const displaySelectedCharacter = (character) => {
-
-		console.log(character);
-		console.log(params.id)
-
-		return (
-			
-			<h1> Name: </h1>
-			
-		)
-
-	}
-
 	useEffect(checkParams,[]);
+	
+	const character = props.characterToView.characterName; //this is just to make html elements less crowded
+
+
+	return (
+
+		<div>
+			<h3> Name: </h3>
+				<p> blebloo</p>
+		</div>	
+			
+		
+	)
+
+	
+
+
+
+	
+
 
 	
 }
