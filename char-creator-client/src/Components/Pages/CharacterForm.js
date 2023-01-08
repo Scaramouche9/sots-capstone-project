@@ -174,11 +174,11 @@ export default function CharacterForm(props){
                      type="number" id="hitpoints-form" name="hitpoints-form"></input>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group" id="description-text-area-container">
                     <label htmlFor="character-description-form">Description: </label>
-                    <input className="form-control" value={props.characterDescription} 
+                    <textarea className="form-control" value={props.characterDescription} 
                     onChange={(event) => {props.setCharacterDescription(event.target.value)}}
-                     type="text" id="character-description-form" name="character-description-form"></input>
+                     type="text" id="character-description-form" name="character-description-form"></textarea>
                 </div>
                 <div><button className="submit-btn" type="submit">Submit</button></div>
                 
