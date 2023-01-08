@@ -83,7 +83,12 @@ export default function UserCharactersPage(props){
             </table> )}
             {!charactersFound && (
                 <div>
-                    <p>Either you have no existing characters, or your login token has expired(re-log to fix this).</p>
+                    <p>Your login token may have expired, please relog to see your characters.</p>
+                </div>
+            )}
+            {!props.userCharacters.length > 0  && (
+                <div>
+                    <p>You have no existing characters.</p>
                 </div>
             )}
         </div>

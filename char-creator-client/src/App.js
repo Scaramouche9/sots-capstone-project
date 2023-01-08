@@ -93,6 +93,7 @@ export default function App() {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       localStorage.removeItem(LOCAL_STORAGE_USER_ID);
+      setUserCharacters(null);
       
     };
   
@@ -218,6 +219,10 @@ export default function App() {
 
             <Route path="/login">
 							<LoginPage></LoginPage>
+						</Route>
+
+            <Route path="/create-account">
+							<CreateAccountPage/>
 						</Route>
 
 						<Route exact path="/">
