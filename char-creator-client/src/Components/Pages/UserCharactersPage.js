@@ -9,7 +9,7 @@ export default function UserCharactersPage(props){
 
     const history = useHistory();
 
-    const charactersFound = true;
+    const [charactersFound, setCharactersFound] = useState(true);
 
     useEffect(() => {
 
@@ -26,14 +26,25 @@ export default function UserCharactersPage(props){
                 .then(response => {
                     if (response.status === 200) {
                         return response.json();
-                        charactersFound = true;
                     } else {
-                        charactersFound = false;
+
+                        setCharactersFound(undefined)
                     }
                 })
                 .then(userCharactersList => props.setUserCharacters(userCharactersList));
         }
     }, [userInfo]);
+
+    const deleteCharacter = (character) => {
+
+        let confirmation = window.confirm(`Confirm deletion of ${character.characterName}?`);
+
+        if (confirmation){
+            //add delete request here
+            console.log("character deleted")
+        }
+
+    }
 
     return(
 
@@ -57,7 +68,13 @@ export default function UserCharactersPage(props){
                     <tbody id="list-contents">
 
                     {props.userCharacters.map (character =>
-                    <Character key={character.characterId} character={character} isEditing={props.isEditing} setIsEditing={props.setIsEditing}/>
+                    <Character key={character.characterId} 
+                    character={character} 
+                    isEditing={props.isEditing} 
+                    setIsEditing={props.setIsEditing}
+                    
+                    deleteCharacter={deleteCharacter}
+                    />
                     )}
 
                     </tbody>
