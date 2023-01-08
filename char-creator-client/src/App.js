@@ -128,8 +128,14 @@ export default function App() {
 					<Switch>
 
             <Route path="/characters/:id">
-							<ViewCharacterPage characterToView={characterToView} setCharacterToView={setCharacterToView}
-              userCharacters={userCharacters} setUserCharacters={setUserCharacters} paramsId={paramsId} setParamsId={setParamsId}/>
+							<ViewCharacterPage 
+              characterToView={characterToView} 
+              setCharacterToView={setCharacterToView}
+              userCharacters={userCharacters} 
+              setUserCharacters={setUserCharacters} 
+              paramsId={paramsId} 
+              setParamsId={setParamsId}
+             />
 						</Route>
 
             <Route path="/characters">

@@ -1,1 +1,6 @@
+/* these are for the ViewCharacterPage to move the paragraphs next to their headers*/
+h2, p{ display:inline; vertical-align:middle;} 
+h2, h3{display:inline; vertical-align:middle;}
+h3, p{ display:inline; vertical-align:middle;} 
+h4, p{ display:inline; vertical-align:middle;} 
 
