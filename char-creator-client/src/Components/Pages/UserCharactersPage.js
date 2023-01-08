@@ -41,7 +41,7 @@ export default function UserCharactersPage(props){
 
         if (confirmation){
             //add delete request here
-            console.log("character deleted")
+            console.log("character deleted (not yet, actually)")
         }
 
     }
@@ -83,7 +83,7 @@ export default function UserCharactersPage(props){
             </table> )}
             {!charactersFound && (
                 <div>
-                    <p>You have no existing characters.</p>
+                    <p>Either you have no existing characters, or your login token has expired(re-log to fix this).</p>
                 </div>
             )}
         </div>

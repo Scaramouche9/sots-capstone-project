@@ -58,6 +58,7 @@ export default function CharacterForm(props){
         }
 
         console.log("added character")
+        props.resetForm();
 
         
 
