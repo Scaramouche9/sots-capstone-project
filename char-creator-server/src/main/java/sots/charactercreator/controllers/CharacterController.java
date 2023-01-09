@@ -27,13 +27,6 @@ public class CharacterController {
         return service.findAllCharacters();
     }
 
-    //Anyone can access
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findBySection(@PathVariable Integer id) throws DataAccessException {
-
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
-    }
-
     //finds a list of characters by user id
     @GetMapping("/user/{id}")
     public List<Character> findByUser(@PathVariable Integer id) throws DataAccessException {
