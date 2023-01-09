@@ -175,3 +175,4 @@ buildNumber.properties
 .classpath
 char-creator-server/solar-farm.iml
 char-creator-server/src/main/java/sots/charactercreator/security/.DS_Store
+.DS_Store
