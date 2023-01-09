@@ -237,6 +237,11 @@ export default function App() {
               setUserCharacters={setUserCharacters} 
               paramsId={paramsId} 
               setParamsId={setParamsId}
+
+              speciesArray={speciesArray}
+              classArray={classArray}
+              backgroundArray={backgroundArray}
+              alignment={alignment}
              />
 						</Route>
 
