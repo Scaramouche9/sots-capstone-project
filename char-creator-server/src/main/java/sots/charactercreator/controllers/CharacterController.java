@@ -57,7 +57,7 @@ public class CharacterController {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
 
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
     }
 
     //Users and admins

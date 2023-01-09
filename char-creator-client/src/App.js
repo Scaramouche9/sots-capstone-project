@@ -204,6 +204,8 @@ export default function App() {
 
               populateForm={populateForm}
               userCharacters={userCharacters}
+
+              user={user} 
               
               />
             </Route>

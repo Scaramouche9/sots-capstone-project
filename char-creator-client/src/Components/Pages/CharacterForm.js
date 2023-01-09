@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory, useParams } from "react-router";
 import { useEffect } from "react";
+import AuthContext from "../Context/AuthContext";
 
 export default function CharacterForm(props){
     
@@ -9,6 +10,8 @@ export default function CharacterForm(props){
     const history = useHistory();
 
     const params = useParams();
+
+    const userInfo = useContext(AuthContext);
 
     const checkParamsToPopulateForm = () => {
 
@@ -25,6 +28,7 @@ export default function CharacterForm(props){
     useEffect(checkParamsToPopulateForm,[])
 
     const handleSubmit = (event) => {
+
         event.preventDefault();
 
         if(props.isEditing === true){
@@ -43,25 +47,50 @@ export default function CharacterForm(props){
 
         const newCharacter = {
             characterName: props.characterName,
-            strength: props.strength,
-            dexterity: props.dexterity,
-            constitution: props.constitution,
-            intelligence: props.intelligence,
-            wisdom: props.wisdom,
-            charisma: props.charisma,
-            armorClass: props.armorClass,
-            proficiencyBonus: props.proficiencyBonus,
-            speed: props.speed,
-            level: props.level,
-            hitpoints: props.hitpoints,
-            description: props.characterDescription
+            speciesId: 1,
+            classId: 1,
+            backgroundId: 1,
+            alignmentId: 1,
+            strength: parseInt(props.strength),
+            dexterity: parseInt(props.dexterity),
+            constitution: parseInt(props.constitution),
+            intelligence: parseInt(props.intelligence),
+            wisdom: parseInt(props.wisdom),
+            charisma: parseInt(props.charisma),
+            armorClass: parseInt(props.armorClass),
+            proficiencyBonus: parseInt(props.proficiencyBonus),
+            speed: parseInt(props.speed),
+            level: parseInt(props.level),
+            hitpoints: parseInt(props.hitpoints),
+            description: props.characterDescription,
+            appUserId: props.user.userId
         }
 
-        console.log("added character")
-        props.resetForm();
+        console.log(url)
+        console.log(newCharacter)
 
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "application/json",
+                Authorization: "Bearer " + userInfo.user.token
+      
+            },
+            body: JSON.stringify(newCharacter)
+      })
+      .then((result) => {
         
-
+        if(result.status === 201){
+            props.resetForm()
+            props.setErrors([])
+            history.push("/characters")
+        } else{
+            result.json().then((errors) => {
+                props.setErrors(errors)
+            })
+        }
+      }) 
       }
 
     const editCharacter = () => {
