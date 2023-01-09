@@ -4,6 +4,9 @@ public class Species {
 
     private int speciesId;
 
+    public Species() {
+    }
+
     private String speciesName;
 
     public Species(int speciesId, String speciesName) {
