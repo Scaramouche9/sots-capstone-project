@@ -28,7 +28,6 @@ export default function App() {
   const history = useHistory();
 
   const [characterToView, setCharacterToView] = useState([]);
-  const [characterIdToEdit, setCharacterIdToEdit] = useState();//these might change with params
 
   const [paramsId, setParamsId] = useState();
 
@@ -38,7 +37,7 @@ export default function App() {
 
   const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
-  //the following are states for character model
+  //the following are states for character model fields
   const [characterName, setCharacterName] = useState("");
   const [strength, setStrength] = useState("");
   const [dexterity, setDexterity] = useState("");
@@ -52,7 +51,18 @@ export default function App() {
   const [level, setLevel] = useState("");
   const [hitpoints, setHitpoints] = useState("");
   const [characterDescription, setCharacterDescription] = useState("");
-  //still need states for species, class, background, alignment
+  
+  const [species, setSpecies] = useState(1);
+  const [characterClass, setCharacterClass] = useState(1);
+  const [background, setBackground] = useState(1);
+  const [alignment, setAlignment] = useState(1);
+
+  const [speciesArray, setSpeciesArray] = useState([]);
+  const [classArray, setClassArray] = useState([]);
+  const [backgroundArray, setBackgroundArray] = useState([]);
+
+  
+
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
@@ -62,6 +72,62 @@ export default function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+
+
+    const fillForeignKeyArrays = () => {
+
+      fetch(`http://localhost:8080/charactercreator/species`, {
+                method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch species list")
+                    }
+                })
+                .then(speciesList => {
+                    if(speciesList){
+                    setSpeciesArray(speciesList)
+                    }
+                });
+
+      fetch(`http://localhost:8080/charactercreator/playerclass`, {
+        method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch classes list")
+                    }
+                })
+                .then(classesList => {
+                    if(classesList){
+                    setClassArray(classesList);
+                    }
+                });
+
+      
+      fetch(`http://localhost:8080/charactercreator/background`, {
+        method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch background list")
+                    }
+                })
+                .then(backgroundList => {
+                    if(backgroundList){
+                    setBackgroundArray(backgroundList);
+                    }
+                });
+      
+    }
+
+    useEffect(fillForeignKeyArrays,[]);//fetches tables referenced via fk in character table (on startup)
 
     const login = (token, userId) => {
 
@@ -93,7 +159,7 @@ export default function App() {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       localStorage.removeItem(LOCAL_STORAGE_USER_ID);
-      setUserCharacters(null);
+      setUserCharacters([]);
       
     };
   
@@ -122,6 +188,11 @@ export default function App() {
       setHitpoints("");
       setCharacterDescription("");
 
+      setSpecies(1);
+      setCharacterClass(1);
+      setBackground(1);
+      setAlignment(1);
+
       setIsEditing(false);
 
     }
@@ -142,6 +213,11 @@ export default function App() {
       setHitpoints(character.hitpoints);
       setCharacterDescription(character.description);
       
+      setSpecies(character.speciesId);
+      setCharacterClass(character.classId);
+      setBackground(character.backgroundId);
+      setAlignment(character.alignmentId);
+      
     }
     
 
@@ -161,6 +237,11 @@ export default function App() {
               setUserCharacters={setUserCharacters} 
               paramsId={paramsId} 
               setParamsId={setParamsId}
+
+              speciesArray={speciesArray}
+              classArray={classArray}
+              backgroundArray={backgroundArray}
+              alignment={alignment}
              />
 						</Route>
 
@@ -193,6 +274,19 @@ export default function App() {
               characterDescription={characterDescription}
               setCharacterDescription={setCharacterDescription}
 
+              species={species}
+              setSpecies={setSpecies}
+              characterClass={characterClass}
+              setCharacterClass={setCharacterClass}
+              background={background}
+              setBackground={setBackground}
+              alignment={alignment}
+              setAlignment={setAlignment}
+
+              speciesArray={speciesArray}
+              classArray={classArray}
+              backgroundArray={backgroundArray}
+
               errors={errors}
               setErrors={setErrors}
 
@@ -204,12 +298,21 @@ export default function App() {
 
               populateForm={populateForm}
               userCharacters={userCharacters}
+
+              user={user} 
               
               />
             </Route>
 
             <Route exact path="/characters">
-              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters} isEditing={isEditing} setIsEditing={setIsEditing}/>
+              <UserCharactersPage 
+              user={user} 
+              userCharacters={userCharacters} 
+              setUserCharacters={setUserCharacters} 
+              isEditing={isEditing} 
+              setIsEditing={setIsEditing}
+              errors={errors}
+              setErrors={setErrors}/>
 						</Route>
 
 

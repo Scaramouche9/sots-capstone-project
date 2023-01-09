@@ -11,6 +11,8 @@ export default function UserCharactersPage(props){
 
     const [charactersFound, setCharactersFound] = useState(true);
 
+    
+
     useEffect(() => {
 
         if (!userInfo) {
@@ -28,20 +30,39 @@ export default function UserCharactersPage(props){
                         return response.json();
                     } else {
 
-                        setCharactersFound(undefined)
+                        props.setUserCharacters([]);
+                        setCharactersFound(false);
                     }
                 })
-                .then(userCharactersList => props.setUserCharacters(userCharactersList));
+                .then(userCharactersList => {
+                    if(userCharactersList){
+                    props.setUserCharacters(userCharactersList)
+                    }
+                });
         }
     }, [userInfo]);
+
+    
 
     const deleteCharacter = (character) => {
 
         let confirmation = window.confirm(`Confirm deletion of ${character.characterName}?`);
 
         if (confirmation){
-            //add delete request here
-            console.log("character deleted (not yet, actually)")
+            
+            fetch(`http://localhost:8080/charactercreator/${character.characterId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + userInfo.user.token
+                }         
+          })
+          .then((response) =>{
+            if(response.status === 404){
+                props.setErrors([`Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`])
+            }else{
+                //don't think anything needs to be here since the list is updating already
+            }
+          })
         }
 
     }
@@ -50,6 +71,16 @@ export default function UserCharactersPage(props){
 
             
         <div>
+            <section id="errors">{
+                props.errors.length > 0 ?
+                <ul>
+                    {props.errors.map((error) => {return <li key={error}>{error}</li>})}
+                </ul>
+                :
+                null
+                }
+            </section>
+
             {charactersFound && (
 
             <table className="table table-dark">
@@ -91,6 +122,8 @@ export default function UserCharactersPage(props){
                     <p>You have no existing characters.</p>
                 </div>
             )}
+
+            
         </div>
         
 
