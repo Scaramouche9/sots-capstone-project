@@ -47,10 +47,10 @@ export default function CharacterForm(props){
 
         const newCharacter = {
             characterName: props.characterName,
-            speciesId: 1,
-            classId: 1,
-            backgroundId: 1,
-            alignmentId: 1,
+            speciesId: props.species,
+            classId: props.characterClass,
+            backgroundId: props.background,
+            alignmentId: props.alignment,
             strength: parseInt(props.strength),
             dexterity: parseInt(props.dexterity),
             constitution: parseInt(props.constitution),
@@ -104,6 +104,29 @@ export default function CharacterForm(props){
         props.setParamsId(undefined);
       }
 
+      const handleChangeSpecies = (event) => {
+
+        props.setSpecies(parseInt(event.target.value))
+
+      }
+      const handleChangeClass = (event) => {
+
+        props.setCharacterClass(parseInt(event.target.value))
+
+      }
+
+      const handleChangeBackground = (event) => {
+
+        props.setBackground(parseInt(event.target.value))
+
+      }
+
+      const handleChangeAlignment = (event) => {
+
+        props.setAlignment(parseInt(event.target.value))
+
+      }
+
     return(
         
         <section>
@@ -126,8 +149,37 @@ export default function CharacterForm(props){
 
                 <div className = "form-group">
                     <label htmlFor="species-dropdown">Species: </label>
-                    <select name="species-dropdown" id="species-dropdown">
+                    <select onChange={handleChangeSpecies} name="species-dropdown" id="species-dropdown">
                         {props.speciesArray && props.speciesArray.map (species => <option key={species.speciesId} value={species.speciesId}>{species.speciesName}</option>)}
+                    </select>
+                </div>
+
+                <div className = "form-group">
+                    <label htmlFor="classes-dropdown">Class: </label>
+                    <select onChange={handleChangeClass} name="classes-dropdown" id="classes-dropdown">
+                        {props.classArray && props.classArray.map (charClass => <option key={charClass.classId} value={charClass.classId}>{charClass.className}</option>)}
+                    </select>
+                </div>
+
+                <div className = "form-group">
+                    <label htmlFor="backgrounds-dropdown">Background: </label>
+                    <select onChange={handleChangeBackground} name="backgrounds-dropdown" id="backgrounds-dropdown">
+                        {props.backgroundArray && props.backgroundArray.map (bg => <option key={bg.backgroundId} value={bg.backgroundId}>{bg.backgroundName}</option>)}
+                    </select>
+                </div>
+
+                <div className = "form-group">
+                    <label htmlFor="alignment-dropdown">Alignment: </label>
+                    <select onChange={handleChangeAlignment} name="alignment-dropdown" id="alignment-dropdown">
+                        <option key="1" value="1" >Lawful Good</option>
+                        <option key="2" value="2" >Neutral Good</option>
+                        <option key="3" value="3" >Chaotic Good</option>
+                        <option key="4" value="4" >Lawful Neutral</option>
+                        <option key="5" value="5" >True Neutral</option>
+                        <option key="6" value="6" >Chaotic Neutral</option>
+                        <option key="7" value="7" >Lawful Evil</option>
+                        <option key="8" value="8" >Neutral Evil</option>
+                        <option key="9" value="9" >Chaotic Evil</option>
                     </select>
                 </div>
 

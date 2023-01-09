@@ -52,14 +52,15 @@ export default function App() {
   const [hitpoints, setHitpoints] = useState("");
   const [characterDescription, setCharacterDescription] = useState("");
   
-  const [species, setSpecies] = useState();
-  const [characterClass, setCharacterClass] = useState();
-  const [background, setBackground] = useState();
-  const [alignment, setAlignment] = useState();
+  const [species, setSpecies] = useState(1);
+  const [characterClass, setCharacterClass] = useState(1);
+  const [background, setBackground] = useState(1);
+  const [alignment, setAlignment] = useState(1);
 
-  const [speciesArray, setSpeciesArray] = useState();
-  const [classArray, setClassArray] = useState();
-  
+  const [speciesArray, setSpeciesArray] = useState([]);
+  const [classArray, setClassArray] = useState([]);
+  const [backgroundArray, setBackgroundArray] = useState([]);
+
   
 
 
@@ -90,10 +91,43 @@ export default function App() {
                     setSpeciesArray(speciesList)
                     }
                 });
+
+      fetch(`http://localhost:8080/charactercreator/playerclass`, {
+        method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch classes list")
+                    }
+                })
+                .then(classesList => {
+                    if(classesList){
+                    setClassArray(classesList);
+                    }
+                });
+
+      
+      fetch(`http://localhost:8080/charactercreator/background`, {
+        method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch background list")
+                    }
+                })
+                .then(backgroundList => {
+                    if(backgroundList){
+                    setBackgroundArray(backgroundList);
+                    }
+                });
       
     }
 
-    useEffect(fillForeignKeyArrays,[]);//fetches tables referenced via fk in character table
+    useEffect(fillForeignKeyArrays,[]);//fetches tables referenced via fk in character table (on startup)
 
     const login = (token, userId) => {
 
@@ -235,6 +269,8 @@ export default function App() {
               setAlignment={setAlignment}
 
               speciesArray={speciesArray}
+              classArray={classArray}
+              backgroundArray={backgroundArray}
 
               errors={errors}
               setErrors={setErrors}
