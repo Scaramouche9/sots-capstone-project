@@ -82,6 +82,7 @@ create table `character` (
     hitpoints int,
     `description` varchar(400),
     app_user_id int,
+    image varchar(400),
     constraint fk_character_class_id
         foreign key (class_id)
         references player_class(class_id),
