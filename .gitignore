@@ -347,3 +347,12 @@ buildNumber.properties
 **/.yarn/build-state.yml
 **/.yarn/install-state.gz
 **/.pnp.*
+char-creator-server/.DS_Store
+char-creator-server/sql/.DS_Store
+char-creator-server/src/.DS_Store
+char-creator-server/src/main/.DS_Store
+char-creator-server/src/main/java/.DS_Store
+char-creator-server/src/main/java/sots/.DS_Store
+char-creator-server/src/main/java/sots/charactercreator/.DS_Store
+char-creator-server/src/main/java/sots/charactercreator/security/.DS_Store
+.DS_Store
