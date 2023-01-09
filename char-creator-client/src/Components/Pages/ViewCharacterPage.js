@@ -15,8 +15,6 @@ export default function ViewCharacterPage(props) {
             props.setCharacterToView(characterToView);
 			props.setParamsId(params.id);
 
-			console.log(params.id)
-
 			
         }
 

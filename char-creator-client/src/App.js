@@ -28,7 +28,6 @@ export default function App() {
   const history = useHistory();
 
   const [characterToView, setCharacterToView] = useState([]);
-  const [characterIdToEdit, setCharacterIdToEdit] = useState();//these might change with params
 
   const [paramsId, setParamsId] = useState();
 
@@ -38,7 +37,7 @@ export default function App() {
 
   const [userCharacters, setUserCharacters] = useState([]);//for the UserCharactersPage AND ViewCharacterPage
 
-  //the following are states for character model
+  //the following are states for character model fields
   const [characterName, setCharacterName] = useState("");
   const [strength, setStrength] = useState("");
   const [dexterity, setDexterity] = useState("");
@@ -52,7 +51,15 @@ export default function App() {
   const [level, setLevel] = useState("");
   const [hitpoints, setHitpoints] = useState("");
   const [characterDescription, setCharacterDescription] = useState("");
-  //still need states for species, class, background, alignment
+  
+  const [species, setSpecies] = useState();
+  const [characterClass, setCharacterClass] = useState();
+  const [background, setBackground] = useState();
+  const [alignment, setAlignment] = useState();
+
+  const [speciesArray, setSpeciesArray] = useState();
+  
+
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
@@ -62,6 +69,29 @@ export default function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+
+
+    const fillForeignKeyArrays = () => {
+
+      fetch(`http://localhost:8080/charactercreator/species`, {
+                method: "GET",
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log("Could not fetch species list")
+                    }
+                })
+                .then(speciesList => {
+                    if(speciesList){
+                    setSpeciesArray(speciesList)
+                    }
+                });
+      
+    }
+
+    useEffect(fillForeignKeyArrays,[]);//fetches tables referenced via fk in character table
 
     const login = (token, userId) => {
 
@@ -192,6 +222,17 @@ export default function App() {
               setHitpoints={setHitpoints}
               characterDescription={characterDescription}
               setCharacterDescription={setCharacterDescription}
+
+              species={species}
+              setSpecies={setSpecies}
+              characterClass={characterClass}
+              setCharacterClass={setCharacterClass}
+              background={background}
+              setBackground={setBackground}
+              alignment={alignment}
+              setAlignment={setAlignment}
+
+              speciesArray={speciesArray}
 
               errors={errors}
               setErrors={setErrors}

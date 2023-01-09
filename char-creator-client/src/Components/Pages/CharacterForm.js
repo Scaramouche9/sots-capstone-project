@@ -66,8 +66,6 @@ export default function CharacterForm(props){
             appUserId: props.user.userId
         }
 
-        console.log(url)
-        console.log(newCharacter)
 
         fetch(url, {
             method: "POST",
@@ -103,7 +101,6 @@ export default function CharacterForm(props){
         history.push("/characters");
         props.resetForm();
         props.setErrors([]);
-        //when params are implemented, add something here to set params to undefined for back-to-back edits
         props.setParamsId(undefined);
       }
 
@@ -125,6 +122,13 @@ export default function CharacterForm(props){
                     <input className="form-control" value={props.characterName} 
                     onChange={(event) => {props.setCharacterName(event.target.value)}}
                     type="text" id="character-name-form" name="character-name-form"/>
+                </div>
+
+                <div className = "form-group">
+                    <label htmlFor="species-dropdown">Species: </label>
+                    <select name="species-dropdown" id="species-dropdown">
+                        {props.speciesArray.map (species => <option value={species.speciesId}>{species.speciesName}</option>)}
+                    </select>
                 </div>
 
                 <div className="form-group">

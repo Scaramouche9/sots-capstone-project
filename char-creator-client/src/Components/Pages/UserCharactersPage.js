@@ -30,11 +30,15 @@ export default function UserCharactersPage(props){
                         return response.json();
                     } else {
 
-                        setCharactersFound(false)
                         props.setUserCharacters([]);
+                        setCharactersFound(false);
                     }
                 })
-                .then(userCharactersList => props.setUserCharacters(userCharactersList));
+                .then(userCharactersList => {
+                    if(userCharactersList){
+                    props.setUserCharacters(userCharactersList)
+                    }
+                });
         }
     }, [userInfo]);
 
@@ -56,7 +60,7 @@ export default function UserCharactersPage(props){
             if(response.status === 404){
                 props.setErrors([`Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`])
             }else{
-                console.log("successful deletion")//change
+                //don't think anything needs to be here since the list is updating already
             }
           })
         }

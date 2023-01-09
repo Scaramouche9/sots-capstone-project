@@ -66,3 +66,16 @@ Content-Type: application/json
     "description": "A robot ballerina with a loyal spherical companion"
     
 }
+
+### Fetch list of all species 
+GET /charactercreator/species HTTP/1.1
+Host: localhost:8080
+
+### Fetch list of all character/player classes 
+GET /charactercreator/playerclass HTTP/1.1
+Host: localhost:8080
+
+### Fetch list of all backgrounds
+GET /charactercreator/background HTTP/1.1
+Host: localhost:8080
+
