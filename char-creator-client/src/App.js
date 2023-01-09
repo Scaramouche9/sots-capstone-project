@@ -188,6 +188,11 @@ export default function App() {
       setHitpoints("");
       setCharacterDescription("");
 
+      setSpecies(1);
+      setCharacterClass(1);
+      setBackground(1);
+      setAlignment(1);
+
       setIsEditing(false);
 
     }
@@ -207,6 +212,11 @@ export default function App() {
       setLevel(character.level);
       setHitpoints(character.hitpoints);
       setCharacterDescription(character.description);
+      
+      setSpecies(character.speciesId);
+      setCharacterClass(character.classId);
+      setBackground(character.backgroundId);
+      setAlignment(character.alignmentId);
       
     }
     

@@ -192,28 +192,28 @@ export default function CharacterForm(props){
 
                 <div className = "form-group">
                     <label htmlFor="species-dropdown">Species: </label>
-                    <select onChange={handleChangeSpecies} name="species-dropdown" id="species-dropdown">
+                    <select value={props.species} onChange={handleChangeSpecies} name="species-dropdown" id="species-dropdown">
                         {props.speciesArray && props.speciesArray.map (species => <option key={species.speciesId} value={species.speciesId}>{species.speciesName}</option>)}
                     </select>
                 </div>
 
                 <div className = "form-group">
                     <label htmlFor="classes-dropdown">Class: </label>
-                    <select onChange={handleChangeClass} name="classes-dropdown" id="classes-dropdown">
+                    <select value={props.characterClass} onChange={handleChangeClass} name="classes-dropdown" id="classes-dropdown">
                         {props.classArray && props.classArray.map (charClass => <option key={charClass.classId} value={charClass.classId}>{charClass.className}</option>)}
                     </select>
                 </div>
 
                 <div className = "form-group">
                     <label htmlFor="backgrounds-dropdown">Background: </label>
-                    <select onChange={handleChangeBackground} name="backgrounds-dropdown" id="backgrounds-dropdown">
+                    <select value={props.background} onChange={handleChangeBackground} name="backgrounds-dropdown" id="backgrounds-dropdown">
                         {props.backgroundArray && props.backgroundArray.map (bg => <option key={bg.backgroundId} value={bg.backgroundId}>{bg.backgroundName}</option>)}
                     </select>
                 </div>
 
                 <div className = "form-group">
                     <label htmlFor="alignment-dropdown">Alignment: </label>
-                    <select onChange={handleChangeAlignment} name="alignment-dropdown" id="alignment-dropdown">
+                    <select value={props.alignment} onChange={handleChangeAlignment} name="alignment-dropdown" id="alignment-dropdown">
                         <option key="1" value="1" >Lawful Good</option>
                         <option key="2" value="2" >Neutral Good</option>
                         <option key="3" value="3" >Chaotic Good</option>
