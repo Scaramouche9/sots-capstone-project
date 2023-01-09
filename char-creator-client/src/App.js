@@ -321,11 +321,17 @@ export default function App() {
 						</Route>
 
             <Route path="/login">
-							<LoginPage></LoginPage>
+							<LoginPage
+              errors={errors}
+              setErrors={setErrors}
+              ></LoginPage>
 						</Route>
 
             <Route path="/create-account">
-							<CreateAccountPage/>
+							<CreateAccountPage
+              errors={errors}
+              setErrors={setErrors}
+              />
 						</Route>
 
 						<Route exact path="/">

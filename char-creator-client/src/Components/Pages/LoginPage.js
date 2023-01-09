@@ -31,6 +31,7 @@ export default function LoginPage(props){
 
       const { jwt_token, userId } = await response.json();
       auth.login(jwt_token, userId);
+      props.setErrors([]);
       history.push("/characters");
 
     } else if (response.status === 403) {
@@ -45,6 +46,8 @@ export default function LoginPage(props){
   };
 
     return (
+      <div>
+
         <form onSubmit={handleSubmit}>
             <div>
 
@@ -57,5 +60,17 @@ export default function LoginPage(props){
             </div>
 
         </form>
+
+        <section id="login-page-messages">{
+          props.errors.length > 0 ?
+          <ul>
+            {props.errors.map((message) => {return <li key={message}>{message}</li>})}
+          </ul>
+          :
+          null
+          }
+        </section>
+
+      </div>
     )
 }
