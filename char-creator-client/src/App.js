@@ -58,6 +58,8 @@ export default function App() {
   const [alignment, setAlignment] = useState();
 
   const [speciesArray, setSpeciesArray] = useState();
+  const [classArray, setClassArray] = useState();
+  
   
 
 

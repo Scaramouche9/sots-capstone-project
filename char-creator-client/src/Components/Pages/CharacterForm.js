@@ -127,7 +127,7 @@ export default function CharacterForm(props){
                 <div className = "form-group">
                     <label htmlFor="species-dropdown">Species: </label>
                     <select name="species-dropdown" id="species-dropdown">
-                        {props.speciesArray.map (species => <option value={species.speciesId}>{species.speciesName}</option>)}
+                        {props.speciesArray && props.speciesArray.map (species => <option key={species.speciesId} value={species.speciesId}>{species.speciesName}</option>)}
                     </select>
                 </div>
 
