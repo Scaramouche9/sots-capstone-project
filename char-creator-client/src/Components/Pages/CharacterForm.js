@@ -268,21 +268,21 @@ export default function CharacterForm(props) {
 					<input type="file" name="upload" accept="image/*" />
 				</div>
 
-				<div>
+				<div id="char-form-buttons">
 					<button className="submit-btn" type="submit">
 						Submit
 					</button>
+
+					<button
+						className="cancel-btn"
+						onClick={() => {
+							cancel();
+						}}
+					>
+						Cancel
+					</button>
 				</div>
 			</form>
-
-			<button
-				className="cancel-btn"
-				onClick={() => {
-					cancel();
-				}}
-			>
-				Cancel
-			</button>
 		</section>
 	);
 }
