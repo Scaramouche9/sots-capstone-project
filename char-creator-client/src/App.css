@@ -29,6 +29,11 @@ h4, p{ display:inline; vertical-align:middle;}
     margin-top: 1%;
 }
 
+.single-view-wrapper * {
+
+    margin-top: 1%;
+}
+
 #character-description-form{
 
     vertical-align: middle;

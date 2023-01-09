@@ -36,7 +36,7 @@ Content-Type: application/json
     "password": "Blahbloo1!"
 }
 
-### Delete endpoint test (needs jwt of admin, should give 204)
-DELETE /charactercreator/5 HTTP/1.1
+### Delete endpoint test (needs jwt of admin)
+DELETE /charactercreator/3 HTTP/1.1
 Host: localhost:8080
-Authorization: Bearer <jwt here>
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjaGFyYWN0ZXItY3JlYXRvciIsInN1YiI6InNhbGx5QGpvbmVzLmNvbSIsImFwcF91c2VyX2lkIjoyLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzMyNTQ4Mjl9.3SPhhX_T3g3SwU2414zMt4gQ26e8gvy4lGejDrHjxuw

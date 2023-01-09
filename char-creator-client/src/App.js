@@ -93,7 +93,7 @@ export default function App() {
       setUser(null);
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       localStorage.removeItem(LOCAL_STORAGE_USER_ID);
-      setUserCharacters(null);
+      setUserCharacters([]);
       
     };
   
@@ -209,7 +209,14 @@ export default function App() {
             </Route>
 
             <Route exact path="/characters">
-              <UserCharactersPage user={user} userCharacters={userCharacters} setUserCharacters={setUserCharacters} isEditing={isEditing} setIsEditing={setIsEditing}/>
+              <UserCharactersPage 
+              user={user} 
+              userCharacters={userCharacters} 
+              setUserCharacters={setUserCharacters} 
+              isEditing={isEditing} 
+              setIsEditing={setIsEditing}
+              errors={errors}
+              setErrors={setErrors}/>
 						</Route>
 
 

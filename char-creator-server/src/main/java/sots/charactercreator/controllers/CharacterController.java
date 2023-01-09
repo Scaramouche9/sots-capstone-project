@@ -76,7 +76,7 @@ public class CharacterController {
     }
 
     //Admins only
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{characterId}")
     public ResponseEntity<?> delete(@PathVariable Integer characterId) throws DataAccessException {
         if (service.deleteCharacter(characterId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
