@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +48,13 @@ public class AuthController {
             if (authentication.isAuthenticated()) {
                 String jwtToken = converter.getTokenFromUser((AppUser) authentication.getPrincipal());
 
+                AppUser appUser = (AppUser) appUserService.loadUserByUsername(credentials.get("username"));
+                String userId = String.valueOf(appUser.getAppUserId());
+
                 HashMap<String, String> map = new HashMap<>();
                 map.put("jwt_token", jwtToken);
+                map.put("userId", userId);
+
 
                 return new ResponseEntity<>(map, HttpStatus.OK);
             }
