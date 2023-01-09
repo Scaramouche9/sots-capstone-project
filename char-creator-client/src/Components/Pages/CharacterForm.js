@@ -76,24 +76,67 @@ export default function CharacterForm(props){
       
             },
             body: JSON.stringify(newCharacter)
-      })
-      .then((result) => {
-        
-        if(result.status === 201){
-            props.resetForm()
-            props.setErrors([])
-            history.push("/characters")
-        } else{
-            result.json().then((errors) => {
-                props.setErrors(errors)
             })
-        }
-      }) 
+            .then((result) => {
+                
+                if(result.status === 201){
+                    props.resetForm()
+                    props.setErrors([])
+                    history.push("/characters")
+                } else{
+                    result.json().then((errors) => {
+                        props.setErrors(errors)
+                    })
+                }
+            }) 
       }
 
     const editCharacter = () => {
 
-        console.log("edited character")
+        const editedCharacter = {
+            characterId: parseInt(params.id), //edit needs this specifically
+            characterName: props.characterName,
+            speciesId: props.species,
+            classId: props.characterClass,
+            backgroundId: props.background,
+            alignmentId: props.alignment,
+            strength: parseInt(props.strength),
+            dexterity: parseInt(props.dexterity),
+            constitution: parseInt(props.constitution),
+            intelligence: parseInt(props.intelligence),
+            wisdom: parseInt(props.wisdom),
+            charisma: parseInt(props.charisma),
+            armorClass: parseInt(props.armorClass),
+            proficiencyBonus: parseInt(props.proficiencyBonus),
+            speed: parseInt(props.speed),
+            level: parseInt(props.level),
+            hitpoints: parseInt(props.hitpoints),
+            description: props.characterDescription,
+            appUserId: props.user.userId
+        }
+
+        fetch(url + `/characters/${params.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "application/json",
+                Authorization: "Bearer " + userInfo.user.token
+      
+            },
+            body: JSON.stringify(editedCharacter)
+            })
+            .then((result) => {
+                
+                if(result.status === 204){
+                    props.resetForm()
+                    props.setErrors([])
+                    history.push("/characters")
+                } else{
+                    result.json().then((errors) => {
+                        props.setErrors(errors)
+                    })
+                }
+            }) 
     }
 
       const cancel = () => {

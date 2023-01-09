@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST,
                         "/charactercreator").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/charactercreator/*").hasAnyAuthority("USER", "ADMIN")
+                        "/charactercreator/*/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/charactercreator/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/**").denyAll()

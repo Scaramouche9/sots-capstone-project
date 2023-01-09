@@ -44,8 +44,7 @@ Authorization: Bearer <jwt_here>
 ### Create endpoint test (user or admin)
 POST /charactercreator HTTP/1.1
 Host: localhost:8080
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjaGFyYWN0ZXItY3JlYXRvciIsInN1YiI6InNhbGx5QGpvbmVzLmNvbSIsImFwcF91c2VyX2lkIjoyLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzMyNTY5NzF9.PUtxjXEssJ1WM8EThwtP4eANJHK-pf1o3GM6tRRN85Y
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjaGFyYWN0ZXItY3JlYXRvciIsInN1YiI6InNhbGx5QGpvbmVzLmNvbSIsImFwcF91c2VyX2lkIjoyLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzMyNzA5MDV9.PU4jcVic2aX2jOJNfJpjecKiPPrZ4OgaOlKZunWmlXo
 
 {
     "characterName": "Orianna",
@@ -78,4 +77,33 @@ Host: localhost:8080
 ### Fetch list of all backgrounds
 GET /charactercreator/background HTTP/1.1
 Host: localhost:8080
+
+### Edit/Update endpoint test (user or admin)
+PUT /charactercreator/characters/11 HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjaGFyYWN0ZXItY3JlYXRvciIsInN1YiI6InNhbGx5QGpvbmVzLmNvbSIsImFwcF91c2VyX2lkIjoyLCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzMyNzEyNjl9.ZaZKTvnzT8sPoR7wfQToQtaFoBMIjbue2wm6-nZ8_Lw
+Content-Type: application/json
+
+{
+    "characterId": 11,
+    "characterName": "Molly",
+    "speciesId": 1,
+    "classId": 1,
+    "backgroundId": 1,
+    "alignmentId": 1,
+    "strength": 5,
+    "dexterity": 5,
+    "constitution": 5,
+    "intelligence": 5,
+    "wisdom": 5,
+    "charisma": 5,
+    "armorClass": 5,
+    "proficiencyBonus": 5,
+    "speed": 5,
+    "level": 5,
+    "hitpoints": 5,
+    "description": "Test",
+    "appUserId": 2
+    
+}
 

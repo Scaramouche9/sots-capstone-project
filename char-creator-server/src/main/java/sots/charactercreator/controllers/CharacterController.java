@@ -61,7 +61,7 @@ public class CharacterController {
     }
 
     //Users and admins
-    @PutMapping("/characters/{id}")
+    @PutMapping("/characters/{characterId}")
     public ResponseEntity<?> update(@PathVariable int characterId, @RequestBody Character character) throws DataAccessException {
         if (characterId != character.getCharacterId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -72,7 +72,7 @@ public class CharacterController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
     }
 
     //Admins only
