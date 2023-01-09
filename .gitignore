@@ -173,6 +173,20 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+<<<<<<< Updated upstream
 char-creator-server/solar-farm.iml
 char-creator-server/src/main/java/sots/charactercreator/security/.DS_Store
+<<<<<<< Updated upstream
+=======
+=======
+.DS_Store
+char-creator-server/.DS_Store
+char-creator-server/solar-farm.iml
+char-creator-server/src/.DS_Store
+char-creator-server/src/main/.DS_Store
+char-creator-server/src/main/java/.DS_Store
+char-creator-server/src/main/java/sots/.DS_Store
+char-creator-server/src/main/java/sots/charactercreator/.DS_Store
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 .DS_Store
