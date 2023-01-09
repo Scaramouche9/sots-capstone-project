@@ -24,7 +24,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
     public List<Character> findAllCharacters() {
         final String sql = "select character_id, character_name, species_id, class_id, background_id, alignment_id, " +
                 "strength, dexterity, constitution, intelligence, wisdom, charisma, armor_class, proficiency_bonus," +
-                "speed, `level`, hitpoints, `description`, app_user_id from `character` limit 5000;";
+                "speed, `level`, hitpoints, `description`, image, app_user_id from `character` limit 5000;";
         return jdbcTemplate.query(sql, new CharacterMapper());
     }
 
@@ -57,7 +57,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
 
         final String sql = "insert into `character` (character_name, species_id, class_id, background_id, alignment_id," +
                 " strength, dexterity, constitution, intelligence, wisdom, charisma," +
-                "armor_class, speed, `level`, hitpoints, `description`, app_user_id)"
+                "armor_class, speed, `level`, hitpoints, `description`, image, app_user_id)"
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -79,7 +79,8 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
             ps.setInt(14, character.getLevel());
             ps.setInt(15, character.getHitpoints());
             ps.setString(16, character.getDescription());
-            ps.setInt(17, character.getAppUserId());
+            ps.setString(17, character.getImage());
+            ps.setInt(18, character.getAppUserId());
             return ps;
         }, keyHolder);
 
@@ -110,6 +111,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
                 "`level` = ?, " +
                 "hitpoints = ?, " +
                 "`description` = ?, " +
+                "image = ?, " +
                 "app_user_id = ? " +
                 "where character_id = ?;";
 
@@ -130,6 +132,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
                 character.getLevel(),
                 character.getHitpoints(),
                 character.getDescription(),
+                character.getImage(),
                 character.getAppUserId(),
                 character.getCharacterId()) > 0;
     }

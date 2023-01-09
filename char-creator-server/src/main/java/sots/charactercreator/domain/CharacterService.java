@@ -88,6 +88,8 @@ public class CharacterService {
             result.addMessage("Invalid User ID", ResultType.INVALID);
         }
 
+        // add image type/size validation?
+
         return result;
     }
 }

@@ -20,6 +20,7 @@ public class Character {
     private int level;
     private int hitpoints;
     private String description;
+    private String image;
     private int appUserId;
 
     public Character(int characterId, String characterName, int speciesId, int classId,
@@ -180,6 +181,10 @@ public class Character {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getImage() { return image; }
+
+    public void setImage(String image) { this.image = image; }
 
     public int getAppUserId() {
         return appUserId;

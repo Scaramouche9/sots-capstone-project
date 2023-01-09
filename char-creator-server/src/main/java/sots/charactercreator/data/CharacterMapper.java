@@ -33,6 +33,7 @@ public class CharacterMapper implements RowMapper<Character> {
         character.setHitpoints(resultSet.getInt("hitpoints"));
 
         character.setDescription(resultSet.getString("description"));
+        character.setImage(resultSet.getString("image"));
         character.setAppUserId(resultSet.getInt("app_user_id"));
 
         return character;
