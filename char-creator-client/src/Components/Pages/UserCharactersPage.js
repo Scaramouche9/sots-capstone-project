@@ -95,6 +95,7 @@ export default function UserCharactersPage(props) {
 								isEditing={props.isEditing}
 								setIsEditing={props.setIsEditing}
 								deleteCharacter={deleteCharacter}
+                                userCharacters={props.userCharacters}
 							/>
 						))}
 					</tbody>
