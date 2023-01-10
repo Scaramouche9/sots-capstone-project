@@ -1,7 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
+import CharacterImage from "../ImageInput";
+import ImageInput from "../ImageInput";
+import axios from "axios";
+import {Image} from 'cloudinary-react'
 
 export default function CharacterForm(props){
     
@@ -12,6 +16,8 @@ export default function CharacterForm(props){
     const params = useParams();
 
     const userInfo = useContext(AuthContext);
+
+    const [selectedImage, setSelectedImage] = useState();//this is for the CharacterImage component for uploading
 
     const checkParamsToPopulateForm = () => {
 
@@ -31,6 +37,11 @@ export default function CharacterForm(props){
 
         event.preventDefault();
 
+        if(selectedImage){
+            uploadImage();
+        } 
+
+
         if(props.isEditing === true){
 
             editCharacter();
@@ -39,7 +50,6 @@ export default function CharacterForm(props){
 
             addCharacter();
         }
-
             
     }
 
@@ -63,7 +73,8 @@ export default function CharacterForm(props){
             level: parseInt(props.level),
             hitpoints: parseInt(props.hitpoints),
             description: props.characterDescription,
-            appUserId: props.user.userId
+            appUserId: props.user.userId,
+            image: props.characterImageUrl
         }
 
 
@@ -112,7 +123,8 @@ export default function CharacterForm(props){
             level: parseInt(props.level),
             hitpoints: parseInt(props.hitpoints),
             description: props.characterDescription,
-            appUserId: props.user.userId
+            appUserId: props.user.userId,
+            image: props.characterImageUrl
         }
 
         fetch(url + `/characters/${params.id}`, {
@@ -169,6 +181,33 @@ export default function CharacterForm(props){
         props.setAlignment(parseInt(event.target.value))
 
       }
+
+      async function uploadImage() {
+
+        const formData = new FormData();
+        formData.append('file', selectedImage)
+        formData.append('upload_preset', 'mw68clrp')
+
+        await axios.post('https://api.cloudinary.com/v1_1/dr8dbzjws/image/upload', formData)
+        .then((response) => {
+
+            console.log(response)
+
+            if(response.status === 200){
+
+                props.setCharacterImageUrl(response.data.url);
+
+
+            }else{
+                props.setErrors("Image upload failed. Please make sure the file is in image format (.jpg, .png, etc.)")
+            }
+
+        });
+
+
+        
+
+    };
 
     return(
         
@@ -309,9 +348,27 @@ export default function CharacterForm(props){
                     onChange={(event) => {props.setCharacterDescription(event.target.value)}}
                      type="text" id="character-description-form" name="character-description-form"></textarea>
                 </div>
+
+                <div>
+                <Image 
+                    style={{width: 200}} //placeholder to keep uploaded images from being too large; change later
+                    cloudName='dr8dbzjws'
+                    publicId={props.characterImageUrl}
+                    />
+                </div>
+
+                <ImageInput
+                characterImageUrl={props.characterImageUrl}
+                setCharacterImageUrl={props.setCharacterImageUrl}
+                selectedImage={selectedImage}
+                setSelectedImage={setSelectedImage}
+                uploadImage={uploadImage}
+                ></ImageInput>
+
                 <div><button className="submit-btn" type="submit">Submit</button></div>
                 
             </form>
+
 
             <button className="cancel-btn" onClick={() => { cancel();}}>Cancel</button>
             

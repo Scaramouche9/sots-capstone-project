@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
+import {Image} from 'cloudinary-react'
 
 export default function ViewCharacterPage(props) {
 
@@ -168,6 +169,14 @@ export default function ViewCharacterPage(props) {
 				<section>
 				<h4>Hitpoints: </h4>
 					<p>{props.characterToView.hitpoints}</p>
+				</section>
+
+				<section>
+					<Image 
+                    style={{width: 200}} //placeholder to keep uploaded images from being too large; change later
+                    cloudName='dr8dbzjws'
+                    publicId={props.characterToView.image}
+                    />
 				</section>
 			</div>
 
