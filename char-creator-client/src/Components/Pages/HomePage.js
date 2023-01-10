@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 
-export default function HomePage() {
-	return (
-		<div>
-			<h2 id="home-header">A DnD Character Creator</h2>
+export default function HomePage(){
 
-			<section className="home-section">
-				<p className="home-p">
-					Please login to create or manage your characters.
-				</p>
-			</section>
-		</div>
-	);
+    return(
+
+        <div>
+
+        <h2>A DnD Character Creator</h2>
+
+        <section>
+            <p>Please login to create or manage your characters.</p>
+        </section>
+
+        </div>
+    )
 }

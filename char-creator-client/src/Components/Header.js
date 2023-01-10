@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
 	return (
-		<h1 id="main-header">
+		<h1>
 			<Link to="/">Scroll of Souls</Link>
 		</h1>
 	);

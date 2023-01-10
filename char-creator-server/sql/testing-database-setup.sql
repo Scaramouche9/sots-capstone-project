@@ -81,7 +81,6 @@ create table `character` (
     `level` int,
     hitpoints int,
     `description` varchar(400),
-    image varchar(250),
     app_user_id int not null,
     image varchar(400),
     constraint fk_character_class_id
