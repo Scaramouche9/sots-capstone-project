@@ -83,6 +83,7 @@ create table `character` (
     `description` varchar(400),
     image varchar(250),
     app_user_id int not null,
+    image varchar(400),
     constraint fk_character_class_id
         foreign key (class_id)
         references player_class(class_id),
@@ -109,10 +110,10 @@ insert into player_class values (1, 'Cleric'), (2, 'Fighter'), (3, 'Rogue'), (4,
 insert into background values (1, 'Acolyte'), (2, 'Criminal'), (3, 'Folk Hero'), (4, 'Noble'), (5, 'Sage'), (6, 'Soldier');
 
 insert into `character` values 
-(1, 'Sir Brobert', 4, 2, 3, 2, 16, 13, 15, 9, 12, 13, 16, 2, 20, 3, 23, 'A freedom-loving and carefree champion of the people.', 2),
-(2, 'Grogurak Stonemuncher', 1, 1, 1, 1, 15, 12, 16, 10, 18, 7, 18, 3, 20, 7, 54, 'A stern defender of the dwarven lands.', 2),
-(3, 'Arcani Maguus', 2, 4, 5, 5, 6, 17, 9, 18, 12, 11, 13, 2, 30, 2, 7, 'The greatest wizard to ever walk the planes. Hopefully he stays away from any stiff breezes.', 2),
-(4, 'Silvia Stickyhands', 3, 3, 2, 6, 9, 18, 13, 14, 8, 16, 16, 2, 25, 5, 30, 'Keep her away from your valuables. The name is a warning!', 2);
+(1, 'Sir Brobert', 4, 2, 3, 2, 16, 13, 15, 9, 12, 13, 16, 2, 20, 3, 23, 'A freedom-loving and carefree champion of the people.', 2, 'test'),
+(2, 'Grogurak Stonemuncher', 1, 1, 1, 1, 15, 12, 16, 10, 18, 7, 18, 3, 20, 7, 54, 'A stern defender of the dwarven lands.', 2, 'test'),
+(3, 'Arcani Maguus', 2, 4, 5, 5, 6, 17, 9, 18, 12, 11, 13, 2, 30, 2, 7, 'The greatest wizard to ever walk the planes. Hopefully he stays away from any stiff breezes.', 2, 'test'),
+(4, 'Silvia Stickyhands', 3, 3, 2, 6, 9, 18, 13, 14, 8, 16, 16, 2, 25, 5, 30, 'Keep her away from your valuables. The name is a warning!', 2, 'test');
 
 delimiter //
 create procedure set_known_good_state()
@@ -136,10 +137,10 @@ begin
 	insert into background values (1, 'Acolyte'), (2, 'Criminal'), (3, 'Folk Hero'), (4, 'Noble'), (5, 'Sage'), (6, 'Soldier');
 
 	insert into `character` values 
-	(1, 'Sir Brobert', 4, 2, 3, 2, 16, 13, 15, 9, 12, 13, 16, 2, 20, 3, 23, 'A freedom-loving and carefree champion of the people.', 2),
-	(2, 'Grogurak Stonemuncher', 1, 1, 1, 1, 15, 12, 16, 10, 18, 7, 18, 3, 20, 7, 54, 'A stern defender of the dwarven lands.', 2),
-	(3, 'Arcani Maguus', 2, 4, 5, 5, 6, 17, 9, 18, 12, 11, 13, 2, 30, 2, 7, 'The greatest wizard to ever walk the planes. Hopefully he stays away from any stiff breezes.', 2),
-	(4, 'Silvia Stickyhands', 3, 3, 2, 6, 9, 18, 13, 14, 8, 16, 16, 2, 25, 5, 30, 'Keep her away from your valuables. The name is a warning!', 2);
+	(1, 'Sir Brobert', 4, 2, 3, 2, 16, 13, 15, 9, 12, 13, 16, 2, 20, 3, 23, 'A freedom-loving and carefree champion of the people.', 2, 'test'),
+	(2, 'Grogurak Stonemuncher', 1, 1, 1, 1, 15, 12, 16, 10, 18, 7, 18, 3, 20, 7, 54, 'A stern defender of the dwarven lands.', 2, 'test'),
+	(3, 'Arcani Maguus', 2, 4, 5, 5, 6, 17, 9, 18, 12, 11, 13, 2, 30, 2, 7, 'The greatest wizard to ever walk the planes. Hopefully he stays away from any stiff breezes.', 2, 'test'),
+	(4, 'Silvia Stickyhands', 3, 3, 2, 6, 9, 18, 13, 14, 8, 16, 16, 2, 25, 5, 30, 'Keep her away from your valuables. The name is a warning!', 2, 'test');
     
 end //
 delimiter ;

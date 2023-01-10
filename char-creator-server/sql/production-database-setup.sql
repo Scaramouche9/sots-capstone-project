@@ -83,6 +83,7 @@ create table `character` (
     `description` varchar(400),
     image varchar(250),
     app_user_id int,
+    image varchar(400),
     constraint fk_character_class_id
         foreign key (class_id)
         references player_class(class_id),

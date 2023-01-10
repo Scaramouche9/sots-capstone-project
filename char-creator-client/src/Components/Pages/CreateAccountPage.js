@@ -38,6 +38,20 @@ export default function CreateAccountPage(props) {
 				response.json().then((errors) => {
 					setMessages(errors);
 				});
+			
+				if (response.status === 201) {
+
+				setMessages([]);//clears messages on this page
+				props.setErrors([]);
+				props.setErrors(["Account created successfully! Please login to continue."]); //adds message to login page and redirects
+				history.push('/login');
+
+				} else {
+
+					response.json().then((errors) => {
+						setMessages(errors)
+
+				})
 			}
 
 			resetInputs();

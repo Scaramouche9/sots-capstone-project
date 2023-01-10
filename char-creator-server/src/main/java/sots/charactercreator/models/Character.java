@@ -22,6 +22,7 @@ public class Character {
     private String description;
     private String image;
     private int appUserId;
+    private String image;
 
     public Character(int characterId, String characterName, int speciesId, int classId,
                      int backgroundId, int alignmentId, int appUserId) {
@@ -192,6 +193,14 @@ public class Character {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

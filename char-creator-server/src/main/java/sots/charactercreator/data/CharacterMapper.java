@@ -35,6 +35,7 @@ public class CharacterMapper implements RowMapper<Character> {
         character.setDescription(resultSet.getString("description"));
         character.setImage(resultSet.getString("image"));
         character.setAppUserId(resultSet.getInt("app_user_id"));
+        character.setImage(resultSet.getString("image"));
 
         return character;
     }

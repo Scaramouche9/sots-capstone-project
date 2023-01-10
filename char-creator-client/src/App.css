@@ -122,6 +122,13 @@ p {
 	margin-top: 1%;
 }
 
-#character-description-form {
-	vertical-align: middle;
+.single-view-wrapper * {
+
+    margin-top: 1%;
+}
+
+#character-description-form{
+
+    vertical-align: middle;
+    
 }

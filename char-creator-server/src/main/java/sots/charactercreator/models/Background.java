@@ -10,6 +10,9 @@ public class Background {
         this.backgroundName = backgroundName;
     }
 
+    public Background() {
+    }
+
     public int getBackgroundId() {
         return backgroundId;
     }
