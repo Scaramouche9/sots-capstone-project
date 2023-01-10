@@ -246,6 +246,12 @@ export default function App() {
               classArray={classArray}
               backgroundArray={backgroundArray}
               alignment={alignment}
+
+              characterImageUrl={characterImageUrl}
+
+
+
+
              />
 						</Route>
 
@@ -307,7 +313,6 @@ export default function App() {
               userCharacters={userCharacters}
 
               user={user} 
-              
               />
             </Route>
 

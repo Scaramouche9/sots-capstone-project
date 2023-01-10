@@ -140,7 +140,6 @@ export default function CharacterForm(props){
             .then((result) => {
                 
                 if(result.status === 204){
-                    //ADD CALL TO UPLOADIMAGE FUNCTON ONCE WE HAVE IT WORKING FOR ADD
                     props.resetForm()
                     props.setErrors([])
                     history.push("/characters")
@@ -196,11 +195,8 @@ export default function CharacterForm(props){
 
             if(response.status === 200){
 
-                console.log("character image url state should be updating")
-
                 props.setCharacterImageUrl(response.data.url);
 
-                console.log(props.characterImageUrl)
 
             }else{
                 props.setErrors("Image upload failed. Please make sure the file is in image format (.jpg, .png, etc.)")
@@ -353,16 +349,26 @@ export default function CharacterForm(props){
                      type="text" id="character-description-form" name="character-description-form"></textarea>
                 </div>
 
+                <div>
+                <Image 
+                    style={{width: 200}} //placeholder to keep uploaded images from being too large; change later
+                    cloudName='dr8dbzjws'
+                    publicId={props.characterImageUrl}
+                    />
+                </div>
+
                 <ImageInput
                 characterImageUrl={props.characterImageUrl}
                 setCharacterImageUrl={props.setCharacterImageUrl}
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
+                uploadImage={uploadImage}
                 ></ImageInput>
 
                 <div><button className="submit-btn" type="submit">Submit</button></div>
                 
             </form>
+
 
             <button className="cancel-btn" onClick={() => { cancel();}}>Cancel</button>
             
