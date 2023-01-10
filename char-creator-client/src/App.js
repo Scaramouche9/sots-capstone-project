@@ -1,4 +1,5 @@
 import './App.css';
+
 import { Switch, BrowserRouter, Route, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navigation from './Components/Navigation';
@@ -13,10 +14,8 @@ import jwtDecode from 'jwt-decode';
 import CharacterForm from './Components/Pages/CharacterForm';
 import ViewCharacterPage from './Components/Pages/ViewCharacterPage';
 
-
-
-const LOCAL_STORAGE_TOKEN_KEY = "";
-const LOCAL_STORAGE_USER_ID = "userId";
+const LOCAL_STORAGE_TOKEN_KEY = '';
+const LOCAL_STORAGE_USER_ID = 'userId';
 
 export default function App() {
 
@@ -226,7 +225,11 @@ export default function App() {
 			<AuthContext.Provider value={auth}>
 				<BrowserRouter>
 					<Header />
-					<Navigation isEditing={isEditing} setIsEditing={setIsEditing} resetForm={resetForm}/>
+					<Navigation
+						isEditing={isEditing}
+						setIsEditing={setIsEditing}
+						resetForm={resetForm}
+					/>
 					<Switch>
 
             <Route exact path="/characters/view/:id">
@@ -315,8 +318,17 @@ export default function App() {
               setErrors={setErrors}/>
 						</Route>
 
+						<Route exact path="/characters">
+							<UserCharactersPage
+								user={user}
+								userCharacters={userCharacters}
+								setUserCharacters={setUserCharacters}
+								isEditing={isEditing}
+								setIsEditing={setIsEditing}
+							/>
+						</Route>
 
-            <Route path="/home">
+						<Route path="/home">
 							<HomePage></HomePage>
 						</Route>
 
@@ -337,9 +349,6 @@ export default function App() {
 						<Route exact path="/">
 							<LandingPage></LandingPage>
 						</Route>
-						
-
-
 
 						{/* <Route path="/account-edit">
 							<AccountEditPage></AccountEditPage>
@@ -353,14 +362,9 @@ export default function App() {
 						<Route path="/update-character">
 							<CreateCharacter></CreateCharacter>
 						</Route> */}
-
-          </Switch>
-        </BrowserRouter>
-      </AuthContext.Provider>
-
-    </div>
-  );
+					</Switch>
+				</BrowserRouter>
+			</AuthContext.Provider>
+		</div>
+	);
 }
-
-
-

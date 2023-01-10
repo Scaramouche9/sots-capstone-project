@@ -24,6 +24,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
     public List<Character> findAllCharacters() {
         final String sql = "select character_id, character_name, species_id, class_id, background_id, alignment_id, " +
                 "strength, dexterity, constitution, intelligence, wisdom, charisma, armor_class, proficiency_bonus," +
+
                 "speed, `level`, hitpoints, `description`, app_user_id, image from `character` limit 5000;";
         return jdbcTemplate.query(sql, new CharacterMapper());
     }
@@ -57,6 +58,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
 
         final String sql = "insert into `character` (character_name, species_id, class_id, background_id, alignment_id," +
                 " strength, dexterity, constitution, intelligence, wisdom, charisma," +
+
                 "armor_class, speed, `level`, hitpoints, `description`, app_user_id, image)"
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
@@ -132,6 +134,7 @@ public class CharacterJdbcTemplateRepository implements CharacterRepository {
                 character.getLevel(),
                 character.getHitpoints(),
                 character.getDescription(),
+                character.getImage(),
                 character.getAppUserId(),
                 character.getImage(),
                 character.getCharacterId()) > 0;
