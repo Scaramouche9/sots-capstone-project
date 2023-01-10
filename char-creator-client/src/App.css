@@ -1,125 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Eagle+Lake&family=Metamorphous&display=swap');
-
-/* General Styling */
-body {
-	font-family: 'Bellefair', 'Garamond', serif;
-	width: 50%;
-	margin: auto;
-}
-
-h1,
-h2,
-h3,
-h4 {
-	font-family: 'Metamorphous', cursive;
-}
-
-h1 {
-	font-size: 3rem;
-}
-
-input {
-	margin: 1rem;
-	background-color: rgb(212, 173, 173);
-	color: rgb(78, 3, 3);
-	border-style: inset;
-	border-top-color: rgb(34, 1, 1);
-	border-left-color: rgb(34, 1, 1);
-	border-right-color: rgb(124, 5, 5);
-	border-bottom-color: rgb(124, 5, 5);
-}
-
-button {
-	background-color: rgb(220, 162, 16);
-	color: rgb(78, 3, 3);
-	border-style: outset;
-	border-top-color: rgb(255, 188, 19);
-	border-left-color: rgb(255, 188, 19);
-	border-right-color: rgb(180, 133, 14);
-	border-bottom-color: rgb(180, 133, 14);
-	font-family: 'Bellefair', 'Garamond', serif;
-}
-
-#create-account-section {
-	text-align: center;
-}
-
-/* Headers */
-nav {
-	display: flex;
-	justify-content: space-around;
-}
-
-.nav {
-	text-align: center;
-	margin: 1rem;
-}
-
-#main-header {
-	text-align: center;
-}
-
-/* Home */
-#home-header {
-	text-align: center;
-}
-
-.home-p {
-	text-align: center;
-}
-
-/* Login */
-.login-form {
-	text-align: center;
-}
-
 /* these are for the ViewCharacterPage to move the paragraphs next to their headers*/
-/* h2,
-p {
-	display: inline;
-	vertical-align: middle;
-}
-
-h2,
-h3 {
-	display: inline;
-	vertical-align: middle;
-}
-
-h3,
-p {
-	display: inline;
-	vertical-align: middle;
-}
-
-h4,
-p {
-	display: inline;
-	vertical-align: middle;
-} */
+h2, p{ display:inline; vertical-align:middle;} 
+h2, h3{display:inline; vertical-align:middle;}
+h3, p{ display:inline; vertical-align:middle;} 
+h4, p{ display:inline; vertical-align:middle;} 
 
 /*this is to format the UserCharactersPage to be a little more clean for now */
-.character-list-description {
-	text-align: center;
-	vertical-align: middle;
-	padding: 1%;
+.character-list-description{
+    text-align: center;
+    vertical-align: middle;
+    padding: 1%;
 }
-.character-list-name {
-	text-align: center;
-	font-weight: bolder;
-	vertical-align: middle;
-	padding: 1%;
+.character-list-name{
+    text-align: center;
+    font-weight: bolder;
+    vertical-align: middle;
+    padding: 1%;
 }
-.character-list-view-link {
-	text-decoration: underline;
-}
-
-.character-list-edit-link {
-	text-decoration: underline;
+.character-list-view-link{
+    text-decoration: underline;
 }
 
-.form-group {
-	margin-top: 1%;
+.character-list-edit-link{
+    text-decoration: underline;
+}
+
+.form-group{
+    
+    margin-top: 1%;
 }
 
 .single-view-wrapper * {
