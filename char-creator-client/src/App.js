@@ -12,6 +12,7 @@ import AuthContext from './Components/Context/AuthContext';
 import jwtDecode from 'jwt-decode';
 import CharacterForm from './Components/Pages/CharacterForm';
 import ViewCharacterPage from './Components/Pages/ViewCharacterPage';
+import CharacterImage from './Components/ImageInput';
 
 
 
@@ -60,6 +61,8 @@ export default function App() {
   const [speciesArray, setSpeciesArray] = useState([]);
   const [classArray, setClassArray] = useState([]);
   const [backgroundArray, setBackgroundArray] = useState([]);
+
+  const[characterImageUrl, setCharacterImageUrl] = useState("");
 
   
 
@@ -194,6 +197,7 @@ export default function App() {
       setAlignment(1);
 
       setIsEditing(false);
+      setCharacterImageUrl('');
 
     }
 
@@ -286,6 +290,9 @@ export default function App() {
               speciesArray={speciesArray}
               classArray={classArray}
               backgroundArray={backgroundArray}
+
+              characterImageUrl={characterImageUrl}
+              setCharacterImageUrl={setCharacterImageUrl}
 
               errors={errors}
               setErrors={setErrors}
