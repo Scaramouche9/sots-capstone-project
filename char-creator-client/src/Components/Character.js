@@ -6,7 +6,7 @@ export default function Character(props) {
 
 	return (
 		<tr id="character-table">
-			<th scope="row">{props.character.characterId}</th>
+			<th scope="row">{props.userCharacters.indexOf(props.character) + 1}</th>
 			<td className="character-list-name">{props.character.characterName}</td>
 			<td className="character-list-description">
 				{props.character.description}
