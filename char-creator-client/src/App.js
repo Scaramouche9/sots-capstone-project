@@ -221,6 +221,7 @@ export default function App() {
       setCharacterClass(character.classId);
       setBackground(character.backgroundId);
       setAlignment(character.alignmentId);
+      setCharacterImageUrl(character.image);
       
     }
     
