@@ -9,6 +9,7 @@ export default function RandomName() {
     "Plink Nimblerod", "Sandor Rastifar", "Solena Ember", "Gronk Umberbuck", "Grohl", "Druzilla Vizzick", "Briola Stonks",
     "Vance Avondale", "Alessandra Blueberry", "Codex", "Zaboo", "Vork", "Bladezz", "Clara", "Tinkerballa"]
 
+    
     return (
         <section>
             <label>Generate a random name:</label>
