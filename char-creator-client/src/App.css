@@ -52,14 +52,48 @@ input {
 	border-left-color: var(--primary-color-dark);
 	border-right-color: var(--primary-color-light);
 	border-bottom-color: var(--primary-color-light);
+	font-family: 'Bellefair', 'Garamond', serif;
 }
 
 form {
 	font-size: 2rem;
+	font-family: 'Bellefair', 'Garamond', serif;
+	width: 90%;
+	margin: auto;
 }
 
 label {
 	margin: 1rem;
+	font-family: 'Bellefair', 'Garamond', serif;
+}
+
+textarea {
+	margin: 1rem;
+	padding: 1rem;
+	background-color: var(--primary-color-lighter);
+	color: var(--primary-color);
+	font-size: 1rem;
+	border-style: inset;
+	border-top-color: var(--primary-color-dark);
+	border-left-color: var(--primary-color-dark);
+	border-right-color: var(--primary-color-light);
+	border-bottom-color: var(--primary-color-light);
+	font-family: 'Bellefair', 'Garamond', serif;
+	width: 16rem;
+	height: 16rem;
+}
+
+select {
+	margin: 1rem;
+	background-color: var(--primary-color-lighter);
+	color: var(--primary-color);
+	font-size: 2rem;
+	border-style: inset;
+	border-top-color: var(--primary-color-dark);
+	border-left-color: var(--primary-color-dark);
+	border-right-color: var(--primary-color-light);
+	border-bottom-color: var(--primary-color-light);
+	font-family: 'Bellefair', 'Garamond', serif;
 }
 
 button {
@@ -83,7 +117,7 @@ table {
 	border-collapse: collapse;
 	border-color: var(--secondary-color);
 	text-align: center;
-	margin: auto;
+	margin: 2rem;
 }
 
 th {
@@ -109,6 +143,14 @@ td {
 	border-right-color: rgb(180, 133, 14);
 	border-bottom-color: rgb(180, 133, 14);
 	font-family: 'Bellefair', 'Garamond', serif;
+}
+
+button:hover {
+	border-top-color: rgb(180, 133, 14, 0.8);
+	border-left-color: rgb(180, 133, 14, 0.8);
+	border-right-color: rgb(255, 188, 19, 0.8);
+	border-bottom-color: rgb(255, 188, 19, 0.8);
+	opacity: 80%;
 }
 
 /* Headers */
@@ -179,38 +221,6 @@ td {
 	margin-top: 5rem;
 }
 
-/*this is to format the UserCharactersPage to be a little more clean for now */
-/* .character-list-description {
-	text-align: center;
-	vertical-align: middle;
-	padding: 1%;
-}
-.character-list-name {
-	text-align: center;
-	font-weight: bolder;
-	vertical-align: middle;
-	padding: 1%;
-}
-.character-list-view-link {
-	text-decoration: underline;
-}
-
-.character-list-edit-link {
-	text-decoration: underline;
-}
-
-.form-group {
-	margin-top: 1%;
-}
-
-.single-view-wrapper * {
-	margin-top: 1%;
-}
-
-#character-description-form {
-	vertical-align: middle;
-} */
-
 /* View character page */
 .view-grid-container {
 	display: grid;
@@ -226,7 +236,7 @@ td {
 }
 
 #char-image {
-	margin: auto;
+	margin: 1rem;
 	border-color: var(--secondary-color);
 	border-style: double;
 	border-width: 0.5rem;
@@ -284,4 +294,109 @@ td {
 	grid-row-start: 6;
 	grid-row-end: 8;
 	font-size: 0.75rem;
+}
+
+/* Character Form  */
+#character-form {
+	margin-top: 5rem;
+	display: grid;
+}
+
+#char-form-basic-traits {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+#char-form-points {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+#char-form-stats {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	font-size: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+#char-form-description {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 4;
+}
+
+#char-form-image {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 6;
+}
+
+#image-input {
+	margin: 1rem;
+	background-color: var(--primary-color-lighter);
+	color: var(--primary-color);
+	font-size: 2rem;
+	border-style: inset;
+	border-top-color: var(--primary-color-dark);
+	border-left-color: var(--primary-color-dark);
+	border-right-color: var(--primary-color-light);
+	border-bottom-color: var(--primary-color-light);
+	font-family: 'Bellefair', 'Garamond', serif;
+}
+
+#char-form-submit {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 6;
+	grid-row-end: 7;
+}
+
+.char-form-stat-input {
+	width: 3rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	align-self: flex-end;
+}
+
+.char-form-point-input {
+	width: 3rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }

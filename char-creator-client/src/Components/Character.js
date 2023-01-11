@@ -4,45 +4,45 @@ import { Link, useHistory } from 'react-router-dom';
 export default function Character(props) {
 	const history = useHistory();
 
-	
 	return (
-
 		<>
-		{(props.character.characterName.includes(props.searchTerm)) &&
-			
-		(<tr id="character-table">
-			<th scope="row">{props.userCharacters.indexOf(props.character) + 1}</th>
-			<td className="character-list-name">{props.character.characterName}</td>
-			<td className="character-list-description">
-				{props.character.description}
-			</td>
+			{props.character.characterName.includes(props.searchTerm) && (
+				<tr id="character-table">
+					<th scope="row">
+						{props.userCharacters.indexOf(props.character) + 1}
+					</th>
+					<td className="character-list-name">
+						{props.character.characterName}
+					</td>
+					<td className="character-list-description">
+						{props.character.description}
+					</td>
 
-			<td className="character-list-view-link">
-				<Link to={`/characters/view/${props.character.characterId}`}>
-					{' '}
-					View{' '}
-				</Link>
-			</td>
+					<td className="character-list-view-link">
+						<Link to={`/characters/view/${props.character.characterId}`}>
+							{' '}
+							<button>View</button>{' '}
+						</Link>
+					</td>
 
-			<td className="character-list-edit-link">
-				<Link
-					to={`/characters/edit/${props.character.characterId}`}
-					onClick={() => props.setIsEditing(true)}
-				>
-					{' '}
-					Edit{' '}
-				</Link>
-			</td>
+					<td className="character-list-edit-link">
+						<Link
+							to={`/characters/edit/${props.character.characterId}`}
+							onClick={() => props.setIsEditing(true)}
+						>
+							{' '}
+							<button>Edit</button>{' '}
+						</Link>
+					</td>
 
-			<td
-				className="character-list-delete-btn"
-				onClick={() => props.deleteCharacter(props.character)}
-			>
-				<button>Delete</button>
-			</td>
-			
-		</tr>)}
+					<td
+						className="character-list-delete-btn"
+						onClick={() => props.deleteCharacter(props.character)}
+					>
+						<button>Delete</button>
+					</td>
+				</tr>
+			)}
 		</>
 	);
-
 }
