@@ -94,9 +94,7 @@ export default function CharacterForm(props){
                     props.resetForm()
                     props.setErrors([])
                     history.push("/characters")
-                } if(result.status === 403){
-                    props.setErrors("Your login token has likely expired. Relog to create a character")
-                }else{
+                } else{
                     result.json().then((errors) => {
                         props.setErrors(errors)
                     })
@@ -145,9 +143,7 @@ export default function CharacterForm(props){
                     props.resetForm()
                     props.setErrors([])
                     history.push("/characters")
-                } if(result.status === 403){
-                    props.setErrors("Your login token has likely expired. Relog to edit a character")
-                }else{
+                } else{
                     result.json().then((errors) => {
                         props.setErrors(errors)
                     })
