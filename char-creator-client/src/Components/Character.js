@@ -5,14 +5,14 @@ import {Image} from 'cloudinary-react'
 export default function Character(props) {
 	const history = useHistory();
 
+
 	const handleDeleteButtonClick = () => {
 
         props.setCharacterToConfirm(props.character);
     }
 
-	
 	return (
-
+  
 		<>
 		{(props.character.characterName.includes(props.searchTerm)) &&
 			
@@ -30,22 +30,22 @@ export default function Character(props) {
 				{props.character.description}
 			</td>
 
-			<td className="character-list-view-link">
-				<Link to={`/characters/view/${props.character.characterId}`}>
-					{' '}
-					View{' '}
-				</Link>
-			</td>
+					<td className="character-list-view-link">
+						<Link to={`/characters/view/${props.character.characterId}`}>
+							{' '}
+							<button>View</button>{' '}
+						</Link>
+					</td>
 
-			<td className="character-list-edit-link">
-				<Link
-					to={`/characters/edit/${props.character.characterId}`}
-					onClick={() => props.setIsEditing(true)}
-				>
-					{' '}
-					Edit{' '}
-				</Link>
-			</td>
+					<td className="character-list-edit-link">
+						<Link
+							to={`/characters/edit/${props.character.characterId}`}
+							onClick={() => props.setIsEditing(true)}
+						>
+							{' '}
+							<button>Edit</button>{' '}
+						</Link>
+					</td>
 
 			<td
 				className="character-list-delete-btn"
@@ -57,5 +57,4 @@ export default function Character(props) {
 		</tr>)}
 		</>
 	);
-
 }
