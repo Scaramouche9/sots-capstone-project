@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Character from '../Character';
 import AuthContext from '../Context/AuthContext';
+import { Image } from 'cloudinary-react';
 
 export default function UserCharactersPage(props) {
 	const userInfo = useContext(AuthContext);
@@ -145,6 +146,13 @@ export default function UserCharactersPage(props) {
             {(!props.userCharacters.length > 0)  && (
                 <div>
                     <p>You have no existing characters.</p>
+                    <Image
+						id="char-image"
+						className="view-grid-item"
+						style={{ width: 200 }} //placeholder to keep uploaded images from being too large; change later
+						cloudName="dr8dbzjws"
+						publicId="https://res.cloudinary.com/dr8dbzjws/image/upload/v1673466607/fwclcabr5vy05v06qigc.png"
+					/>
                 </div>
             )}
 
