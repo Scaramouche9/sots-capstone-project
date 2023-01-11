@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 export default function Character(props) {
 	const history = useHistory();
 
+	
 	return (
 		
 			props.character.characterName.includes(props.searchTerm) &&

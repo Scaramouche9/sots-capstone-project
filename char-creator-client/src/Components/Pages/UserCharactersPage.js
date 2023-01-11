@@ -95,9 +95,7 @@ export default function UserCharactersPage(props) {
 						</th></tr>
 						<tr>
 							<th scope="col">ID </th>
-							<th scope="col">Name
-								
-							</th>
+							<th scope="col">Name</th>
 							<th scope="col">Description</th>
 							<th scope="col">View</th>
 							<th scope="col">Edit</th>
@@ -105,37 +103,38 @@ export default function UserCharactersPage(props) {
 						</tr>
 					</thead>
 
-					<tbody id="list-contents">
-						{props.userCharacters.map((character) => (
-							<Character
-								key={character.characterId}
-								character={character}
-								isEditing={props.isEditing}
-								setIsEditing={props.setIsEditing}
-								deleteCharacter={deleteCharacter}
-                                userCharacters={props.userCharacters}
-								searchTerm={searchTerm}
-							/>
-						))}
-					</tbody>
-					<tbody>
-						
-					</tbody>
-				</table>
-			)}
-			{!charactersFound && (
-				<div>
-					<p>
-						Your login token may have expired, please relog to see your
-						characters.
-					</p>
-				</div>
-			)}
-			{!props.userCharacters.length > 0 && (
-				<div>
-					<p>You have no existing characters.</p>
-				</div>
-			)}
-		</div>
-	);
+                    <tbody id="list-contents">
+
+                    {props.userCharacters.map (character =>
+                    <Character key={character.characterId} 
+                    character={character} 
+                    isEditing={props.isEditing} 
+                    setIsEditing={props.setIsEditing}
+                    
+                    deleteCharacter={deleteCharacter}
+                    />
+                    )}
+
+                    </tbody>
+
+                    
+            </table> )}
+            {!charactersFound && (
+                <div>
+                    <p>Your login token may have expired, please relog to see your characters.</p>
+                </div>
+            )}
+            {!props.userCharacters.length > 0  && (
+                <div>
+                    <p>You have no existing characters.</p>
+                </div>
+            )}
+
+            
+        </div>
+        
+
+
+    )
+    
 }
