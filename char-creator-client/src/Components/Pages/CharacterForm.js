@@ -81,7 +81,9 @@ export default function CharacterForm(props) {
 				props.resetForm();
 				props.setErrors([]);
 				history.push('/characters');
-			} else {
+			} else if(result.status === 403){
+               props.setErrors("Your login token has likely expired. Relog to create a character")
+                }else {
 				result.json().then((errors) => {
 					props.setErrors(errors);
 				});
@@ -126,7 +128,9 @@ export default function CharacterForm(props) {
 				props.resetForm();
 				props.setErrors([]);
 				history.push('/characters');
-			} else {
+			} else if(result.status === 403){
+                    props.setErrors("Your login token has likely expired. Relog to edit a character")
+      }else {
 				result.json().then((errors) => {
 					props.setErrors(errors);
 				});
@@ -187,6 +191,7 @@ export default function CharacterForm(props) {
 					</ul>
 				) : null}
 			</section>
+      <div><RandomName setCharacterName={props.setCharacterName} characterName={props.characterName}></RandomName></div>
 			<form
 				id="character-form"
 				onSubmit={(event) => {
@@ -506,3 +511,4 @@ export default function CharacterForm(props) {
 		</section>
 	);
 }
+

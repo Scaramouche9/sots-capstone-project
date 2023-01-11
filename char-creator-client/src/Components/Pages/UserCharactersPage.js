@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Character from '../Character';
 import AuthContext from '../Context/AuthContext';
+import { Image } from 'cloudinary-react';
 
 export default function UserCharactersPage(props) {
 	const userInfo = useContext(AuthContext);
@@ -10,6 +11,8 @@ export default function UserCharactersPage(props) {
 
 	const [charactersFound, setCharactersFound] = useState(true);
 	const [searchTerm, setSearchTerm] = useState("")
+
+    const [characterToConfirm, setCharacterToConfirm] = useState();
 
 	const handleFormSubmit = (event) => {
         event.preventDefault()
@@ -50,30 +53,39 @@ export default function UserCharactersPage(props) {
 	}, [userInfo]);
 
 	const deleteCharacter = (character) => {
-		let confirmation = window.confirm(
-			`Confirm deletion of ${character.characterName}?`
-		);
+		
+		
+        fetch(`http://localhost:8080/charactercreator/${character.characterId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + userInfo.user.token,
+            },
+        }).then((response) => {
+            if (response.status === 404) {
+                props.setErrors([
+                    `Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`,
+                ]);
+            } else {
+                //don't think anything needs to be here since the list is updating already
+            }
+        });
 
-		if (confirmation) {
-			fetch(`http://localhost:8080/charactercreator/${character.characterId}`, {
-				method: 'DELETE',
-				headers: {
-					Authorization: 'Bearer ' + userInfo.user.token,
-				},
-			}).then((response) => {
-				if (response.status === 404) {
-					props.setErrors([
-						`Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`,
-					]);
-				} else {
-					//don't think anything needs to be here since the list is updating already
-				}
-			});
-		}
+        setCharacterToConfirm();		
 	};
 	
 	return (
+
 		<div id="user-characters">
+
+        {characterToConfirm && (
+            <div>
+                <p>End the adventures of '{characterToConfirm.characterName}' permanently?</p>
+                <button onClick={() => deleteCharacter(characterToConfirm)}>Confirm</button>
+                <button onClick={() => setCharacterToConfirm()}>Cancel</button>
+            </div>
+        )}
+        {!characterToConfirm && (
+            <div>
 			<section id="errors">
 				{props.errors.length > 0 ? (
 					<ul>
@@ -84,7 +96,7 @@ export default function UserCharactersPage(props) {
 				) : null}
 			</section>
 
-			{charactersFound && (
+			{(charactersFound && props.userCharacters.length > 0) && (
 				<table className="table table-dark">
 					<thead className="thead-light">
 						<tr><th colSpan="5">
@@ -96,6 +108,7 @@ export default function UserCharactersPage(props) {
 						<tr>
 							<th scope="col">ID </th>
 							<th scope="col">Name</th>
+                            <th scope="col">Image</th>
 							<th scope="col">Description</th>
 							<th scope="col">View</th>
 							<th scope="col">Edit</th>
@@ -116,6 +129,8 @@ export default function UserCharactersPage(props) {
                     searchTerm={searchTerm}
                     userCharacters={props.userCharacters}
 
+                    setCharacterToConfirm={setCharacterToConfirm}
+
                     />
                     )}
 
@@ -128,14 +143,24 @@ export default function UserCharactersPage(props) {
                     <p>Your login token may have expired, please relog to see your characters.</p>
                 </div>
             )}
-            {!props.userCharacters.length > 0  && (
+            {(!props.userCharacters.length > 0)  && (
                 <div>
                     <p>You have no existing characters.</p>
+                    <Image
+						id="char-image"
+						className="view-grid-item"
+						style={{ width: 200 }} //placeholder to keep uploaded images from being too large; change later
+						cloudName="dr8dbzjws"
+						publicId="https://res.cloudinary.com/dr8dbzjws/image/upload/v1673466607/fwclcabr5vy05v06qigc.png"
+					/>
                 </div>
             )}
 
             
         </div>
+
+    )}
+    </div>
         
 
 
