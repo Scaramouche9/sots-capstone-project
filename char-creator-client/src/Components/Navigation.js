@@ -1,71 +1,56 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import AuthContext from "./Context/AuthContext";
-import { useContext } from "react";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import AuthContext from './Context/AuthContext';
+import { useContext } from 'react';
 
 export default function Navigation(props) {
+	const auth = useContext(AuthContext);
+	const history = useHistory();
 
-    const auth = useContext(AuthContext);
-    const history = useHistory();
+	const handleLogout = () => {
+		//this is to fit multiple functions in the onClick of the logout button (can't use useHistory in App, so we use it here)
 
-    const handleLogout = () => {//this is to fit multiple functions in the onClick of the logout button (can't use useHistory in App, so we use it here)
+		auth.logout();
+		history.push('/');
+	};
 
-        auth.logout();
-        history.push("/");
-
-    }
-
-	const resetEditingAndForm = () => { //this is to make sure the isEditing state is resetting properly for when the user moves between the edit and create pages
+	const resetEditingAndForm = () => {
+		//this is to make sure the isEditing state is resetting properly for when the user moves between the edit and create pages
 
 		props.setIsEditing(false);
 
 		props.resetForm();
-	}
-    
+	};
+
 	return (
 		<nav className="nav">
-			<ul>
+			<li>
+				<Link to="/home">Home</Link>
+			</li>
+			{!auth.user && (
 				<li>
-					<Link to="/home">Home</Link>
+					<Link to="/login">Login</Link>
 				</li>
-            {!auth.user && (<li><Link to="/login">Login</Link></li>)}
-            
-            {auth.user && (
+			)}
 
-                <>
-                <li>
-                    <div>
-                    Logged in as: <strong>{auth.user.username}</strong>
-                    <button onClick={() => handleLogout()}>Logout</button>
-                    </div>
-                </li>
-                <li><Link to="/characters">Characters List</Link></li>
+			{auth.user && (
+				<>
+					<li>
+						<Link to="/characters">Characters List</Link>
+					</li>
+					<li>
+						<Link to="/characters/add" onClick={() => resetEditingAndForm()}>
+							Create a New Character
+						</Link>
+					</li>
+				</>
+			)}
+
+			{!auth.user && (
 				<li>
-					<Link to="/characters/add" onClick={() => resetEditingAndForm()}>Create a New Character</Link>
+					<Link to="/create-account">Create a New Account</Link>
 				</li>
-                </>
-                
-            )}
-				{/* I think account editing/viewing are stretch goals for now */}
-				{/*
-				<li>
-					<Link to="/account-edit">Edit My Account</Link>
-				</li>
-				*/}
-				{/*<li>
-					<Link to="/account-view">View My Account</Link>
-				</li>*/}
-
-
-				{/* Viewing and editing/updating specific characters will be done through links in the character list page*/}
-				{/*<li>
-					<Link to="/update-character">Update my Character</Link>
-				</li>
-				*/}
-
-				{!auth.user && (<li><Link to="/create-account">Create a New Account</Link></li>)}
-
-			</ul>
+			)}
 		</nav>
 	);
 }

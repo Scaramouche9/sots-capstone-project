@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Eagle+Lake&family=Metamorphous&display=swap');
 
 :root {
-	--primary-color: rgb(78, 3, 3);
+	--primary-color: rgb(64, 2, 2);
 	--primary-color-dark: rgb(34, 1, 1);
-	--primary-color-light: rgb(124, 5, 5);
+	--primary-color-light: rgb(103, 5, 5);
 	--primary-color-lighter: rgb(212, 173, 173);
 	--secondary-color: rgb(255, 189, 21);
 	--secondary-color-light: rgb(255, 198, 54);
@@ -13,7 +13,6 @@
 /* General Styling */
 body {
 	font-family: 'Bellefair', 'Garamond', serif;
-	width: 50%;
 	margin: auto;
 	background-color: var(--primary-color);
 	color: var(--secondary-color);
@@ -63,10 +62,6 @@ label {
 	margin: 1rem;
 }
 
-ul {
-	list-style: none;
-}
-
 button {
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
@@ -87,8 +82,8 @@ table {
 	border-width: 0.5rem;
 	border-collapse: collapse;
 	border-color: var(--secondary-color);
-	width: 75vw;
 	text-align: center;
+	margin: auto;
 }
 
 th {
@@ -117,19 +112,30 @@ td {
 }
 
 /* Headers */
-nav {
-	display: flex;
-	justify-content: space-around;
-	font-size: 2rem;
-}
-
 .nav {
-	text-align: center;
-	margin: 1rem;
+	display: flex;
+	font-size: 2rem;
+	list-style: none;
+	justify-content: space-evenly;
+	background-color: rgb(255, 189, 21, 0.1);
 }
 
 #main-header {
 	text-align: center;
+}
+
+/* Logout */
+#logout {
+	text-decoration: none;
+	font-size: 1.5rem;
+	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+	background-color: rgb(255, 189, 21, 0.1);
+}
+
+#logout-button {
+	font-size: 1.5rem;
 }
 
 /* Home */
@@ -139,19 +145,42 @@ nav {
 
 .home-p {
 	text-align: center;
+	margin-top: 5rem;
 }
 
 /* Login */
-.login-form {
+#login {
 	text-align: center;
+	margin-top: 5rem;
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
+/* Create Account */
 #create-account-section {
 	text-align: center;
+	margin-top: 5rem;
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* User Characters */
+#user-characters {
+	margin-top: 5rem;
 }
 
 /*this is to format the UserCharactersPage to be a little more clean for now */
-.character-list-description {
+/* .character-list-description {
 	text-align: center;
 	vertical-align: middle;
 	padding: 1%;
@@ -180,17 +209,7 @@ nav {
 
 #character-description-form {
 	vertical-align: middle;
-}
-
-#user-characters {
-	text-align: center;
-	margin-right: 0rem;
-}
-
-#character-table {
-	text-align: center;
-	margin-right: 0rem;
-}
+} */
 
 /* View character page */
 .view-grid-container {

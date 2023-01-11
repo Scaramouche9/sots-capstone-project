@@ -39,9 +39,10 @@ export default function LoginPage(props) {
 	};
 
 	return (
-		<div>
+		<div id="login">
 			<form className="login-form" onSubmit={handleSubmit}>
 				<div>
+					<h2>Login</h2>
 					<div className="login-item" id="username">
 						<label htmlFor="username">User Name: </label>
 						<input
