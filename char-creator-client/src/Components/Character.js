@@ -6,8 +6,9 @@ export default function Character(props) {
 
 	
 	return (
-		
-			props.character.characterName.includes(props.searchTerm) &&
+
+		<>
+		{(props.character.characterName.includes(props.searchTerm)) &&
 			
 		(<tr id="character-table">
 			<th scope="row">{props.userCharacters.indexOf(props.character) + 1}</th>
@@ -40,6 +41,8 @@ export default function Character(props) {
 				<button>Delete</button>
 			</td>
 			
-		</tr>)
+		</tr>)}
+		</>
 	);
+
 }

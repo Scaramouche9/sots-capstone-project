@@ -112,6 +112,10 @@ export default function UserCharactersPage(props) {
                     setIsEditing={props.setIsEditing}
                     
                     deleteCharacter={deleteCharacter}
+
+                    searchTerm={searchTerm}
+                    userCharacters={props.userCharacters}
+
                     />
                     )}
 
