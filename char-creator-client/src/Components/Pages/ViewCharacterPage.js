@@ -73,90 +73,97 @@ export default function ViewCharacterPage(props) {
 
 	return (
 		<div className="single-view-wrapper">
-			<div className="single-view">
-				<section className="name-view">
+			<div className="single-view view-grid-container">
+				<section id="char-name" className="view-grid-item">
 					<h4>Name: {props.characterToView.characterName}</h4>
 				</section>
 
 				<section>
 					<Image
+						id="char-image"
+						className="view-grid-item"
 						style={{ width: 200 }} //placeholder to keep uploaded images from being too large; change later
 						cloudName="dr8dbzjws"
 						publicId={props.characterToView.image}
 					/>
 				</section>
 
-				<section className="description-view">
+				<section id="char-desc" className="view-grid-item">
 					<h4>Description: </h4>
 					<p>{props.characterToView.description}</p>
 				</section>
 
-				<section className="species-view">
-					<h4>Species: </h4>
-					{targetSpeciesObject && <p>{targetSpeciesObject.speciesName}</p>}
-				</section>
+				<div id="char-traits" className="view-grid-item">
+					<section id="char-species">
+						<h4>Species: </h4>
+						{targetSpeciesObject && <p>{targetSpeciesObject.speciesName}</p>}
+					</section>
 
-				<section className="class-view">
-					<h4>Class: </h4>
-					{targetClassObject && <p>{targetClassObject.className}</p>}
-				</section>
+					<section id="char-class">
+						<h4>Class: </h4>
+						{targetClassObject && <p>{targetClassObject.className}</p>}
+					</section>
 
-				<section className="background-view">
-					<h4>Background: </h4>
-					{targetBackgroundObject && (
-						<p>{targetBackgroundObject.backgroundName}</p>
-					)}
-				</section>
+					<section id="char-background">
+						<h4>Background: </h4>
+						{targetBackgroundObject && (
+							<p>{targetBackgroundObject.backgroundName}</p>
+						)}
+					</section>
 
-				<section className="alignment-view">
-					<h4>Alignment: </h4>
-					{targetAlignment && <p>{targetAlignment.localAlignmentName}</p>}
-				</section>
+					<section id="char-alignment">
+						<h4>Alignment: </h4>
+						{targetAlignment && <p>{targetAlignment.localAlignmentName}</p>}
+					</section>
+				</div>
 
-				<section>
-					<h4>Strength: {props.characterToView.strength}</h4>
-				</section>
+				<div id="char-stats" className="view-grid-item">
+					<section>
+						<h4>Strength: {props.characterToView.strength}</h4>
+					</section>
 
-				<section>
-					<h4>Dexterity: {props.characterToView.dexterity}</h4>
-				</section>
+					<section>
+						<h4>Dexterity: {props.characterToView.dexterity}</h4>
+					</section>
 
-				<section>
-					<h4>Constitution: {props.characterToView.constitution}</h4>
-				</section>
+					<section>
+						<h4>Constitution: {props.characterToView.constitution}</h4>
+					</section>
 
-				<section>
-					<h4>Intelligence: {props.characterToView.intelligence}</h4>
-				</section>
+					<section>
+						<h4>Intelligence: {props.characterToView.intelligence}</h4>
+					</section>
 
-				<section>
-					<h4>Wisdom: {props.characterToView.wisdom}</h4>
-				</section>
+					<section>
+						<h4>Wisdom: {props.characterToView.wisdom}</h4>
+					</section>
 
-				<section>
-					<h4>Charisma: {props.characterToView.charisma}</h4>
-				</section>
+					<section>
+						<h4>Charisma: {props.characterToView.charisma}</h4>
+					</section>
+				</div>
 
-				<section>
-					<h4>Armor Class: {props.characterToView.armorClass}</h4>
-				</section>
+				<div id="char-points" className="view-grid-item">
+					<section>
+						<h4>Armor Class: {props.characterToView.armorClass}</h4>
+					</section>
 
-				<section>
-					<h4>Proficiency Bonus: {props.characterToView.proficiencyBonus}</h4>
-				</section>
+					<section>
+						<h4>Proficiency Bonus: {props.characterToView.proficiencyBonus}</h4>
+					</section>
 
-				<section>
-					<h4>Speed: {props.characterToView.speed}</h4>
-					<p></p>
-				</section>
+					<section>
+						<h4>Speed: {props.characterToView.speed}</h4>
+					</section>
 
-				<section>
-					<h4>Level: {props.characterToView.level}</h4>
-				</section>
+					<section>
+						<h4>Level: {props.characterToView.level}</h4>
+					</section>
 
-				<section>
-					<h4>Hitpoints: {props.characterToView.hitpoints}</h4>
-				</section>
+					<section>
+						<h4>Hitpoints: {props.characterToView.hitpoints}</h4>
+					</section>
+				</div>
 			</div>
 		</div>
 	);
