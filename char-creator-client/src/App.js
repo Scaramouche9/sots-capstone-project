@@ -348,7 +348,7 @@ export default function App() {
 						</Route>
 
 						<Route exact path="/">
-							<LandingPage></LandingPage>
+            <HomePage></HomePage>
 						</Route>
 						
 
