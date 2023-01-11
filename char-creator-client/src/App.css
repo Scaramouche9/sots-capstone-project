@@ -40,6 +40,17 @@ button {
 	font-family: 'Bellefair', 'Garamond', serif;
 }
 
+.button {
+	background-color: rgb(220, 162, 16);
+	color: rgb(78, 3, 3);
+	border-style: outset;
+	border-top-color: rgb(255, 188, 19);
+	border-left-color: rgb(255, 188, 19);
+	border-right-color: rgb(180, 133, 14);
+	border-bottom-color: rgb(180, 133, 14);
+	font-family: 'Bellefair', 'Garamond', serif;
+}
+
 /* Headers */
 nav {
 	display: flex;

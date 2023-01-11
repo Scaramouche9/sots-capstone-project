@@ -9,6 +9,16 @@ export default function UserCharactersPage(props) {
 	const history = useHistory();
 
 	const [charactersFound, setCharactersFound] = useState(true);
+	const [searchTerm, setSearchTerm] = useState("")
+
+	const handleFormSubmit = (event) => {
+        event.preventDefault()
+        setSearchTerm(searchTerm)
+    }
+
+	const handleSearchTermChange = (event) => {
+        setSearchTerm(event.target.value)
+      }
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -61,7 +71,7 @@ export default function UserCharactersPage(props) {
 			});
 		}
 	};
-
+	
 	return (
 		<div id="user-characters">
 			<section id="errors">
@@ -77,9 +87,17 @@ export default function UserCharactersPage(props) {
 			{charactersFound && (
 				<table className="table table-dark">
 					<thead className="thead-light">
+						<tr><th colSpan="5">
+							<form onSubmit={handleFormSubmit}>
+								<label htmlFor='name-search-form'>Search by name: </label>
+								<input value={searchTerm} onChange={handleSearchTermChange} id="name-search-form" size="10" type="text"/>	
+							</form>
+						</th></tr>
 						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">Name</th>
+							<th scope="col">ID </th>
+							<th scope="col">Name
+								
+							</th>
 							<th scope="col">Description</th>
 							<th scope="col">View</th>
 							<th scope="col">Edit</th>
@@ -96,8 +114,12 @@ export default function UserCharactersPage(props) {
 								setIsEditing={props.setIsEditing}
 								deleteCharacter={deleteCharacter}
                                 userCharacters={props.userCharacters}
+								searchTerm={searchTerm}
 							/>
 						))}
+					</tbody>
+					<tbody>
+						
 					</tbody>
 				</table>
 			)}
