@@ -4,8 +4,12 @@ import { Link, useHistory } from 'react-router-dom';
 export default function Character(props) {
 	const history = useHistory();
 
+	
 	return (
-		<tr id="character-table">
+		
+			props.character.characterName.includes(props.searchTerm) &&
+			
+		(<tr id="character-table">
 			<th scope="row">{props.userCharacters.indexOf(props.character) + 1}</th>
 			<td className="character-list-name">{props.character.characterName}</td>
 			<td className="character-list-description">
@@ -35,6 +39,7 @@ export default function Character(props) {
 			>
 				<button>Delete</button>
 			</td>
-		</tr>
+			
+		</tr>)
 	);
 }

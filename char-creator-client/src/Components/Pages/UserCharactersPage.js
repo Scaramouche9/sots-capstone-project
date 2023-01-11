@@ -9,6 +9,16 @@ export default function UserCharactersPage(props) {
 	const history = useHistory();
 
 	const [charactersFound, setCharactersFound] = useState(true);
+	const [searchTerm, setSearchTerm] = useState("")
+
+	const handleFormSubmit = (event) => {
+        event.preventDefault()
+        setSearchTerm(searchTerm)
+    }
+
+	const handleSearchTermChange = (event) => {
+        setSearchTerm(event.target.value)
+      }
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -61,7 +71,7 @@ export default function UserCharactersPage(props) {
 			});
 		}
 	};
-
+	
 	return (
 		<div id="user-characters">
 			<section id="errors">
@@ -77,8 +87,14 @@ export default function UserCharactersPage(props) {
 			{charactersFound && (
 				<table className="table table-dark">
 					<thead className="thead-light">
+						<tr><th colSpan="5">
+							<form onSubmit={handleFormSubmit}>
+								<label htmlFor='name-search-form'>Search by name: </label>
+								<input value={searchTerm} onChange={handleSearchTermChange} id="name-search-form" size="10" type="text"/>	
+							</form>
+						</th></tr>
 						<tr>
-							<th scope="col">ID</th>
+							<th scope="col">ID </th>
 							<th scope="col">Name</th>
 							<th scope="col">Description</th>
 							<th scope="col">View</th>
@@ -87,33 +103,38 @@ export default function UserCharactersPage(props) {
 						</tr>
 					</thead>
 
-					<tbody id="list-contents">
-						{props.userCharacters.map((character) => (
-							<Character
-								key={character.characterId}
-								character={character}
-								isEditing={props.isEditing}
-								setIsEditing={props.setIsEditing}
-								deleteCharacter={deleteCharacter}
-                                userCharacters={props.userCharacters}
-							/>
-						))}
-					</tbody>
-				</table>
-			)}
-			{!charactersFound && (
-				<div>
-					<p>
-						Your login token may have expired, please relog to see your
-						characters.
-					</p>
-				</div>
-			)}
-			{!props.userCharacters.length > 0 && (
-				<div>
-					<p>You have no existing characters.</p>
-				</div>
-			)}
-		</div>
-	);
+                    <tbody id="list-contents">
+
+                    {props.userCharacters.map (character =>
+                    <Character key={character.characterId} 
+                    character={character} 
+                    isEditing={props.isEditing} 
+                    setIsEditing={props.setIsEditing}
+                    
+                    deleteCharacter={deleteCharacter}
+                    />
+                    )}
+
+                    </tbody>
+
+                    
+            </table> )}
+            {!charactersFound && (
+                <div>
+                    <p>Your login token may have expired, please relog to see your characters.</p>
+                </div>
+            )}
+            {!props.userCharacters.length > 0  && (
+                <div>
+                    <p>You have no existing characters.</p>
+                </div>
+            )}
+
+            
+        </div>
+        
+
+
+    )
+    
 }
