@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import {Image} from 'cloudinary-react'
 
 export default function Character(props) {
 	const history = useHistory();
+
+	const handleDeleteButtonClick = () => {
+
+        props.setCharacterToConfirm(props.character);
+    }
 
 	
 	return (
@@ -13,6 +19,13 @@ export default function Character(props) {
 		(<tr id="character-table">
 			<th scope="row">{props.userCharacters.indexOf(props.character) + 1}</th>
 			<td className="character-list-name">{props.character.characterName}</td>
+			<td className="character-list-image">
+            {(props.character.image) &&
+            (<Image
+            style={{width: 200}}
+            cloudName='dr8dbzjws'
+            publicId={props.character.image}></Image>)}
+            </td>
 			<td className="character-list-description">
 				{props.character.description}
 			</td>
@@ -36,7 +49,7 @@ export default function Character(props) {
 
 			<td
 				className="character-list-delete-btn"
-				onClick={() => props.deleteCharacter(props.character)}
+				onClick={() => handleDeleteButtonClick()}
 			>
 				<button>Delete</button>
 			</td>
