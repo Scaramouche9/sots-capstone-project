@@ -6,6 +6,7 @@ import CharacterImage from "../ImageInput";
 import ImageInput from "../ImageInput";
 import axios from "axios";
 import {Image} from 'cloudinary-react'
+import RandomName from "../RandomName";
 
 export default function CharacterForm(props){
     
@@ -225,6 +226,9 @@ export default function CharacterForm(props){
             null
         }
         </section>
+
+        <div><RandomName setCharacterName={props.setCharacterName} characterName={props.characterName}></RandomName></div>
+        
             <form onSubmit={(event) => {handleSubmit(event)}}>
                 <div className ="form-group">
                     <label htmlFor="character-name-form">Name: </label>
