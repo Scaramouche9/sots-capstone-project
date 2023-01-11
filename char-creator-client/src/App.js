@@ -16,6 +16,7 @@ import CharacterImage from './Components/ImageInput';
 
 
 
+
 const LOCAL_STORAGE_TOKEN_KEY = "";
 const LOCAL_STORAGE_USER_ID = "userId";
 
@@ -221,6 +222,7 @@ export default function App() {
       setCharacterClass(character.classId);
       setBackground(character.backgroundId);
       setAlignment(character.alignmentId);
+      setCharacterImageUrl(character.image);
       
     }
     
@@ -347,7 +349,7 @@ export default function App() {
 						</Route>
 
 						<Route exact path="/">
-							<LandingPage></LandingPage>
+            <HomePage></HomePage>
 						</Route>
 						
 
