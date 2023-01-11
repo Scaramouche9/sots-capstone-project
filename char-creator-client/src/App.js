@@ -16,6 +16,7 @@ import CharacterImage from './Components/ImageInput';
 
 
 
+
 const LOCAL_STORAGE_TOKEN_KEY = "";
 const LOCAL_STORAGE_USER_ID = "userId";
 

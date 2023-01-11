@@ -3,6 +3,7 @@ import {Link, useHistory} from "react-router-dom";
 import Character from "../Character";
 import AuthContext from "../Context/AuthContext";
 
+
 export default function UserCharactersPage(props){
 
     const userInfo = useContext(AuthContext)
@@ -10,6 +11,12 @@ export default function UserCharactersPage(props){
     const history = useHistory();
 
     const [charactersFound, setCharactersFound] = useState(true);
+
+    const [characterToConfirm, setCharacterToConfirm] = useState();
+
+
+    
+
 
     
 
@@ -46,28 +53,38 @@ export default function UserCharactersPage(props){
 
     const deleteCharacter = (character) => {
 
-        let confirmation = window.confirm(`Confirm deletion of ${character.characterName}?`);
-
-        if (confirmation){
             
-            fetch(`http://localhost:8080/charactercreator/${character.characterId}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + userInfo.user.token
-                }         
-          })
-          .then((response) =>{
-            if(response.status === 404){
-                props.setErrors([`Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`])
-            }else{
-                //don't think anything needs to be here since the list is updating already
-            }
-          })
+        fetch(`http://localhost:8080/charactercreator/${character.characterId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: "Bearer " + userInfo.user.token
+            }         
+        })
+        .then((response) =>{
+        if(response.status === 404){
+            props.setErrors([`Couldn't find character named ${character.characterName} (might already be deleted; refresh browser)`])
+        }else{
+            //don't think anything needs to be here since the list is updating already
         }
+        })
+
+        setCharacterToConfirm();
+        
 
     }
 
     return(
+
+        <div>
+        
+        {characterToConfirm && (
+            <div>
+                <p>Confirm deletion of {characterToConfirm.characterName}?</p>
+                <button onClick={() => deleteCharacter(characterToConfirm)}>Confirm</button>
+                <button onClick={() => setCharacterToConfirm()}>Cancel</button>
+            </div>
+        )}
+        {!characterToConfirm && (
 
             
         <div>
@@ -81,7 +98,7 @@ export default function UserCharactersPage(props){
                 }
             </section>
 
-            {charactersFound && (
+            {(charactersFound && props.userCharacters.length > 0)   && (
 
             <table className="table table-dark">
                 <thead className="thead-light">
@@ -105,6 +122,10 @@ export default function UserCharactersPage(props){
                     setIsEditing={props.setIsEditing}
                     
                     deleteCharacter={deleteCharacter}
+
+                    setCharacterToConfirm={setCharacterToConfirm}
+
+
                     />
                     )}
 
@@ -117,13 +138,16 @@ export default function UserCharactersPage(props){
                     <p>Your login token may have expired, please relog to see your characters.</p>
                 </div>
             )}
-            {!props.userCharacters.length > 0  && (
+            {(!props.userCharacters.length > 0)  && (
                 <div>
                     <p>You have no existing characters.</p>
                 </div>
             )}
 
             
+        </div>
+
+        )}
         </div>
         
 

@@ -5,6 +5,11 @@ export default function Character(props){
 
     const history = useHistory();
 
+    const handleDeleteButtonClick = () => {
+
+        props.setCharacterToConfirm(props.character);
+    }
+
     return(
 
         <tr>
@@ -20,7 +25,9 @@ export default function Character(props){
             <Link to={`/characters/edit/${props.character.characterId}`} onClick={() => props.setIsEditing(true)}> Edit </Link>
             </td> 
 
-            <td className="character-list-delete-btn" onClick={() => props.deleteCharacter(props.character)}><button >Delete</button></td>         
+            <td className="character-list-delete-btn" ><button onClick={() => handleDeleteButtonClick()} >Delete</button></td>
+            
+
         </tr>
     )
 
