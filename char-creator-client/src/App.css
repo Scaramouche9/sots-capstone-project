@@ -1,41 +1,268 @@
-/* these are for the ViewCharacterPage to move the paragraphs next to their headers*/
-h2, p{ display:inline; vertical-align:middle;} 
-h2, h3{display:inline; vertical-align:middle;}
-h3, p{ display:inline; vertical-align:middle;} 
-h4, p{ display:inline; vertical-align:middle;} 
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Eagle+Lake&family=Metamorphous&display=swap');
+
+:root {
+	--primary-color: rgb(78, 3, 3);
+	--primary-color-dark: rgb(34, 1, 1);
+	--primary-color-light: rgb(124, 5, 5);
+	--primary-color-lighter: rgb(212, 173, 173);
+	--secondary-color: rgb(255, 189, 21);
+	--secondary-color-light: rgb(255, 198, 54);
+	--secondary-color-dark: rgb(227, 167, 16);
+}
+
+/* General Styling */
+body {
+	font-family: 'Bellefair', 'Garamond', serif;
+	width: 50%;
+	margin: auto;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+}
+
+p {
+	font-size: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Metamorphous', cursive;
+}
+
+h1 {
+	font-size: 4rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+a {
+	color: var(--secondary-color);
+	text-decoration: none;
+}
+
+input {
+	margin: 1rem;
+	background-color: var(--primary-color-lighter);
+	color: var(--primary-color);
+	font-size: 2rem;
+	border-style: inset;
+	border-top-color: var(--primary-color-dark);
+	border-left-color: var(--primary-color-dark);
+	border-right-color: var(--primary-color-light);
+	border-bottom-color: var(--primary-color-light);
+}
+
+form {
+	font-size: 2rem;
+}
+
+label {
+	margin: 1rem;
+}
+
+ul {
+	list-style: none;
+}
+
+button {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+	font-size: 2rem;
+	border-style: outset;
+	border-width: 0.5rem;
+	border-top-color: var(--secondary-color-light);
+	border-left-color: var(--secondary-color-light);
+	border-right-color: var(--secondary-color-dark);
+	border-bottom-color: var(--secondary-color-dark);
+	font-family: 'Bellefair', 'Garamond', serif;
+	margin: 1rem;
+}
+
+table {
+	font-size: 2rem;
+	border-style: double;
+	border-width: 0.5rem;
+	border-collapse: collapse;
+	border-color: var(--secondary-color);
+	width: 75vw;
+	text-align: center;
+}
+
+th {
+	border-style: solid;
+	border-color: var(--secondary-color);
+	padding: 0.5rem;
+	border-collapse: collapse;
+}
+
+td {
+	border-style: solid;
+	border-color: var(--secondary-color);
+	padding: 1rem;
+	border-collapse: collapse;
+}
+
+.button {
+	background-color: rgb(220, 162, 16);
+	color: rgb(78, 3, 3);
+	border-style: outset;
+	border-top-color: rgb(255, 188, 19);
+	border-left-color: rgb(255, 188, 19);
+	border-right-color: rgb(180, 133, 14);
+	border-bottom-color: rgb(180, 133, 14);
+	font-family: 'Bellefair', 'Garamond', serif;
+}
+
+/* Headers */
+nav {
+	display: flex;
+	justify-content: space-around;
+	font-size: 2rem;
+}
+
+.nav {
+	text-align: center;
+	margin: 1rem;
+}
+
+#main-header {
+	text-align: center;
+}
+
+/* Home */
+#home-header {
+	text-align: center;
+}
+
+.home-p {
+	text-align: center;
+}
+
+/* Login */
+.login-form {
+	text-align: center;
+}
+
+#create-account-section {
+	text-align: center;
+}
 
 /*this is to format the UserCharactersPage to be a little more clean for now */
-.character-list-description{
-    text-align: center;
-    vertical-align: middle;
-    padding: 1%;
+.character-list-description {
+	text-align: center;
+	vertical-align: middle;
+	padding: 1%;
 }
-.character-list-name{
-    text-align: center;
-    font-weight: bolder;
-    vertical-align: middle;
-    padding: 1%;
+.character-list-name {
+	text-align: center;
+	font-weight: bolder;
+	vertical-align: middle;
+	padding: 1%;
 }
-.character-list-view-link{
-    text-decoration: underline;
-}
-
-.character-list-edit-link{
-    text-decoration: underline;
+.character-list-view-link {
+	text-decoration: underline;
 }
 
-.form-group{
-    
-    margin-top: 1%;
+.character-list-edit-link {
+	text-decoration: underline;
+}
+
+.form-group {
+	margin-top: 1%;
 }
 
 .single-view-wrapper * {
-
-    margin-top: 1%;
+	margin-top: 1%;
 }
 
-#character-description-form{
+#character-description-form {
+	vertical-align: middle;
+}
 
-    vertical-align: middle;
-    
+#user-characters {
+	text-align: center;
+	margin-right: 0rem;
+}
+
+#character-table {
+	text-align: center;
+	margin-right: 0rem;
+}
+
+/* View character page */
+.view-grid-container {
+	display: grid;
+}
+
+#char-name {
+	text-align: center;
+	font-size: 2rem;
+	grid-column-start: 1;
+	grid-column-end: 5;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+#char-image {
+	margin: auto;
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 4;
+}
+
+#char-desc {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 2;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 4;
+}
+
+#char-traits {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 8;
+}
+
+#char-stats {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 4;
+	grid-row-end: 6;
+	font-size: 0.75rem;
+}
+
+#char-points {
+	border-color: var(--secondary-color);
+	border-style: double;
+	border-width: 0.5rem;
+	padding: 1rem;
+	margin: 1rem;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 6;
+	grid-row-end: 8;
+	font-size: 0.75rem;
 }

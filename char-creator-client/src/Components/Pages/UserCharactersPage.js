@@ -1,26 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
-import {Link, useHistory} from "react-router-dom";
-import Character from "../Character";
-import AuthContext from "../Context/AuthContext";
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import Character from '../Character';
+import AuthContext from '../Context/AuthContext';
 
 
-export default function UserCharactersPage(props){
+export default function UserCharactersPage(props) {
 
-    const userInfo = useContext(AuthContext)
+	const userInfo = useContext(AuthContext);
 
-    const history = useHistory();
+	const history = useHistory();
 
-    const [charactersFound, setCharactersFound] = useState(true);
+  const [charactersFound, setCharactersFound] = useState(true);
 
-    const [characterToConfirm, setCharacterToConfirm] = useState();
-
-
-    
-
-
-    
-
-    useEffect(() => {
+  const [characterToConfirm, setCharacterToConfirm] = useState();
+  
+  const [searchTerm, setSearchTerm] = useState("")
+  
+  useEffect(() => {
 
         if (!userInfo) {
             history.push("/");
@@ -48,8 +44,7 @@ export default function UserCharactersPage(props){
                 });
         }
     }, [userInfo]);
-
-    
+  
 
     const deleteCharacter = (character) => {
 
@@ -69,50 +64,61 @@ export default function UserCharactersPage(props){
         })
 
         setCharacterToConfirm();
+        }
         
-
+	const handleFormSubmit = (event) => {
+        event.preventDefault()
+        setSearchTerm(searchTerm)
+    }
+    
+  const handleSearchTermChange = (event) => {
+        setSearchTerm(event.target.value)
     }
 
-    return(
-
-        <div>
-        
-        {characterToConfirm && (
+	
+	return (
+		<div id="user-characters">
+    
+      {characterToConfirm && (
             <div>
                 <p>End the adventures of '{characterToConfirm.characterName}' permanently?</p>
                 <button onClick={() => deleteCharacter(characterToConfirm)}>Confirm</button>
                 <button onClick={() => setCharacterToConfirm()}>Cancel</button>
             </div>
         )}
-        {!characterToConfirm && (
+        
+       {!characterToConfirm && (
+        
+			<section id="errors">
+				{props.errors.length > 0 ? (
+					<ul>
+						{props.errors.map((error) => {
+							return <li key={error}>{error}</li>;
+						})}
+					</ul>
+				) : null}
+			</section>
 
-            
-        <div>
-            <section id="errors">{
-                props.errors.length > 0 ?
-                <ul>
-                    {props.errors.map((error) => {return <li key={error}>{error}</li>})}
-                </ul>
-                :
-                null
-                }
-            </section>
+			{(charactersFound && props.userCharacters.length > 0) && (
+				<table className="table table-dark">
+					<thead className="thead-light">
+						<tr><th colSpan="5">
+							<form onSubmit={handleFormSubmit}>
+								<label htmlFor='name-search-form'>Search by name: </label>
+								<input value={searchTerm} onChange={handleSearchTermChange} id="name-search-form" size="10" type="text"/>	
+							</form>
+						</th></tr>
+						<tr>
+							<th scope="col">ID </th>
+							<th scope="col">Name</th>
+              <th scope="col">Image</th>
+							<th scope="col">Description</th>
+							<th scope="col">View</th>
+							<th scope="col">Edit</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
 
-            {(charactersFound && props.userCharacters.length > 0)   && (
-
-            <table className="table table-dark">
-                <thead className="thead-light">
-
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">View</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                    </thead>
 
                     <tbody id="list-contents">
 
