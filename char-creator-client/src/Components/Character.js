@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import {Image} from 'cloudinary-react'
 
 export default function Character(props){
 
@@ -15,6 +16,13 @@ export default function Character(props){
         <tr>
             <th scope="row">{props.character.characterId}</th>
             <td className="character-list-name">{props.character.characterName}</td>
+            <td className="character-list-image">
+            {(props.character.image) &&
+            (<Image
+            style={{width: 200}}
+            cloudName='dr8dbzjws'
+            publicId={props.character.image}></Image>)}
+            </td>
             <td className="character-list-description">{props.character.description}</td>
 
             <td className="character-list-view-link" >

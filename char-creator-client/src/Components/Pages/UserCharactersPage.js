@@ -79,7 +79,7 @@ export default function UserCharactersPage(props){
         
         {characterToConfirm && (
             <div>
-                <p>Confirm deletion of {characterToConfirm.characterName}?</p>
+                <p>End the adventures of '{characterToConfirm.characterName}' permanently?</p>
                 <button onClick={() => deleteCharacter(characterToConfirm)}>Confirm</button>
                 <button onClick={() => setCharacterToConfirm()}>Cancel</button>
             </div>
@@ -106,6 +106,7 @@ export default function UserCharactersPage(props){
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Description</th>
                         <th scope="col">View</th>
                         <th scope="col">Edit</th>
