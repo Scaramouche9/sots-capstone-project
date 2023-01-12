@@ -328,6 +328,7 @@ export default function CharacterForm(props) {
 					setIntelligence={props.setIntelligence}
 					setWisdom={props.setWisdom}
 					setCharisma={props.setCharisma}
+					characterClass={props.characterClass}
 					/>
 				</div>
 

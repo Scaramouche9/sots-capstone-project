@@ -18,13 +18,53 @@ export default function StatRoller(props) {
         }
         newArray.sort(function(a, b){return a-b});
         setStatArray(newArray);
-
-        props.setStrength(String(statArray[0]))
-        props.setDexterity(String(statArray[1]))
-        props.setConstitution(String(statArray[2]))
-        props.setIntelligence(String(statArray[3]))
-        props.setWisdom(String(statArray[4]))
-        props.setCharisma(String(statArray[5]))
+        switch(props.characterClass) {
+            case 1:
+                console.log("Cleric");
+                props.setStrength(String(statArray[2]))
+                props.setDexterity(String(statArray[3]))
+                props.setConstitution(String(statArray[4]))
+                props.setIntelligence(String(statArray[1]))
+                props.setWisdom(String(statArray[5]))
+                props.setCharisma(String(statArray[0]))
+                break;
+            case 2:
+                console.log("Fighter");
+                props.setStrength(String(statArray[5]))
+                props.setDexterity(String(statArray[3]))
+                props.setConstitution(String(statArray[4]))
+                props.setIntelligence(String(statArray[1]))
+                props.setWisdom(String(statArray[2]))
+                props.setCharisma(String(statArray[0]))
+                break;
+            case 3:
+                console.log("Rogue");
+                props.setStrength(String(statArray[0]))
+                props.setDexterity(String(statArray[5]))
+                props.setConstitution(String(statArray[3]))
+                props.setIntelligence(String(statArray[2]))
+                props.setWisdom(String(statArray[1]))
+                props.setCharisma(String(statArray[4]))
+                break;
+            case 4:
+                console.log("Wizard");
+                props.setStrength(String(statArray[0]))
+                props.setDexterity(String(statArray[4]))
+                props.setConstitution(String(statArray[3]))
+                props.setIntelligence(String(statArray[5]))
+                props.setWisdom(String(statArray[2]))
+                props.setCharisma(String(statArray[1]))
+                break;
+            default:
+                console.log("Default");
+                props.setStrength(String(statArray[0]))
+                props.setDexterity(String(statArray[1]))
+                props.setConstitution(String(statArray[2]))
+                props.setIntelligence(String(statArray[3]))
+                props.setWisdom(String(statArray[4]))
+                props.setCharisma(String(statArray[5]))       
+        }
+        
 
         //setVisible(true);
     }
