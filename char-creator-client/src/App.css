@@ -346,11 +346,15 @@ button:hover {
 
 /* Character Form  */
 #character-form {
-	margin-top: 5rem;
 	margin-bottom: 5rem;
 	display: grid;
 	grid-auto-columns: minmax(0, 1fr);
 	grid-auto-flow: column;
+}
+
+#char-form-header {
+	text-align: center;
+	margin-top: 5rem;
 }
 
 #random-name {

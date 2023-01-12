@@ -201,6 +201,7 @@ export default function CharacterForm(props) {
 					</ul>
 				) : null}
 			</section>
+			<h2 id="char-form-header">Create a Character</h2>
 
 			<form
 				id="character-form"
