@@ -530,6 +530,7 @@ export default function CharacterForm(props) {
 			</form>
 
 			<button
+				type="button"
 				className="cancel-btn"
 				onClick={() => {
 					cancel();
