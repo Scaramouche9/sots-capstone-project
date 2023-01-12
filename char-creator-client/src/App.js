@@ -5,6 +5,7 @@ import Navigation from './Components/Navigation';
 import Header from './Components/Header';
 import Logout from './Components/Logout';
 import HomePage from './Components/Pages/HomePage';
+import RandomName from './Components/RandomName';
 import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
@@ -206,7 +207,7 @@ export default function App() {
 		setCharacterClass(character.classId);
 		setBackground(character.backgroundId);
 		setAlignment(character.alignmentId);
-    setCharacterImageUrl(character.image);
+		setCharacterImageUrl(character.image);
 	};
 
 	return (
@@ -316,7 +317,7 @@ export default function App() {
 						</Route>
 
 						<Route exact path="/">
-							<HomePage/>
+							<HomePage />
 						</Route>
 					</Switch>
 				</BrowserRouter>

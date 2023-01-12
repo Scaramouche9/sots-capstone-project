@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import AuthContext from '../Context/AuthContext';
 import CharacterImage from '../ImageInput';
 import ImageInput from '../ImageInput';
+import RandomName from '../RandomName';
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
 
@@ -81,9 +82,11 @@ export default function CharacterForm(props) {
 				props.resetForm();
 				props.setErrors([]);
 				history.push('/characters');
-			} else if(result.status === 403){
-               props.setErrors("Your login token has likely expired. Relog to create a character")
-                }else {
+			} else if (result.status === 403) {
+				props.setErrors(
+					'Your login token has likely expired. Relog to create a character'
+				);
+			} else {
 				result.json().then((errors) => {
 					props.setErrors(errors);
 				});
@@ -128,9 +131,11 @@ export default function CharacterForm(props) {
 				props.resetForm();
 				props.setErrors([]);
 				history.push('/characters');
-			} else if(result.status === 403){
-                    props.setErrors("Your login token has likely expired. Relog to edit a character")
-      }else {
+			} else if (result.status === 403) {
+				props.setErrors(
+					'Your login token has likely expired. Relog to edit a character'
+				);
+			} else {
 				result.json().then((errors) => {
 					props.setErrors(errors);
 				});
@@ -191,7 +196,6 @@ export default function CharacterForm(props) {
 					</ul>
 				) : null}
 			</section>
-      <div><RandomName setCharacterName={props.setCharacterName} characterName={props.characterName}></RandomName></div>
 			<form
 				id="character-form"
 				onSubmit={(event) => {
@@ -199,7 +203,7 @@ export default function CharacterForm(props) {
 				}}
 			>
 				<div id="char-form-basic-traits">
-					<div className="form-group">
+					<div className="form-group char-form-basic">
 						<label htmlFor="character-name-form">Name: </label>
 						<input
 							className="form-control"
@@ -211,9 +215,15 @@ export default function CharacterForm(props) {
 							id="character-name-form"
 							name="character-name-form"
 						/>
+						<div>
+							<RandomName
+								setCharacterName={props.setCharacterName}
+								characterName={props.characterName}
+							></RandomName>
+						</div>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-form-basic">
 						<label htmlFor="species-dropdown">Species: </label>
 						<select
 							value={props.species}
@@ -230,7 +240,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-form-basic">
 						<label htmlFor="classes-dropdown">Class: </label>
 						<select
 							value={props.characterClass}
@@ -247,7 +257,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-form-basic">
 						<label htmlFor="backgrounds-dropdown">Background: </label>
 						<select
 							value={props.background}
@@ -264,7 +274,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-form-basic">
 						<label htmlFor="alignment-dropdown">Alignment: </label>
 						<select
 							value={props.alignment}
@@ -376,7 +386,7 @@ export default function CharacterForm(props) {
 				</div>
 
 				<div id="char-form-stats">
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="strength-form">Strength: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -390,7 +400,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="dexterity-form">Dexterity: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -404,7 +414,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="constitution-form">Constitution: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -418,7 +428,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="intelligence-form">Intelligence: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -432,7 +442,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="wisdom-form">Wisdom: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -446,7 +456,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group">
+					<div className="form-group char-stats">
 						<label htmlFor="charisma-form">Charisma: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -511,4 +521,3 @@ export default function CharacterForm(props) {
 		</section>
 	);
 }
-
