@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function StatRoller() {
+export default function StatRoller(props) {
 
 
     const [statArray, setStatArray] = useState([]);
@@ -17,9 +17,16 @@ export default function StatRoller() {
             newArray.push(statRolls[1] + statRolls[2] + statRolls[3])
         }
         newArray.sort(function(a, b){return a-b});
-        console.log(newArray);
         setStatArray(newArray);
-        setVisible(true);
+
+        props.setStrength(String(statArray[0]))
+        props.setDexterity(String(statArray[1]))
+        props.setConstitution(String(statArray[2]))
+        props.setIntelligence(String(statArray[3]))
+        props.setWisdom(String(statArray[4]))
+        props.setCharisma(String(statArray[5]))
+
+        //setVisible(true);
     }
 
 
@@ -27,8 +34,8 @@ export default function StatRoller() {
     return (
 
         <section>
-            <button onClick = {() => handleClick()}>Roll Stats!</button> 
-            {visible && <p>Stats: {statArray[0]}, {statArray[1]}, {statArray[2]}, {statArray[3]}, {statArray[4]}, {statArray[5]}</p>}
+            <button type="button" onClick = {() => handleClick()}>Roll Stats!</button> 
+            {/* {visible && <p>Stats: {statArray[0]}, {statArray[1]}, {statArray[2]}, {statArray[3]}, {statArray[4]}, {statArray[5]}</p>} */}
             
         </section>
 
