@@ -66,7 +66,11 @@ export default function LoginPage(props) {
 				{props.errors.length > 0 ? (
 					<ul>
 						{props.errors.map((message) => {
-							return <li key={message}>{message}</li>;
+							return (
+								<li id="account-created" key={message}>
+									{message}
+								</li>
+							);
 						})}
 					</ul>
 				) : null}

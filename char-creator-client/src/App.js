@@ -7,6 +7,7 @@ import Logout from './Components/Logout';
 import HomePage from './Components/Pages/HomePage';
 import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
+import RandomName from './Components/RandomName';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
 import AuthContext from './Components/Context/AuthContext';
@@ -206,7 +207,7 @@ export default function App() {
 		setCharacterClass(character.classId);
 		setBackground(character.backgroundId);
 		setAlignment(character.alignmentId);
-    setCharacterImageUrl(character.image);
+		setCharacterImageUrl(character.image);
 	};
 
 	return (
@@ -316,7 +317,7 @@ export default function App() {
 						</Route>
 
 						<Route exact path="/">
-							<HomePage/>
+							<HomePage />
 						</Route>
 					</Switch>
 				</BrowserRouter>
