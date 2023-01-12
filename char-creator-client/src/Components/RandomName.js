@@ -56,7 +56,7 @@ export default function RandomName(props) {
 
 	return (
 		<section>
-			<button id="random-name" onClick={() => handleClick()}>
+			<button type="button" id="random-name" onClick={() => handleClick()}>
 				Random Name
 			</button>
 		</section>
