@@ -20,7 +20,6 @@ export default function CharacterForm(props) {
 
 	const [selectedImage, setSelectedImage] = useState(); //this is for the CharacterImage component for uploading
 
-
 	const checkParamsToPopulateForm = () => {
 		if (params.id && props.userCharacters.length > 0 && props.isEditing) {
 			const targetCharacter = props.userCharacters.find((character) => {
@@ -230,7 +229,10 @@ export default function CharacterForm(props) {
 						</div>
 					</div>
 
-					<div className="form-group basic-form char-form-basic" id="species-form">
+					<div
+						className="form-group basic-form char-form-basic"
+						id="species-form"
+					>
 						<label htmlFor="species-dropdown">Species: </label>
 						<select
 							value={props.species}
@@ -247,7 +249,10 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group basic-form char-form-basic" id="class-form">
+					<div
+						className="form-group basic-form char-form-basic"
+						id="class-form"
+					>
 						<label htmlFor="classes-dropdown">Class: </label>
 						<select
 							value={props.characterClass}
@@ -264,7 +269,10 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group basic-form char-form-basic" id="background-form">
+					<div
+						className="form-group basic-form char-form-basic"
+						id="background-form"
+					>
 						<label htmlFor="backgrounds-dropdown">Background: </label>
 						<select
 							value={props.background}
@@ -281,7 +289,10 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group basic-form char-form-basic" id="alignment-form">
+					<div
+						className="form-group basic-form char-form-basic"
+						id="alignment-form"
+					>
 						<label htmlFor="alignment-dropdown">Alignment: </label>
 						<select
 							value={props.alignment}
@@ -318,18 +329,6 @@ export default function CharacterForm(props) {
 							</option>
 						</select>
 					</div>
-				</div>
-
-				<div>
-					<StatRoller
-					setStrength={props.setStrength}
-					setDexterity={props.setDexterity}
-					setConstitution={props.setConstitution}
-					setIntelligence={props.setIntelligence}
-					setWisdom={props.setWisdom}
-					setCharisma={props.setCharisma}
-					characterClass={props.characterClass}
-					/>
 				</div>
 
 				<div id="char-form-points">
@@ -488,6 +487,17 @@ export default function CharacterForm(props) {
 							name="charisma-form"
 						></input>
 					</div>
+					<div>
+						<StatRoller
+							setStrength={props.setStrength}
+							setDexterity={props.setDexterity}
+							setConstitution={props.setConstitution}
+							setIntelligence={props.setIntelligence}
+							setWisdom={props.setWisdom}
+							setCharisma={props.setCharisma}
+							characterClass={props.characterClass}
+						/>
+					</div>
 				</div>
 
 				<div className="form-group" id="char-form-description">
@@ -522,22 +532,23 @@ export default function CharacterForm(props) {
 					></ImageInput>
 				</div>
 
-				<div>
+				<div id="form-buttons">
 					<button className="submit-btn" id="char-form-submit" type="submit">
 						Submit
 					</button>
+
+					<button
+						type="button"
+						className="cancel-btn"
+						id="char-form-cancel"
+						onClick={() => {
+							cancel();
+						}}
+					>
+						Cancel
+					</button>
 				</div>
 			</form>
-
-			<button
-				type="button"
-				className="cancel-btn"
-				onClick={() => {
-					cancel();
-				}}
-			>
-				Cancel
-			</button>
 		</section>
 	);
 }
