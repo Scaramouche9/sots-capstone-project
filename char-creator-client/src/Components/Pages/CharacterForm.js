@@ -6,6 +6,7 @@ import CharacterImage from '../ImageInput';
 import ImageInput from '../ImageInput';
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
+import StatRoller from '../StatRoller';
 
 export default function CharacterForm(props) {
 	const url = 'http://localhost:8080/charactercreator';
