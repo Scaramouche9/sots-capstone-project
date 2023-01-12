@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useEffect } from 'react';
 import AuthContext from '../Context/AuthContext';
+import RandomName from '../RandomName';
 import CharacterImage from '../ImageInput';
 import ImageInput from '../ImageInput';
 import RandomName from '../RandomName';
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
+import StatRoller from '../StatRoller';
 
 export default function CharacterForm(props) {
 	const url = 'http://localhost:8080/charactercreator';
@@ -187,15 +189,20 @@ export default function CharacterForm(props) {
 
 	return (
 		<section>
-			<section id="errors">
+			<section>
 				{props.errors.length > 0 ? (
 					<ul>
 						{props.errors.map((error) => {
-							return <li key={error}>{error}</li>;
+							return (
+								<li className="errors" key={error}>
+									{error}
+								</li>
+							);
 						})}
 					</ul>
 				) : null}
 			</section>
+
 			<form
 				id="character-form"
 				onSubmit={(event) => {
@@ -203,7 +210,8 @@ export default function CharacterForm(props) {
 				}}
 			>
 				<div id="char-form-basic-traits">
-					<div className="form-group char-form-basic">
+					<div className="form-group char-form-basic basic-form" id="name-form">
+
 						<label htmlFor="character-name-form">Name: </label>
 						<input
 							className="form-control"
@@ -223,7 +231,8 @@ export default function CharacterForm(props) {
 						</div>
 					</div>
 
-					<div className="form-group char-form-basic">
+					<div className="form-group char-form-basic basic-form" id="species-form">
+
 						<label htmlFor="species-dropdown">Species: </label>
 						<select
 							value={props.species}
@@ -240,7 +249,8 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic">
+					<div className="form-group char-form-basic basic-form" id="class-form">
+
 						<label htmlFor="classes-dropdown">Class: </label>
 						<select
 							value={props.characterClass}
@@ -257,7 +267,8 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic">
+					<div className="form-group char-form-basic basic-form" id="background-form">
+
 						<label htmlFor="backgrounds-dropdown">Background: </label>
 						<select
 							value={props.background}
@@ -274,7 +285,8 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic">
+					<div className="form-group char-form-basic basic-form" id="alignment-form">
+
 						<label htmlFor="alignment-dropdown">Alignment: </label>
 						<select
 							value={props.alignment}

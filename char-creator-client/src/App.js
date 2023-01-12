@@ -8,6 +8,7 @@ import HomePage from './Components/Pages/HomePage';
 import RandomName from './Components/RandomName';
 import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
+import RandomName from './Components/RandomName';
 import CreateAccountPage from './Components/Pages/CreateAccountPage';
 import UserCharactersPage from './Components/Pages/UserCharactersPage';
 import AuthContext from './Components/Context/AuthContext';
