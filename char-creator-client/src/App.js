@@ -5,7 +5,6 @@ import Navigation from './Components/Navigation';
 import Header from './Components/Header';
 import Logout from './Components/Logout';
 import HomePage from './Components/Pages/HomePage';
-import RandomName from './Components/RandomName';
 import LandingPage from './Components/Pages/LandingPage';
 import LoginPage from './Components/Pages/LoginPage';
 import RandomName from './Components/RandomName';

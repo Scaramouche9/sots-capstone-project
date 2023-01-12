@@ -5,7 +5,6 @@ import AuthContext from '../Context/AuthContext';
 import RandomName from '../RandomName';
 import CharacterImage from '../ImageInput';
 import ImageInput from '../ImageInput';
-import RandomName from '../RandomName';
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
 import StatRoller from '../StatRoller';
@@ -210,8 +209,7 @@ export default function CharacterForm(props) {
 				}}
 			>
 				<div id="char-form-basic-traits">
-					<div className="form-group char-form-basic basic-form" id="name-form">
-
+					<div className="form-group basic-form" id="name-form">
 						<label htmlFor="character-name-form">Name: </label>
 						<input
 							className="form-control"
@@ -231,8 +229,7 @@ export default function CharacterForm(props) {
 						</div>
 					</div>
 
-					<div className="form-group char-form-basic basic-form" id="species-form">
-
+					<div className="form-group basic-form" id="species-form">
 						<label htmlFor="species-dropdown">Species: </label>
 						<select
 							value={props.species}
@@ -249,8 +246,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic basic-form" id="class-form">
-
+					<div className="form-group basic-form" id="class-form">
 						<label htmlFor="classes-dropdown">Class: </label>
 						<select
 							value={props.characterClass}
@@ -267,8 +263,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic basic-form" id="background-form">
-
+					<div className="form-group basic-form" id="background-form">
 						<label htmlFor="backgrounds-dropdown">Background: </label>
 						<select
 							value={props.background}
@@ -285,8 +280,7 @@ export default function CharacterForm(props) {
 						</select>
 					</div>
 
-					<div className="form-group char-form-basic basic-form" id="alignment-form">
-
+					<div className="form-group basic-form" id="alignment-form">
 						<label htmlFor="alignment-dropdown">Alignment: </label>
 						<select
 							value={props.alignment}
@@ -398,7 +392,7 @@ export default function CharacterForm(props) {
 				</div>
 
 				<div id="char-form-stats">
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="strength-form">Strength: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -412,7 +406,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="dexterity-form">Dexterity: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -426,7 +420,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="constitution-form">Constitution: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -440,7 +434,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="intelligence-form">Intelligence: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -454,7 +448,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="wisdom-form">Wisdom: </label>
 						<input
 							className="form-control char-form-stat-input"
@@ -468,7 +462,7 @@ export default function CharacterForm(props) {
 						></input>
 					</div>
 
-					<div className="form-group char-stats">
+					<div className="form-group">
 						<label htmlFor="charisma-form">Charisma: </label>
 						<input
 							className="form-control char-form-stat-input"
