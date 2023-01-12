@@ -20,6 +20,7 @@ export default function CharacterForm(props) {
 
 	const [selectedImage, setSelectedImage] = useState(); //this is for the CharacterImage component for uploading
 
+
 	const checkParamsToPopulateForm = () => {
 		if (params.id && props.userCharacters.length > 0 && props.isEditing) {
 			const targetCharacter = props.userCharacters.find((character) => {
@@ -317,6 +318,17 @@ export default function CharacterForm(props) {
 							</option>
 						</select>
 					</div>
+				</div>
+
+				<div>
+					<StatRoller
+					setStrength={props.setStrength}
+					setDexterity={props.setDexterity}
+					setConstitution={props.setConstitution}
+					setIntelligence={props.setIntelligence}
+					setWisdom={props.setWisdom}
+					setCharisma={props.setCharisma}
+					/>
 				</div>
 
 				<div id="char-form-points">
