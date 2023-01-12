@@ -137,7 +137,7 @@ insert into `character` values
 (26, 'Astra', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'She''s on a higher plane than you...literally.', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472654/a3by4aijfmvejcamap1s.png'),
 (27, 'Harbor', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'A thirsty ocean-boi with a really cool water-bendy arm-band thingy.', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472703/wfjas4cspngaiiiywmb8.png'),
 (28, 'Jace', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'A planeswalker, mind-mage, and representative of all things blue', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472808/qizghw0enoodfamiqx67.jpg'),
-(29 'Dani Ardor', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'A victim of catharsis, and of a really creepy cult of daylight fanatics.', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472894/fpcpttk0grddelrbclp5.jpg'),
+(29 'Dani Ardor', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'A of a really creepy cult of daylight fanatics who prey on her need for catharsis and belonging.', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472894/fpcpttk0grddelrbclp5.jpg'),
 (30, 'Joy Wang', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, , 0, 0, 0, 'She saw the donut with EVERYTHING on it, realized that nothing matters, and thus, that everything matters.', 2, 'http://res.cloudinary.com/dr8dbzjws/image/upload/v1673472964/w0hs0e969xgcpioz0vcr.jpg');
 
 
