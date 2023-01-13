@@ -136,7 +136,7 @@ table {
 	border-collapse: collapse;
 	border-color: var(--secondary-color);
 	text-align: center;
-	margin: 2rem;
+	margin: auto;
 }
 
 th {
@@ -272,7 +272,6 @@ button:hover {
 .view-grid-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	margin: 3rem;
 }
 
 #char-name {
